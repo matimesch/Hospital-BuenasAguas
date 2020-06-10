@@ -1,5 +1,5 @@
 const mongodb = require("mongodb");
-const uri = "mongodb+srv://m3sch:admin@moviesdb-irhan.mongodb.net/movies?retryWrites=true&w=majority";
+const uri = "mongodb+srv://m3sch:admin@moviesdb-irhan.mongodb.net/hospitaldb?retryWrites=true&w=majority";
 
 
 
@@ -30,11 +30,13 @@ const login = (email, password, cbResult) => {
                 } else {
 
                     if (!foundUser) {
+                        console.log(foundUser)
                         cbResult({
                             valid: false,
                             msg: "Mail o contraseña inválidos"
                         });
                     } else {
+                        console.log(foundUser)
                         cbResult({
                             valid: true
                         });
@@ -65,7 +67,6 @@ const getUser = (email, cbResult) => {
             cbResult({
                 success: false
             });
-            client.close();
         }
         else {
             const hospitaldb = client.db("hospitaldb");
@@ -94,12 +95,13 @@ const getUser = (email, cbResult) => {
 // REGISTER
 
 const register = (name, surname, email, password, cbResult) => {
-    mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client), (err, client) => {
+    mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
 
         if (err) {
 
             // Si hay error de conexión, retornamos el false
             // (no cerramos conexión porque no se logró abrir)
+            console.log(err)
             cbResult(false);
 
         } else {
@@ -110,8 +112,8 @@ const register = (name, surname, email, password, cbResult) => {
             const newUser = {
                 name: name,
                 surname: surname,
-                email, email,
-                password: password,
+                email: email,
+                password: password
             };
 
             // Insertamos el user en la DB
@@ -121,7 +123,6 @@ const register = (name, surname, email, password, cbResult) => {
                     cbResult(false);
                 } else {
                     cbResult(true);
-                    console.log(result);
                 }
 
                 client.close();

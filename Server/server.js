@@ -61,12 +61,13 @@ app.get("/miportal", (req, res) => {
 // POSTS
 
 app.post("/login", (req, res) => {
+  console.log(req.body)
 
-  auth.login(req.body.username, req.body.password, result => {
+  auth.login(req.body.email, req.body.password, result => {
     if (result.valid) {
-      res.render("index");
+      res.render("home");
     } else {
-      res.render("portal", { layout: "main", message: result.msg });
+      res.render("miportal", { layout: "layout", message: result.msg });
     };
   })
 });
@@ -74,10 +75,9 @@ app.post("/login", (req, res) => {
 //register
 
 app.post("/register", (req, res) => {
-
-  // 1. Validar datos de registro
+ console.log(req.body)
+  // Valido datos de registro
   auth.getUser(req.body.email, result => {
-
     // Si no se pudo consultar a la DB renderizo signup con mensaje de error
     if (!result.success) {
       res.render("signup", {
@@ -87,10 +87,10 @@ app.post("/register", (req, res) => {
           text: "No se pudo conectar a la base de datos"
         }
       });
-      return;
+      return
     };
 
-    // Si el usuario ya existe renderizo signup con mensaje de error
+    // Si el mail ya existe renderizo signup con mensaje de error
     if (result.email) {
       res.render("signup", {
         layout: "main",
@@ -102,7 +102,7 @@ app.post("/register", (req, res) => {
       return;
     }
 
-    // Si el password está mal ingresado renderizo signup con mensaje de error
+    // Si el password no existe o está mal ingresado renderizo signup con mensaje de error
     if (!req.body.password || req.body.password !== req.body.confirmPassword) {
       res.render("signup", {
         layout: "main",
@@ -114,12 +114,11 @@ app.post("/register", (req, res) => {
       return;
     }
 
-    // Procesamos alta de usuarix
-    auth.register(req.body.name, req.body.surname. req.body.email, req.body.password, result => {
-
+    // Procesamos el alta del usuario
+    auth.register(req.body.name, req.body.surname, req.body.email, req.body.password, result => {
       if (result) {
 
-        // Si se pudo registrar renderizo index con mensaje de éxito
+        // Si se pudo registrar renderizo portal con mensaje de éxito
         res.render("portal", {
           layout: "main", message: {
             class: "success",
