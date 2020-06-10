@@ -1,0 +1,16 @@
+{
+  "name": "buenasaguas",
+  "version": "0.0.1",
+  "description": "Proyecto de Comunidad it",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "author": "M3sch",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "mongodb": "^3.5.8"
+  }
+}

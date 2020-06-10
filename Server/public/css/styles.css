@@ -1,0 +1,38 @@
+span{
+  display: block;
+}
+
+body{
+  background-color: #0277bd;
+}
+
+.card-panel {
+  background-color: #0d47a1 ;
+}
+
+footer{
+    position:fixed;bottom:0;left:0;width:100%;
+  }
+
+.message-failure {
+    width: 40%;
+    border-color: red;
+    background-color: lightcoral;
+    color: darkred;
+    padding: 7px;
+  }
+  
+.message-success {
+    width: 40%;
+    border-color: green;
+    background-color: lightgreen;
+    color: darkgreen;
+    padding: 7px;
+  }
+  
+.signup-message {
+    display: block;
+    margin-top: 20px;
+    color: blue;
+    font-size: 0.8em;
+  }

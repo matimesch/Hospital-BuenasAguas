@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital BuenasAguas</title>
+</head>
+
+<body>
+    <nav class="blue darken-4">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo right">Logo</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="/"><span class="cyan-text text-accent-3">Principal</span></a></li>
+                <li><a href="/about"><span class="cyan-text text-accent-3">Acerca del hospital</span></a></li>
+                <li><a href="/locations"><span class="cyan-text text-accent-3">Cómo llegar</span></a></li>
+                <li><a href="/portal"><span class="cyan-text text-accent-3">Mi portal</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul class="sidenav blue darken-1" id="mobile-demo">
+        <li><a href="/">Principal</a></li>
+        <li><a href="/about">Acerca del hospital</a></li>
+        <li><a href="/locations">Cómo llegar</a></li>
+        <li><a href="/portal">Mi portal</a></li>
+    </ul>
+
+
+    {{{body}}}
+
+
+    <footer class="page-footer blue darken-4">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="cyan-text text-accent-3">Hospital BuenasAguas</h5>
+                    <span class="cyan-text text-accent-3">Estadio Presidente Perón, Diego A. Milito, Avellaneda, Buenos
+                        Aires</span>
+                    <span class="cyan-text text-accent-3">Código Postal: B1870</span>
+                    <span class="cyan-text text-accent-3">Tél: (+54 11) 4229-1350</span>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="cyan-text text-accent-3">Seguinos!</h5>
+                    <a href="#" class="waves-effect waves-light btn-floating btn-large social twitter">
+                        <i class="fa fa-twitter"></i></a>
+                    <a href="#" class="waves-effect waves-light btn-floating btn-large social instagram">
+                        <i class="fa fa-instagram"></i></a>
+                    <a class="waves-effect waves-light btn-floating btn-large social github">
+                        <i class="fa fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container black-text">
+                © 2020 Copyright Text
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+        });
+
+    </script>
+</body>
+
+</html>

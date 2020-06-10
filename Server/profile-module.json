@@ -1,0 +1,17 @@
+[
+    {
+        "profile_name" : "Admin",
+        "module_name" : "add",
+        "permission" : "C"
+    },
+    {
+        "profile_name" : "Medico",
+        "module_name" : "diagnosticos",
+        "permission" : "C"
+    }
+    {
+        "profile_name" : "user",
+        "module_name" : "add",
+        "permission" : "NO"
+    }
+]
