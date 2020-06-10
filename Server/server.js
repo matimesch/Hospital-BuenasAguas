@@ -80,43 +80,37 @@ app.post("/register", (req, res) => {
 
     // Si no se pudo consultar a la DB renderizo signup con mensaje de error
     if (!result.success) {
-
-      // Agrego el mensaje en el objeto de sesión antes de redireccionar
-      // (para que cuando llegue el request a /signup podamos tener acceso
-      // a ese dato)
-      req.session.message = {
-        class: "failure",
-        text: "Sorry, can't register now, retry later."
-      }
-
-      res.redirect("/signup");
-
-      // Return para que no siga ejecutando el resto de la función
+      res.render("signup", {
+        layout: "main",
+        message: {
+          class: "failure",
+          text: "No se pudo conectar a la base de datos"
+        }
+      });
       return;
     };
 
     // Si el usuario ya existe renderizo signup con mensaje de error
     if (result.email) {
-
-      req.session.message = {
-        class: "failure",
-        text: "Sorry, email already in use."
-      }
-
-      res.redirect("/signup");
-
+      res.render("signup", {
+        layout: "main",
+        message: {
+          class: "failure",
+          text: "Email en uso"
+        }
+      });
       return;
     }
 
     // Si el password está mal ingresado renderizo signup con mensaje de error
     if (!req.body.password || req.body.password !== req.body.confirmPassword) {
-
-      req.session.message = {
-        class: "failure",
-        text: "Passwords must be equal"
-      }
-
-      res.redirect("/signup");
+      res.render("signup", {
+        layout: "main",
+        message: {
+          class: "failure",
+          text: "Passwords must be equal"
+        }
+      });
       return;
     }
 
@@ -125,20 +119,24 @@ app.post("/register", (req, res) => {
 
       if (result) {
 
-        req.session.message = {
-          class: "success",
-          text: "Successfully registered, please sign in."
-        };
-        res.redirect("/login");
+        // Si se pudo registrar renderizo index con mensaje de éxito
+        res.render("portal", {
+          layout: "main", message: {
+            class: "success",
+            text: "User registered, please sign in."
+          }
+        });
 
       } else {
 
         // Si no se pudo registrar renderizo signup con mensaje de error
-        req.session.message = {
-          class: "success",
-          text: "Sorry, could't register user, please try again later."
-        };
-        res.redirect("/signup");
+        res.render("signup", {
+          layout: "main",
+          message: {
+            class: "failure",
+            text: "Sorry, could't register user, please try again later."
+          }
+        });
 
       }
     });

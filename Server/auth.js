@@ -59,7 +59,7 @@ const login = (email, password, cbResult) => {
 
 // getUser
 
-const getUser = cbResult => {
+const getUser = (email, cbResult) => {
     mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
         if (err) {
             cbResult({
@@ -93,7 +93,7 @@ const getUser = cbResult => {
 
 // REGISTER
 
-const register = (name, surname, email, password, profile, cbResult) => {
+const register = (name, surname, email, password, cbResult) => {
     mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client), (err, client) => {
 
         if (err) {
@@ -112,14 +112,12 @@ const register = (name, surname, email, password, profile, cbResult) => {
                 surname: surname,
                 email, email,
                 password: password,
-                profile: profile
             };
 
             // Insertamos el user en la DB
             usersCollection.insertOne(newUser, (err, result) => {
 
                 if (err) {
-                    console.log(result);
                     cbResult(false);
                 } else {
                     cbResult(true);
