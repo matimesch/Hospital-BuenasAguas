@@ -4,6 +4,11 @@
   background-color: #0277bd;
 }
 
+#main2{
+  flex: 1 0 auto;
+  background-color: #004d40;
+}
+
 main{
   flex: 1 0 auto; 
 }

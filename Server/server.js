@@ -53,9 +53,20 @@ app.get("/signup", (req, res) => {
 });
 
 app.get("/home", (req, res) => {
-  res.render("home", { layout: "main"});
+  res.render("home", { layout: "main2"});
 });
 
+app.get("/turnos", (req, res) => {
+  res.render("turnos", { layout: "main2"});
+});
+
+app.get("/medicos", (req, res) => {
+  res.render("medicos", { layout: "main2"});
+});
+
+app.get("/medicamentos", (req, res) => {
+  res.render("medicamentos", { layout: "main2"});
+});
 
 // POSTS
 
