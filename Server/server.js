@@ -17,7 +17,6 @@ const auth = require("./auth");
 app.set("view engine", "handlebars");
 
 app.engine("handlebars", expHbs({
-  defaultLayout: "main",
   layoutsDir: path.join(__dirname, "views/layouts")
 }));
 

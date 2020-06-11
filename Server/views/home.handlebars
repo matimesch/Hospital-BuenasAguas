@@ -1,1 +1,67 @@
-<h1>entre</h1>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+
+<style>
+    #container {
+  padding-left: 300px;
+}
+
+#content {
+  padding: 20px;
+}
+
+@media only screen and (max-width : 992px) {
+  #container {
+    padding-left: 0px;
+  }
+}
+</style>
+
+<!-- HTML -->
+<div id="container">
+
+  <div id="menu">
+
+    <ul id="slide-out" class="side-nav fixed show-on-large-only">
+      <li><a href="#!">Turnos</a></li>
+      <li><a href="#!">Medicamentos</a></li>
+      <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">Mis datos<i class="material-icons">arrow_drop_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#!">Mis turnos</a></li>
+                <li><a href="#!">Mis médicos</a></li>
+                <li><a href="#!">Mis medicamentos</a></li>
+                <li><a href="#!">Fourth</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div id="content">
+    <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only"><i class="material-icons">menu</i></a>
+    
+    <h3>Simple Materialize Responsive Side Menu</h3>
+    
+    <p>Resize browser to see what it looks like in (a) brwoser (b) mobile devices</p>
+
+  </div>
+    
+</div>
+
+<script>
+    $('.button-collapse').sideNav({
+  menuWidth: 200, // Default is 300
+  edge: 'left', // Choose the horizontal origin
+  closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+  draggable: true // Choose whether you can drag to open on touch screens
+});
+</script>

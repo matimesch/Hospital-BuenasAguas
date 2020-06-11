@@ -1,7 +1,11 @@
 
-main {
+#main {
   flex: 1 0 auto;
   background-color: #0277bd;
+}
+
+main{
+  flex: 1 0 auto; 
 }
 
 span{
