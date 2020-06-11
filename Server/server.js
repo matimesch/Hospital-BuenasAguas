@@ -17,7 +17,7 @@ const auth = require("./auth");
 app.set("view engine", "handlebars");
 
 app.engine("handlebars", expHbs({
-  defaultLayout: "index",
+  defaultLayout: "main",
   layoutsDir: path.join(__dirname, "views/layouts")
 }));
 
@@ -53,8 +53,8 @@ app.get("/signup", (req, res) => {
   res.render("signup", { layout: "main" });
 });
 
-app.get("/miportal", (req, res) => {
-  res.render("home", { layout: "main", message: req.session.message});
+app.get("/home", (req, res) => {
+  res.render("home", { layout: "main"});
 });
 
 
@@ -65,9 +65,11 @@ app.post("/login", (req, res) => {
 
   auth.login(req.body.email, req.body.password, result => {
     if (result.valid) {
-      res.render("home");
+        res.render("home", {layout: "main2"});
     } else {
-      res.render("miportal", { layout: "layout", message: result.msg });
+      res.render("portal", { layout: "main", message: {
+        class: "failure",
+        text: result.msg} });
     };
   })
 });

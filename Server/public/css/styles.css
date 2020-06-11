@@ -1,18 +1,26 @@
+
+main {
+  flex: 1 0 auto;
+  background-color: #0277bd;
+}
+
 span{
   display: block;
 }
 
 body{
-  background-color: #0277bd;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 .card-panel {
   background-color: #0d47a1 ;
 }
 
-footer{
+/* footer{
     position:fixed;bottom:0;left:0;width:100%;
-  }
+  } */
 
 .message-failure {
     width: 40%;
@@ -36,3 +44,17 @@ footer{
     color: blue;
     font-size: 0.8em;
   }
+
+.map-responsive{
+  overflow:hidden;
+  padding-bottom:56.25%;
+  position:relative;
+  height:0;
+}
+.map-responsive iframe{
+  left:0;
+  top:0;
+  height:100%;
+  width:100%;
+  position:absolute;
+}
