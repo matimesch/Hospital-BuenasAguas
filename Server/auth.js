@@ -11,7 +11,7 @@ const login = (email, password, cbResult) => {
         if (err) {
             cbResult({
                 valid: false,
-                msg: "Sorry, site is under maintenance now, retry later."
+                msg: "No se pudo conectar a la base de datos"
             });
 
         } else {
@@ -24,7 +24,7 @@ const login = (email, password, cbResult) => {
 
                     cbResult({
                         valid: false,
-                        msg: "Sorry, the site is under maintenance now, retry later."
+                        msg: "Usuario no registrado, registrate por favor."
                     });
 
                 } else {
@@ -91,6 +91,10 @@ const getUser = (email, cbResult) => {
     });
 }
 
+//
+
+
+
 
 // REGISTER
 
@@ -118,7 +122,7 @@ const register = (name, surname, email, password, cbResult) => {
 
             // Insertamos el user en la DB
             usersCollection.insertOne(newUser, (err, result) => {
-
+                console.log(result)
                 if (err) {
                     cbResult(false);
                 } else {
@@ -132,6 +136,41 @@ const register = (name, surname, email, password, cbResult) => {
 
     });
 }
+
+//getById
+
+// const getByid = (filterId, cbResult) => {
+//     mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
+//       if (err) {
+//         // retornar array vacío
+//         cbResult(undefined);
+//         client.close();
+//       } else {
+//         const hospitaldb = client.db("hospitaldb");
+//         const usersCollection = hospitaldb.collection("persons");
+  
+//         personsCollection.find().toArray(({_id : new mongodb.ObjectID(filterID) }, (err, person) => {
+  
+//           // retornar array con datos
+//           if (err) {
+//             cbResult(undefined);
+//           } else {
+//             cbResult({
+//                 oid = person._id.toString(),
+//                 name: person.name,
+//                 surname : person.surname,
+//                 email : person.email,
+//                 password : person.password,
+//                 profile : "user"
+//             });
+//           }
+  
+//           client.close();
+//         })) ;
+  
+//       }
+//     });
+//   }
 
 
 

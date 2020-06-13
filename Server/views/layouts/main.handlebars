@@ -17,18 +17,18 @@
             <a href="#" class="brand-logo right">Logo</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li><a href="/"><span class="cyan-text text-accent-3">Principal</span></a></li>
+                <li><a href="/" id="1"><span class="cyan-text text-accent-3">Principal</span></a></li>
                 <li><a href="/about"><span class="cyan-text text-accent-3">Acerca del hospital</span></a></li>
                 <li><a href="/locations"><span class="cyan-text text-accent-3">Cómo llegar</span></a></li>
                 <li><a href="/portal"><span class="cyan-text text-accent-3">Mi portal</span></a></li>
             </ul>
         </div>
     </nav>
-    <ul class="sidenav blue darken-1" id="mobile-demo">
-        <li><a href="/">Principal</a></li>
-        <li><a href="/about">Acerca del hospital</a></li>
-        <li><a href="/locations">Cómo llegar</a></li>
-        <li><a href="/portal">Mi portal</a></li>
+    <ul class="sidenav blue darken-3 card-panel" id="mobile-demo">
+        <li><a href="/" class="cyan-text text-accent-3">Principal</a></li>
+        <li><a href="/about" class="cyan-text text-accent-3">Acerca del hospital</a></li>
+        <li><a href="/locations" class="cyan-text text-accent-3">Cómo llegar</a></li>
+        <li><a href="/portal" class="cyan-text text-accent-3">Mi portal</a></li>
     </ul>
 
     <main id="main">
@@ -70,7 +70,6 @@
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems);
         });
-
     </script>
 </body>
 

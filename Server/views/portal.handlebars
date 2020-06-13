@@ -24,13 +24,16 @@
                         <input type="submit" class="btn waves-light col s12" value="Ingresar">
                     </div>
                 </div>
-                <div class="input-field col s6 m6 blue-text">Todavía no estás registrado?</div>
-                <a class="waves-effect waves-light btn-small input-field col s6 m6 l6" href="signup">Regístrate</a>
+                <div class="input-field col s4"></div>
+                <div class="input-field col s6 teal-text text-lighten-5"><span>Todavía no estás registrado?</span></div>
+                <div class="input-field col s3"></div>
+                <div><a class="waves-effect waves-light btn-small input-field col s6 m6 l6" href="signup">Regístrate</a>
+                </div>
+                <div class="input-field col s12">{{#if message}}
+                    <p class="message-{{message.class}}">{{message.text}}</p>
+                    {{/if}}</div>
             </form>
         </div>
     </div>
 
 </div>
-{{#if message}}
-<p class="message-{{message.class}}">{{message.text}}</p>
-{{/if}}

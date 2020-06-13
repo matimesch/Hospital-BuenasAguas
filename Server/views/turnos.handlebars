@@ -1,0 +1,78 @@
+<div id="content" class="container">
+    <form id="turnos" class="card-panel">
+        <input type="text" id="medico" placeholder="surname">
+        <select class="input-field" id="especialidad" name="especialidad" style="display: block;">
+            <option value="" disabled selected>Especialidad</option>
+            <option value="Pediatra">Pediatra</option>
+            <option value="Otorrino">Otorrino</option>
+            <option value="Oftalmólogo">Oftalmólogo</option>
+            <option value="Odontólogo">Odontólogo</option>
+            <option value="Cirujano">Cirujano</option>
+        </select>
+        <label for="meeting-time">Choose a time for your appointment:</label>
+
+        <input type="datetime-local" id="meeting-time" name="meeting-time" min={{newDate}}>
+
+        <button class="btn" type="submit"></button>
+    </form>
+    <div id="listaTurnos"></div>
+
+</div>
+
+<script>
+    const newDate = new Date()
+
+const form = document.getElementById("turnos");
+const medico = document.getElementById("medico");
+const especialidad = document.getElementById("especialidad");
+const dateTime = document.getElementById("meeting-time");
+const listaTurnos = document.getElementById("listaTurnos")
+
+
+const requestTurno = (medico,especialidad,dateTime) => {
+    const ajaxRequest = new XMLHttpRequest();
+
+    ajaxRequest.addEventListener("load", function () {
+        if (this.status == 200) {
+            const resultData = JSON.parse(this.responseText);
+            lista(resultData);
+        };
+    });
+
+    ajaxRequest.open("POST", `/turnos`);
+    ajaxRequest.send(JSON.stringify({
+        medico : medico
+        especialidad : especialidad
+        dateTime : dateTime
+    }));
+};
+
+
+
+
+
+form.addEventListener("submit", (event) => {    
+    event.preventDefault();
+    requestTurno(medico.value,especialidad.value,dateTime.value);
+})
+
+function lista(persons) {
+    container.innerHTML = "";
+    const newUl = document.createElement("ul");
+    for (let i = 0; i < persons.length; i++) {
+        const person = persons[i];
+        const newLi = document.createElement("li");
+        let edad
+        if (person.age == 1) {
+            edad = "año";
+        }
+        else {
+            edad = "años";
+        }
+        newLi.innerText = `${person.name}, ${person.age} ${edad}`;
+        newUl.appendChild(newLi);
+    }
+    container.appendChild(newUl);
+}
+
+</script>

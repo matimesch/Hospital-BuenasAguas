@@ -1,0 +1,63 @@
+<div id="content" class="container">
+    <form id="formMedicos" class="card-panel">
+        <input type="text" id="surnameMedico" placeholder="apellido">
+
+        <select class="input-field" id="especialidad" name="especialidad" style="display: block;">
+            <option value="" disabled selected>Especialidad</option>
+            <option value="Pediatra">Pediatra</option>
+            <option value="Otorrino">Otorrino</option>
+            <option value="Oftalmólogo">Oftalmólogo</option>
+            <option value="Odontólogo">Odontólogo</option>
+            <option value="Cirujano">Cirujano</option>
+        </select>
+        <input class="btn" type="submit" style="margin-top: 30px"></button>
+    </form>
+    <div id="listaMedicos"></div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, options);
+    });
+</script>
+
+<script>
+
+    const form = document.getElementById("formMedicos");
+    const surnameMedico = document.getElementById("surnameMedico");
+    const especialidad = document.getElementById("especialidad");
+    const listaMedicos = document.getElementById("listaMedicos");
+
+    const requestPeople = (surnameMedico, especialidad) => {
+        const ajaxRequest = new XMLHttpRequest();
+
+        ajaxRequest.addEventListener("load", function () {
+            if (this.status == 200) {
+                const resultData = JSON.parse(this.responseText);
+                lista(resultData);
+            };
+        });
+
+        ajaxRequest.open("GET", `/medico?surnameMedico=${surnameMedico}&especialidad=${especialidad}`);
+        ajaxRequest.send();
+    };
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        requestPeople(surnameMedico.value, especialidad.value);
+    })
+
+    function lista(medicos) {
+        listaMedicos.innerHTML = "";
+        const newUl = document.createElement("ul");
+        for (let i = 0; i < medicos.length; i++) {
+            const medico = medicos[i];
+            const newLi = document.createElement("li");
+            newLi.innerText = `${medico.surnameMedico}, ${medico.especialidad}`;
+            newUl.appendChild(newLi);
+        }
+        listaMedicos.appendChild(newUl);
+    }
+</script>

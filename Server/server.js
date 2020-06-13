@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const app = express();
 
 const auth = require("./auth");
+// const turnos = require("./turnos");
 
 // const hospitalDB = require("./hospitalDB.js");
 
@@ -53,19 +54,19 @@ app.get("/signup", (req, res) => {
 });
 
 app.get("/home", (req, res) => {
-  res.render("home", { layout: "main2"});
+  res.render("home", { layout: "main2" });
 });
 
 app.get("/turnos", (req, res) => {
-  res.render("turnos", { layout: "main2"});
+  res.render("turnos", { layout: "main2" });
 });
 
 app.get("/medicos", (req, res) => {
-  res.render("medicos", { layout: "main2"});
+  res.render("medicos", { layout: "main2" });
 });
 
 app.get("/medicamentos", (req, res) => {
-  res.render("medicamentos", { layout: "main2"});
+  res.render("medicamentos", { layout: "main2" });
 });
 
 // POSTS
@@ -75,11 +76,14 @@ app.post("/login", (req, res) => {
 
   auth.login(req.body.email, req.body.password, result => {
     if (result.valid) {
-        res.render("home", {layout: "main2"});
+      res.render("home", { layout: "main2" });
     } else {
-      res.render("portal", { layout: "main", message: {
-        class: "failure",
-        text: result.msg} });
+      res.render("portal", {
+        layout: "main", message: {
+          class: "failure",
+          text: result.msg
+        }
+      });
     };
   })
 });
@@ -87,7 +91,7 @@ app.post("/login", (req, res) => {
 //register
 
 app.post("/register", (req, res) => {
- console.log(req.body)
+  console.log(req.body)
   // Valido datos de registro
   auth.getUser(req.body.email, result => {
     // Si no se pudo consultar a la DB renderizo signup con mensaje de error
@@ -120,7 +124,7 @@ app.post("/register", (req, res) => {
         layout: "main",
         message: {
           class: "failure",
-          text: "Passwords must be equal"
+          text: "Las contraseñas deben ser iguales"
         }
       });
       return;
@@ -134,7 +138,7 @@ app.post("/register", (req, res) => {
         res.render("portal", {
           layout: "main", message: {
             class: "success",
-            text: "User registered, please sign in."
+            text: "Te has registrado con éxito."
           }
         });
 
@@ -145,7 +149,7 @@ app.post("/register", (req, res) => {
           layout: "main",
           message: {
             class: "failure",
-            text: "Sorry, could't register user, please try again later."
+            text: "Error al registrar"
           }
         });
 
@@ -153,6 +157,60 @@ app.post("/register", (req, res) => {
     });
   });
 });
+
+//medicamento
+
+app.get("/medicines", (req, res) => {
+
+  // getMedicamento(function (medicamentoList) {
+    const medicamentoList = getMedicamento();
+      let resultados = medicamentoList;
+
+
+      if (req.query.medicamento) {
+          resultados = resultados.filter(function (medicamento) {
+              let nombreDataBase = medicamento.toUpperCase();
+              let  nombreRecibido = req.query.medicamento.toUpperCase();
+              console.log(req.query);
+                  return nombreDataBase.includes(nombreRecibido);
+
+
+          })
+      };
+
+      res.json(resultados.slice(0,5));
+
+  // });
+
+
+});
+
+function getMedicamento() {
+  const medicamentos =["ibupirac", "amoxidal", "penoral"];
+  return medicamentos
+}
+
+//turnos
+
+// app.post("/turnos", (req, res) => {
+//   turnos.getTurno(req.body.medico, req.body.especialidad, req.body.dateTime, result => {
+//     if (result.turno) {
+//       res.render("turnos", {
+//         layout: "main2",
+//         message: {
+//           class: "failure",
+//           text: "Turno ya ocupado"
+//         }
+//       })
+//       return
+//     } else{
+//       turnos.register{
+//       }
+//     }
+//   });
+// });
+
+
 
 
 app.listen(HTTP_PORT, () => {

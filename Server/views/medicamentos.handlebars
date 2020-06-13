@@ -1,11 +1,52 @@
-  <div id="content" class="container">
-    <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only"><i class="material-icons">menu</i></a>
-    
-    <form id="form">
-        <input type="text" id="medicamento" placeholder="medicamento">
-        <input type="text" id ="via" placeholder="via">
-        <button class="btn" type="submit"></button>
-    </form>
-    <div id="lista"></div>
+<div id="content" class="container">
+  <form id="medicamentosForm" class="card-panel">
+    <input type="text" id="medicamento" placeholder="medicamento">
+    <button class="btn" type="submit"></button>
+  </form>
+  <div id="listaMedicamentos" class="card-panel"></div>
 
-  </div>
+</div>
+
+
+<script>
+  const medicamento = document.getElementById("medicamento");
+  const listaMedicamentos = document.getElementById("listaMedicamentos");
+  const medicamentosForm = document.getElementById("medicamentosForm")
+
+  const getMedicamento = (medicamento) => {
+    const ajaxRequest = new XMLHttpRequest();
+
+    ajaxRequest.addEventListener("load", function () {
+      if (this.status == 200) {
+        const resultData = JSON.parse(this.responseText);
+        lista(resultData);
+      };
+    });
+
+    ajaxRequest.open("GET", `/medicines?medicamento=${medicamento}`);
+    ajaxRequest.send();
+  };
+
+
+
+
+
+  medicamentosForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    getMedicamento(medicamento.value);
+  })
+
+  function lista(medicamentos) {
+    listaMedicamentos.innerHTML = "";
+    const newUl = document.createElement("ul");
+    for (let i = 0; i < medicamentos.length; i++) {
+      const medicamento = medicamentos[i];
+      const newLi = document.createElement("li");
+      newLi.classList.add("card-panel");
+      newLi.innerText = `${medicamento}`;
+      newUl.appendChild(newLi);
+    }
+    listaMedicamentos.appendChild(newUl);
+  }
+
+</script>
