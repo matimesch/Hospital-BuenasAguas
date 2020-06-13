@@ -1,78 +1,116 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css" rel="stylesheet" />
+
+
 <div id="content" class="container">
     <form id="turnos" class="card-panel">
-        <input type="text" id="medico" placeholder="surname">
-        <select class="input-field" id="especialidad" name="especialidad" style="display: block;">
-            <option value="" disabled selected>Especialidad</option>
-            <option value="Pediatra">Pediatra</option>
-            <option value="Otorrino">Otorrino</option>
-            <option value="Oftalmólogo">Oftalmólogo</option>
-            <option value="Odontólogo">Odontólogo</option>
-            <option value="Cirujano">Cirujano</option>
-        </select>
-        <label for="meeting-time">Choose a time for your appointment:</label>
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="medico">Autocomplete</label>
+                <input type="text" id="medico" class="autocomplete">
 
-        <input type="datetime-local" id="meeting-time" name="meeting-time" min={{newDate}}>
+            </div>
+            <select class="input-field col"  id="especialidad" name="especialidad" style="display: block;">
+                <option value="" disabled selected>Especialidad</option>
+                <option value="Pediatra">Pediatra</option>
+                <option value="Otorrino">Otorrino</option>
+                <option value="Oftalmólogo">Oftalmólogo</option>
+                <option value="Odontólogo">Odontólogo</option>
+                <option value="Cirujano">Cirujano</option>
+            </select>
+            <label for="meeting-time">Choose a time for your appointment:</label>
 
-        <button class="btn" type="submit"></button>
+            <input type="datetime-local" id="meeting-time" name="meeting-time" min={{newDate}}>
+
+            <button class="btn" type="submit"></button>
     </form>
     <div id="listaTurnos"></div>
 
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        //Autocomplete
+        $(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'https://restcountries.eu/rest/v2/all?fields=name',
+                success: function (response) {
+                    var countryArray = response;
+                    var dataCountry = {};
+                    for (var i = 0; i < countryArray.length; i++) {
+                        //console.log(countryArray[i].name);
+                        dataCountry[countryArray[i].name] = countryArray[i].flag; //countryArray[i].flag or null
+                    }
+                    $('input.autocomplete').autocomplete({
+                        data: dataCountry,
+                        limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
+                    });
+                }
+            });
+        });
+    });
+</script>
+
 
 <script>
     const newDate = new Date()
 
-const form = document.getElementById("turnos");
-const medico = document.getElementById("medico");
-const especialidad = document.getElementById("especialidad");
-const dateTime = document.getElementById("meeting-time");
-const listaTurnos = document.getElementById("listaTurnos")
-
-
-const requestTurno = (medico,especialidad,dateTime) => {
-    const ajaxRequest = new XMLHttpRequest();
-
-    ajaxRequest.addEventListener("load", function () {
-        if (this.status == 200) {
-            const resultData = JSON.parse(this.responseText);
-            lista(resultData);
-        };
-    });
-
-    ajaxRequest.open("POST", `/turnos`);
-    ajaxRequest.send(JSON.stringify({
-        medico : medico
-        especialidad : especialidad
-        dateTime : dateTime
-    }));
-};
+    const form = document.getElementById("turnos");
+    const medico = document.getElementById("medico");
+    const especialidad = document.getElementById("especialidad");
+    const dateTime = document.getElementById("meeting-time");
+    const listaTurnos = document.getElementById("listaTurnos")
 
 
 
 
 
-form.addEventListener("submit", (event) => {    
-    event.preventDefault();
-    requestTurno(medico.value,especialidad.value,dateTime.value);
-})
+    const requestTurno = (medico, especialidad, dateTime) => {
+        const ajaxRequest = new XMLHttpRequest();
 
-function lista(persons) {
-    container.innerHTML = "";
-    const newUl = document.createElement("ul");
-    for (let i = 0; i < persons.length; i++) {
-        const person = persons[i];
-        const newLi = document.createElement("li");
-        let edad
-        if (person.age == 1) {
-            edad = "año";
+        ajaxRequest.addEventListener("load", function () {
+            if (this.status == 200) {
+                const resultData = JSON.parse(this.responseText);
+                lista(resultData);
+            };
+        });
+
+        ajaxRequest.open("POST", `/turnos`);
+        ajaxRequest.send(JSON.stringify({
+            medico: medico
+        especialidad: especialidad
+        dateTime: dateTime
+        }));
+    };
+
+
+
+
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        requestTurno(medico.value, especialidad.value, dateTime.value);
+    })
+
+    function lista(persons) {
+        container.innerHTML = "";
+        const newUl = document.createElement("ul");
+        for (let i = 0; i < persons.length; i++) {
+            const person = persons[i];
+            const newLi = document.createElement("li");
+            let edad
+            if (person.age == 1) {
+                edad = "año";
+            }
+            else {
+                edad = "años";
+            }
+            newLi.innerText = `${person.name}, ${person.age} ${edad}`;
+            newUl.appendChild(newLi);
         }
-        else {
-            edad = "años";
-        }
-        newLi.innerText = `${person.name}, ${person.age} ${edad}`;
-        newUl.appendChild(newLi);
+        container.appendChild(newUl);
     }
-    container.appendChild(newUl);
-}
 
 </script>

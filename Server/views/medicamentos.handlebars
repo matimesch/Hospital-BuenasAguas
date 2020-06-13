@@ -3,7 +3,7 @@
     <input type="text" id="medicamento" placeholder="medicamento">
     <button class="btn" type="submit"></button>
   </form>
-  <div id="listaMedicamentos" class="card-panel"></div>
+  <div id="listaMedicamentos"></div>
 
 </div>
 
@@ -47,6 +47,7 @@
       newUl.appendChild(newLi);
     }
     listaMedicamentos.appendChild(newUl);
+    listaMedicamentos.classList.add("card-panel");
   }
 
 </script>

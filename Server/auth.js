@@ -172,10 +172,53 @@ const register = (name, surname, email, password, cbResult) => {
 //     });
 //   }
 
+const changePassword = (username, newPassword, cbResult) => {
+
+    mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
+  
+      if (err) {
+  
+        // Si hay error de conexión, retornamos el false
+        // (no cerramos conexión porque no se logró abrir)
+        cbResult(false);
+  
+      } else {
+  
+        const hospitaldb = client.db("hospitaldb");
+        const usersCollection = hospitaldb.collection("persons");
+  
+        const findQuery = { user: username };
+  
+        const updateQuery = {
+          $set: {
+            password: newPassword
+          }
+        };
+  
+        // Actualizo la clave en la DB
+        usersCollection.updateOne(findQuery, updateQuery, (err, result) => {
+  
+          if (err) {
+            console.log(err);
+            cbResult(false);
+          } else {
+            cbResult(true);
+          }
+  
+          client.close();
+        });
+  
+      }
+  
+    });
+  
+  }
+
 
 
 module.exports = {
     register,
     login,
     getUser,
+    changePassword
 }

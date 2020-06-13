@@ -186,7 +186,7 @@ app.get("/medicines", (req, res) => {
 });
 
 function getMedicamento() {
-  const medicamentos =["ibupirac", "amoxidal", "penoral"];
+  const medicamentos =["ibupirac", "amoxidal", "penoral", "roaocutan", "paracetamol", "globulitos"];  
   return medicamentos
 }
 
