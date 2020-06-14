@@ -4,6 +4,7 @@ const express = require("express");
 const path = require("path");
 const expHbs = require("express-handlebars");
 const bodyParser = require("body-parser");
+const expSession = require("express-session");
 
 const app = express();
 
@@ -27,7 +28,17 @@ app.set("views", path.join(__dirname, "views"));
 // Ruta base de recursos estáticos
 app.use(express.static(path.join(__dirname, "public")));
 
+// BodyParser
+
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Configuración obj session
+
+app.use(expSession({
+  secret: "asd",
+  resave: false,
+  saveUninitialized: false
+}));
 
 //-----------------------------------------------------------
 
@@ -94,7 +105,6 @@ app.post("/register", (req, res) => {
   console.log(req.body)
   // Valido datos de registro
   auth.getUser(req.body.email, result => {
-    // Si no se pudo consultar a la DB renderizo signup con mensaje de error
     if (!result.success) {
       res.render("signup", {
         layout: "main",
@@ -106,7 +116,6 @@ app.post("/register", (req, res) => {
       return
     };
 
-    // Si el mail ya existe renderizo signup con mensaje de error
     if (result.email) {
       res.render("signup", {
         layout: "main",
@@ -118,7 +127,6 @@ app.post("/register", (req, res) => {
       return;
     }
 
-    // Si el password no existe o está mal ingresado renderizo signup con mensaje de error
     if (!req.body.password || req.body.password !== req.body.confirmPassword) {
       res.render("signup", {
         layout: "main",
@@ -130,11 +138,10 @@ app.post("/register", (req, res) => {
       return;
     }
 
-    // Procesamos el alta del usuario
+    // Si el usuario cumple
     auth.register(req.body.name, req.body.surname, req.body.email, req.body.password, result => {
       if (result) {
 
-        // Si se pudo registrar renderizo portal con mensaje de éxito
         res.render("portal", {
           layout: "main", message: {
             class: "success",
@@ -144,7 +151,6 @@ app.post("/register", (req, res) => {
 
       } else {
 
-        // Si no se pudo registrar renderizo signup con mensaje de error
         res.render("signup", {
           layout: "main",
           message: {
