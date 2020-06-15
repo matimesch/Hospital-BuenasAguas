@@ -36,7 +36,8 @@ const login = (email, password, cbResult) => {
                             user: {
                                 name: foundUser.name,
                                 surname: foundUser.surname,
-                                email: foundUser.email
+                                email: foundUser.email,
+                                medicamentos : foundUser.medicamentos
                             }
                         });
                     }
@@ -222,7 +223,7 @@ const saveMedicamento = (medicamento, email, cbResult) => {
             const findQuery = { email: email };
 
             const newMedicamento = {
-                $set: {medicamento : medicamento 
+                $set: {medicamentos : medicamento 
                 //     {
                 //     medicamento: medicamento,
                 //     tipo: tipo,
@@ -239,7 +240,7 @@ const saveMedicamento = (medicamento, email, cbResult) => {
                 if (err) {
                     cbResult(false);
                 } else {
-                    cbResult(true);
+                    cbResult({medicamentos : medicamento});
                 }
 
                 client.close();

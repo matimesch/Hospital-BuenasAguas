@@ -123,6 +123,14 @@ app.get("/medicamentos", (req, res) => {
   }
 });
 
+app.get("/mismedicamentos", (req, res) => {
+  if (req.session.loggedUser) {
+    res.render("mismedicamentos", { layout: "main2", medicamentos : req.session.loggedUser.medicamentos});
+  } else {
+    res.redirect("/login");
+  }
+});
+
 
 // POSTS
 
@@ -287,18 +295,24 @@ app.post("/remedio", (req, res) => {
   if (req.session.loggedUser) {
 
     auth.saveMedicamento(req.query.remedio,req.session.loggedUser.email, result => {
-      if (result) {
+      if (result.medicamentos) {
+        console.log(result.medicamentos)
         console.log("medicamento guardado en favoritos")
-        req.session.message = {
+        req.session.loggedUser.medicamentos = result.medicamentos
+
+        console.log(req.session.loggedUser)
+
+
+        req.session.messageRem = {
           class: "success",
-          text: "Contraseña cambiadas con éxito"
+          text: "Medicamento guardado en favoritos"
         }
 
       } else {
         console.log("error")
-        req.session.message = {
+        req.session.messageRem = {
           class: "failure",
-          text: "No se pudo guardar la nueva contraseña."
+          text: "No se pudo guardar el medicamento."
         }
 
       }
