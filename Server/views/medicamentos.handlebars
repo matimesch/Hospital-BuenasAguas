@@ -15,14 +15,12 @@
 
   const getMedicamento = (medicamento) => {
     const ajaxRequest = new XMLHttpRequest();
-
     ajaxRequest.addEventListener("load", function () {
       if (this.status == 200) {
         const resultData = JSON.parse(this.responseText);
         lista(resultData);
       };
     });
-
     ajaxRequest.open("GET", `/medicines?medicamento=${medicamento}`);
     ajaxRequest.send();
   };
@@ -36,18 +34,45 @@
     getMedicamento(medicamento.value);
   })
 
+
+
   function lista(medicamentos) {
     listaMedicamentos.innerHTML = "";
     const newUl = document.createElement("ul");
     for (let i = 0; i < medicamentos.length; i++) {
       const medicamento = medicamentos[i];
       const newLi = document.createElement("li");
+      const addButton = document.createElement("button")
+
+
+      newLi.appendChild(addButton);
+      addButton.classList.add("btn");
       newLi.classList.add("card-panel");
-      newLi.innerText = `${medicamento}`;
+      addButton.innerText = `${medicamento}`;
       newUl.appendChild(newLi);
-    }
-    listaMedicamentos.appendChild(newUl);
-    listaMedicamentos.classList.add("card-panel");
+
+
+      addButton.addEventListener("click", (event) => {
+        const ajaxRequest = new XMLHttpRequest();
+        ajaxRequest.addEventListener("load", function () {
+          if (this.status == 200) {
+            const resultData = JSON.parse(this.responseText);
+            lista(resultData);
+          };
+        });
+        ajaxRequest.open("POST", `/remedio?remedio=${medicamento}`);
+        ajaxRequest.send();
+      });
+
+
+
+
+  }
+
+  listaMedicamentos.appendChild(newUl);
+  listaMedicamentos.classList.add("card-panel");
+    
+    
   }
 
 </script>

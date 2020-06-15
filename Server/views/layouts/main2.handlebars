@@ -7,7 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> - Hospital BuenasAguas</title>
+    <title>{{user.name}} {{user.surname}} - Hospital BuenasAguas</title>
 </head>
 
 <body>
@@ -30,15 +30,17 @@
                 padding-left: 0px;
             }
         }
-      #main2{
-  flex: 1 0 auto;
-  background-color: #004d40;
-}
-      body{
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
+
+        #main2 {
+            flex: 1 0 auto;
+            background-color: #004d40;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
     </style>
 
     <div id="container">
@@ -62,13 +64,26 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="#!">Cerrar sesión</a></li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li>
+                            <a class="collapsible-header">Mi cuenta<i class="material-icons">arrow_drop_down</i></a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="/changepassword">Cambiar contraseña</a></li>
+                                    <li><a href="/logout">Cerrar sesión</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
             </ul>
         </div>
     </div>
     <main id="main2">
-                  <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only"><i
-                    class="material-icons">menu</i></a>
+        <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only"><i
+                class="material-icons">menu</i></a>
         {{{body}}}
     </main>
 
@@ -87,7 +102,7 @@
     <script>
 
         $('.button-collapse').sideNav({
-            menuWidth: 200, // Default is 300
+            menuWidth: 250, // Default is 300
             edge: 'left', // Choose the horizontal origin
             closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
             draggable: true // Choose whether you can drag to open on touch screens

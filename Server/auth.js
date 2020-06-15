@@ -10,7 +10,6 @@ const login = (email, password, cbResult) => {
 
         if (err) {
             cbResult({
-                valid: false,
                 msg: "No se pudo conectar a la base de datos"
             });
 
@@ -23,22 +22,22 @@ const login = (email, password, cbResult) => {
                 if (err) {
 
                     cbResult({
-                        valid: false,
                         msg: "Usuario no registrado, registrate por favor."
                     });
 
                 } else {
 
                     if (!foundUser) {
-                        console.log(foundUser)
                         cbResult({
-                            valid: false,
                             msg: "Mail o contraseña inválidos"
                         });
                     } else {
-                        console.log(foundUser)
                         cbResult({
-                            valid: true
+                            user: {
+                                name: foundUser.name,
+                                surname: foundUser.surname,
+                                email: foundUser.email
+                            }
                         });
                     }
 
@@ -72,7 +71,7 @@ const getUser = (email, cbResult) => {
             const hospitaldb = client.db("hospitaldb");
             const usersCollection = hospitaldb.collection("persons");
 
-            usersCollection.findOne({ email: email}, (err, result) => {
+            usersCollection.findOne({ email: email }, (err, result) => {
                 if (err) {
                     cbResult({
                         success: false
@@ -103,8 +102,6 @@ const register = (name, surname, email, password, cbResult) => {
 
         if (err) {
 
-            // Si hay error de conexión, retornamos el false
-            // (no cerramos conexión porque no se logró abrir)
             console.log(err)
             cbResult(false);
 
@@ -117,12 +114,12 @@ const register = (name, surname, email, password, cbResult) => {
                 name: name.charAt(0).toUpperCase() + name.slice(1),
                 surname: surname.charAt(0).toUpperCase() + surname.slice(1),
                 email: email,
-                password: password
+                password: password,
+                profile: "user"
             };
 
             // Insertamos el user en la DB
             usersCollection.insertOne(newUser, (err, result) => {
-                console.log(result)
                 if (err) {
                     cbResult(false);
                 } else {
@@ -148,9 +145,9 @@ const register = (name, surname, email, password, cbResult) => {
 //       } else {
 //         const hospitaldb = client.db("hospitaldb");
 //         const usersCollection = hospitaldb.collection("persons");
-  
+
 //         personsCollection.find().toArray(({_id : new mongodb.ObjectID(filterID) }, (err, person) => {
-  
+
 //           // retornar array con datos
 //           if (err) {
 //             cbResult(undefined);
@@ -164,55 +161,96 @@ const register = (name, surname, email, password, cbResult) => {
 //                 profile : "user"
 //             });
 //           }
-  
+
 //           client.close();
 //         })) ;
-  
+
 //       }
 //     });
 //   }
 
-const changePassword = (username, newPassword, cbResult) => {
+const changePassword = (email, newPassword, cbResult) => {
 
     mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
-  
-      if (err) {
-  
-        // Si hay error de conexión, retornamos el false
-        // (no cerramos conexión porque no se logró abrir)
-        cbResult(false);
-  
-      } else {
-  
-        const hospitaldb = client.db("hospitaldb");
-        const usersCollection = hospitaldb.collection("persons");
-  
-        const findQuery = { user: username };
-  
-        const updateQuery = {
-          $set: {
-            password: newPassword
-          }
-        };
-  
-        // Actualizo la clave en la DB
-        usersCollection.updateOne(findQuery, updateQuery, (err, result) => {
-  
-          if (err) {
-            console.log(err);
+
+        if (err) {
+
             cbResult(false);
-          } else {
-            cbResult(true);
-          }
-  
-          client.close();
-        });
-  
-      }
-  
+
+        } else {
+
+            const hospitaldb = client.db("hospitaldb");
+            const usersCollection = hospitaldb.collection("persons");
+
+            const findQuery = { email: email };
+
+            const updateQuery = {
+                $set: {
+                    password: newPassword
+                }
+            };
+
+            // Actualizo la clave en la DB
+            usersCollection.updateOne(findQuery, updateQuery, (err, result) => {
+                if (err) {
+                    cbResult(false);
+                } else {
+                    cbResult(true);
+                }
+
+                client.close();
+            });
+
+        }
+
     });
-  
-  }
+
+}
+
+const saveMedicamento = (medicamento, email, cbResult) => {
+    mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
+
+        if (err) {
+
+            cbResult(false);
+
+        } else {
+
+            const hospitaldb = client.db("hospitaldb");
+            const usersCollection = hospitaldb.collection("persons");
+
+            const findQuery = { email: email };
+
+            const newMedicamento = {
+                $set: {medicamento : medicamento 
+                //     {
+                //     medicamento: medicamento,
+                //     tipo: tipo,
+                //     via: via
+                // }
+                }
+            };
+
+            // Insertamos el user en la DB
+           
+
+            usersCollection.updateOne(findQuery, newMedicamento, (err, result) => {
+
+                if (err) {
+                    cbResult(false);
+                } else {
+                    cbResult(true);
+                }
+
+                client.close();
+            });
+
+        }
+
+    });
+}
+
+
 
 
 
@@ -220,5 +258,6 @@ module.exports = {
     register,
     login,
     getUser,
-    changePassword
+    changePassword,
+    saveMedicamento
 }

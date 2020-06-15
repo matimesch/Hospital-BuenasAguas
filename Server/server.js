@@ -11,8 +11,6 @@ const app = express();
 const auth = require("./auth");
 // const turnos = require("./turnos");
 
-// const hospitalDB = require("./hospitalDB.js");
-
 
 // ----------------------------------------------------------
 // Configuración de Handlebars
@@ -35,14 +33,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Configuración obj session
 
 app.use(expSession({
-  secret: "asd",
+  secret: "asdkjfaskdlfjsaldfa",
   resave: false,
   saveUninitialized: false
 }));
 
 //-----------------------------------------------------------
 
-// GETS
+// GETS fuera de session
 
 app.get("/", (req, res) => {
   res.render("index", { layout: "main" });
@@ -56,46 +54,99 @@ app.get("/locations", (req, res) => {
   res.render("locations", { layout: "main" });
 });
 
+// Landing page
+
 app.get("/portal", (req, res) => {
-  res.render("portal", { layout: "main" });
+  if (req.session.loggedUser) {
+    res.redirect("/home");
+  } else {
+    res.redirect("/login");
+  }
+});
+
+app.get("/login", (req, res) => {
+  res.render("portal", { layout: "main", message: req.session.message });
+});
+
+app.get("/logout", (req, res) => {
+  req.session.destroy();
+  res.redirect("/login");
 });
 
 app.get("/signup", (req, res) => {
-  res.render("signup", { layout: "main" });
+  res.render("signup", { layout: "main", message: req.session.message });
 });
 
+app.get("/changepassword", (req, res) => {
+
+  if (req.session.loggedUser) {
+    res.render("changepassword", {
+      layout: "main2",
+      message: req.session.message
+    });
+  } else {
+    res.redirect("/login");
+  }
+
+});
+
+
 app.get("/home", (req, res) => {
-  res.render("home", { layout: "main2" });
+  if (req.session.loggedUser) {
+    res.render("home", { layout: "main2", user: req.session.loggedUser });
+  } else {
+    res.redirect("/login");
+  }
 });
 
 app.get("/turnos", (req, res) => {
-  res.render("turnos", { layout: "main2" });
+  if (req.session.loggedUser) {
+    res.render("turnos", { layout: "main2" });
+  } else {
+    res.redirect("/login");
+  }
 });
 
 app.get("/medicos", (req, res) => {
-  res.render("medicos", { layout: "main2" });
+  if (req.session.loggedUser) {
+    res.render("medicos", { layout: "main2" });
+  } else {
+    res.redirect("/login");
+  }
 });
 
 app.get("/medicamentos", (req, res) => {
-  res.render("medicamentos", { layout: "main2" });
+  if (req.session.loggedUser) {
+    res.render("medicamentos", { layout: "main2" });
+  } else {
+    res.redirect("/login");
+  }
 });
+
 
 // POSTS
 
 app.post("/login", (req, res) => {
-  console.log(req.body)
 
   auth.login(req.body.email, req.body.password, result => {
-    if (result.valid) {
-      res.render("home", { layout: "main2" });
+    if (result.user) {
+
+      req.session.loggedUser = result.user;
+
+      console.log(req.session.loggedUser)
+      console.log(req.session)
+      console.log(result.user.name)
+
+      res.redirect("/home");
+
     } else {
-      res.render("portal", {
-        layout: "main", message: {
-          class: "failure",
-          text: result.msg
-        }
-      });
-    };
+      req.session.message = {
+        class: "failure",
+        text: result.msg
+      };
+
+      res.redirect("/login");
+    }
   })
 });
 
@@ -106,35 +157,33 @@ app.post("/register", (req, res) => {
   // Valido datos de registro
   auth.getUser(req.body.email, result => {
     if (!result.success) {
-      res.render("signup", {
-        layout: "main",
-        message: {
-          class: "failure",
-          text: "No se pudo conectar a la base de datos"
-        }
-      });
-      return
+      req.session.message = {
+        class: "failure",
+        text: "No se pudo conectar a la base de datos."
+      }
+
+      res.redirect("/signup");
+      return;
     };
 
     if (result.email) {
-      res.render("signup", {
-        layout: "main",
-        message: {
-          class: "failure",
-          text: "Email en uso"
-        }
-      });
+      req.session.message = {
+        class: "failure",
+        text: "Email en uso."
+      }
+
+      res.redirect("/signup");
+
       return;
     }
 
     if (!req.body.password || req.body.password !== req.body.confirmPassword) {
-      res.render("signup", {
-        layout: "main",
-        message: {
-          class: "failure",
-          text: "Las contraseñas deben ser iguales"
-        }
-      });
+      req.session.message = {
+        class: "failure",
+        text: "Las contraseñas deben ser iguales"
+      }
+
+      res.redirect("/signup");
       return;
     }
 
@@ -142,57 +191,132 @@ app.post("/register", (req, res) => {
     auth.register(req.body.name, req.body.surname, req.body.email, req.body.password, result => {
       if (result) {
 
-        res.render("portal", {
-          layout: "main", message: {
-            class: "success",
-            text: "Te has registrado con éxito."
-          }
-        });
+        req.session.message = {
+          class: "success",
+          text: "Te has registrado con éxito"
+        };
+        res.redirect("/login");
 
       } else {
 
-        res.render("signup", {
-          layout: "main",
-          message: {
-            class: "failure",
-            text: "Error al registrar"
-          }
-        });
+        req.session.message = {
+          class: "failure",
+          text: "Error al registrar, intente más tarde."
+        };
+        res.redirect("/signup");
 
       }
     });
   });
 });
 
+//Changepassword
+
+app.post("/changepassword", (req, res) => {
+
+  if (req.session.loggedUser) {
+
+    if (!req.body.password || req.body.password !== req.body.confirmPassword) {
+
+      req.session.message = {
+        class: "failure",
+        text: "Passwords must be equal"
+      }
+
+      res.redirect("/changepassword");
+      return;
+    }
+
+    auth.changePassword(req.session.loggedUser.email, req.body.password, result => {
+      if (result) {
+
+        req.session.message = {
+          class: "success",
+          text: "Contraseña cambiadas con éxito"
+        }
+        res.redirect("/login");
+
+      } else {
+        req.session.message = {
+          class: "failure",
+          text: "No se pudo guardar la nueva contraseña."
+        }
+
+        res.redirect("/changepassword");
+      }
+    });
+
+
+  } else {
+
+    res.redirect("/login");
+
+  }
+
+});
+
+
 //medicamento
 
 app.get("/medicines", (req, res) => {
 
   // getMedicamento(function (medicamentoList) {
-    const medicamentoList = getMedicamento();
-      let resultados = medicamentoList;
+  const medicamentoList = getMedicamento();
+  let resultados = medicamentoList;
 
 
-      if (req.query.medicamento) {
-          resultados = resultados.filter(function (medicamento) {
-              let nombreDataBase = medicamento.toUpperCase();
-              let  nombreRecibido = req.query.medicamento.toUpperCase();
-              console.log(req.query);
-                  return nombreDataBase.includes(nombreRecibido);
+  if (req.query.medicamento) {
+    resultados = resultados.filter(function (medicamento) {
+      let nombreDataBase = medicamento.toUpperCase();
+      let nombreRecibido = req.query.medicamento.toUpperCase();
+      return nombreDataBase.includes(nombreRecibido);
 
 
-          })
-      };
+    })
+  };
 
-      res.json(resultados.slice(0,5));
+  res.json(resultados.slice(0, 5));
 
   // });
 
 
 });
 
+
+app.post("/remedio", (req, res) => {
+  if (req.session.loggedUser) {
+
+    auth.saveMedicamento(req.query.remedio,req.session.loggedUser.email, result => {
+      if (result) {
+        console.log("medicamento guardado en favoritos")
+        req.session.message = {
+          class: "success",
+          text: "Contraseña cambiadas con éxito"
+        }
+
+      } else {
+        console.log("error")
+        req.session.message = {
+          class: "failure",
+          text: "No se pudo guardar la nueva contraseña."
+        }
+
+      }
+    });
+
+
+  } else {
+
+    res.redirect("/login");
+
+  }
+
+
+});
+
+
 function getMedicamento() {
-  const medicamentos =["ibupirac", "amoxidal", "penoral", "roaocutan", "paracetamol", "globulitos"];  
+  const medicamentos = ["ibupirac", "amoxidal", "penoral", "roaocutan", "paracetamol", "globulitos"];
   return medicamentos
 }
 
