@@ -1,7 +1,11 @@
 <div id="content" class="container">
     <div id="medicamentosFav" class="card-panel">
     <h3 class="col s12">Medicamentos Favoritos</h3>
-    <p class="col s12">{{medicamentos}}</p>
+    <ul>
+        {{#each user.medicamentos}}
+        <li>{{this.medicamento}}, {{this.tipo}}, {{this.via}}</li>
+        {{/each}}
+    </ul>
 
     </div>
 </div>

@@ -29,6 +29,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // BodyParser
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Configuración obj session
 
@@ -101,7 +102,7 @@ app.get("/home", (req, res) => {
 
 app.get("/turnos", (req, res) => {
   if (req.session.loggedUser) {
-    res.render("turnos", { layout: "main2" });
+    res.render("turnos", { layout: "main2", user: req.session.loggedUser });
   } else {
     res.redirect("/login");
   }
@@ -109,7 +110,7 @@ app.get("/turnos", (req, res) => {
 
 app.get("/medicos", (req, res) => {
   if (req.session.loggedUser) {
-    res.render("medicos", { layout: "main2" });
+    res.render("medicos", { layout: "main2", user: req.session.loggedUser });
   } else {
     res.redirect("/login");
   }
@@ -117,7 +118,7 @@ app.get("/medicos", (req, res) => {
 
 app.get("/medicamentos", (req, res) => {
   if (req.session.loggedUser) {
-    res.render("medicamentos", { layout: "main2" });
+    res.render("medicamentos", { layout: "main2", user: req.session.loggedUser });
   } else {
     res.redirect("/login");
   }
@@ -125,7 +126,8 @@ app.get("/medicamentos", (req, res) => {
 
 app.get("/mismedicamentos", (req, res) => {
   if (req.session.loggedUser) {
-    res.render("mismedicamentos", { layout: "main2", medicamentos : req.session.loggedUser.medicamentos});
+    console.log("hola",req.session.loggedUser)
+    res.render("mismedicamentos", { layout: "main2", user: req.session.loggedUser});
   } else {
     res.redirect("/login");
   }
@@ -141,9 +143,7 @@ app.post("/login", (req, res) => {
 
       req.session.loggedUser = result.user;
 
-      console.log(req.session.loggedUser)
-      console.log(req.session)
-      console.log(result.user.name)
+      console.log("sesion" ,req.session.loggedUser)
 
       res.redirect("/home");
 
@@ -161,7 +161,6 @@ app.post("/login", (req, res) => {
 //register
 
 app.post("/register", (req, res) => {
-  console.log(req.body)
   // Valido datos de registro
   auth.getUser(req.body.email, result => {
     if (!result.success) {
@@ -269,21 +268,17 @@ app.post("/changepassword", (req, res) => {
 app.get("/medicines", (req, res) => {
 
   // getMedicamento(function (medicamentoList) {
-  const medicamentoList = getMedicamento();
-  let resultados = medicamentoList;
+  let medicamentoList = getMedicamento();
 
-
-  if (req.query.medicamento) {
-    resultados = resultados.filter(function (medicamento) {
-      let nombreDataBase = medicamento.toUpperCase();
-      let nombreRecibido = req.query.medicamento.toUpperCase();
+  if (req.query.filtro) {
+    medicamentoList = medicamentoList.filter(function (item) {
+      let nombreDataBase = item.medicamento.toUpperCase();
+      let nombreRecibido = req.query.filtro.toUpperCase();
       return nombreDataBase.includes(nombreRecibido);
-
-
     })
   };
 
-  res.json(resultados.slice(0, 5));
+  res.json(medicamentoList.slice(0, 5));
 
   // });
 
@@ -291,46 +286,42 @@ app.get("/medicines", (req, res) => {
 });
 
 
-app.post("/remedio", (req, res) => {
+app.post("/medicamentoFav", (req, res) => {
   if (req.session.loggedUser) {
 
-    auth.saveMedicamento(req.query.remedio,req.session.loggedUser.email, result => {
-      if (result.medicamentos) {
-        console.log(result.medicamentos)
-        console.log("medicamento guardado en favoritos")
-        req.session.loggedUser.medicamentos = result.medicamentos
+    auth.saveMedicamento(req.body, req.session.loggedUser.email, medicamentoAgregado => {
+      if (medicamentoAgregado) {
+        console.log("medicamento guardado en favoritos",medicamentoAgregado);
+        req.session.loggedUser.medicamentos.push(medicamentoAgregado);
 
         console.log(req.session.loggedUser)
-
 
         req.session.messageRem = {
           class: "success",
           text: "Medicamento guardado en favoritos"
         }
+        res.sendStatus(200);
 
       } else {
+        res.sendStatus(500);
         console.log("error")
-        req.session.messageRem = {
-          class: "failure",
-          text: "No se pudo guardar el medicamento."
-        }
 
       }
     });
 
 
-  } else {
-
-    res.redirect("/login");
-
-  }
-
-
+  } 
 });
 
 
 function getMedicamento() {
-  const medicamentos = ["ibupirac", "amoxidal", "penoral", "roaocutan", "paracetamol", "globulitos"];
+  const medicamentos = [{ medicamento: "ibupirac", tipo: "comprimido", via: "oral" },
+  { medicamento: "amoxidal", tipo: "comprimido", via: "oral" },
+  { medicamento: "penoral", tipo: "comprimido", via: "oral" },
+  { medicamento: "roaocutan", tipo: "cápsula", via: "oral" },
+  { medicamento: "paracetamol", tipo: "comprimido", via: "oral" },
+  { medicamento: "globulitos", tipo: "cápsula", via: "oral" }
+  ];
   return medicamentos
 }
 

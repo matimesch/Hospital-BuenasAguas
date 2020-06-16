@@ -37,7 +37,7 @@ const login = (email, password, cbResult) => {
                                 name: foundUser.name,
                                 surname: foundUser.surname,
                                 email: foundUser.email,
-                                medicamentos : foundUser.medicamentos
+                                medicamentos: foundUser.medicamentos
                             }
                         });
                     }
@@ -116,7 +116,8 @@ const register = (name, surname, email, password, cbResult) => {
                 surname: surname.charAt(0).toUpperCase() + surname.slice(1),
                 email: email,
                 password: password,
-                profile: "user"
+                profile: "user",
+                medicamentos: []
             };
 
             // Insertamos el user en la DB
@@ -208,7 +209,7 @@ const changePassword = (email, newPassword, cbResult) => {
 
 }
 
-const saveMedicamento = (medicamento, email, cbResult) => {
+const saveMedicamento = (medicamentoObj, email, cbResult) => {
     mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
 
         if (err) {
@@ -223,24 +224,21 @@ const saveMedicamento = (medicamento, email, cbResult) => {
             const findQuery = { email: email };
 
             const newMedicamento = {
-                $set: {medicamentos : medicamento 
-                //     {
-                //     medicamento: medicamento,
-                //     tipo: tipo,
-                //     via: via
-                // }
+                $addToSet: {
+                    medicamentos: medicamentoObj
                 }
             };
 
             // Insertamos el user en la DB
-           
+
 
             usersCollection.updateOne(findQuery, newMedicamento, (err, result) => {
 
                 if (err) {
+                    console.log(err)
                     cbResult(false);
                 } else {
-                    cbResult({medicamentos : medicamento});
+                    cbResult( medicamentoObj);
                 }
 
                 client.close();

@@ -1,7 +1,7 @@
 <div id="content" class="container">
   <form id="medicamentosForm" class="card-panel">
     <input type="text" id="medicamento" placeholder="medicamento">
-    <button class="btn" type="submit"></button>
+    <button class="btn" type="submit">Enviar</button>
   </form>
   <div id="listaMedicamentos"></div>
 
@@ -9,70 +9,70 @@
 
 
 <script>
-  const medicamento = document.getElementById("medicamento");
-  const listaMedicamentos = document.getElementById("listaMedicamentos");
+  const medicamentoInput = document.getElementById("medicamento");
+  const divListaMedicamentos = document.getElementById("listaMedicamentos");
   const medicamentosForm = document.getElementById("medicamentosForm")
 
   const getMedicamento = (medicamento) => {
     const ajaxRequest = new XMLHttpRequest();
     ajaxRequest.addEventListener("load", function () {
       if (this.status == 200) {
-        const resultData = JSON.parse(this.responseText);
-        lista(resultData);
+        const medicamentoList = JSON.parse(this.responseText);
+        createLista(medicamentoList);
       };
     });
-    ajaxRequest.open("GET", `/medicines?medicamento=${medicamento}`);
+    ajaxRequest.open("GET", `/medicines?filtro=${medicamento}`);
     ajaxRequest.send();
   };
 
-
-
-
-
   medicamentosForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    getMedicamento(medicamento.value);
+    getMedicamento(medicamentoInput.value);
   })
 
 
 
-  function lista(medicamentos) {
-    listaMedicamentos.innerHTML = "";
+  function createLista(medicamentosList) {
+
+    divListaMedicamentos.innerHTML = "";
     const newUl = document.createElement("ul");
-    for (let i = 0; i < medicamentos.length; i++) {
-      const medicamento = medicamentos[i];
+
+    for (let i = 0; i < medicamentosList.length; i++) {
+      const medicamentoObj = medicamentosList[i];
       const newLi = document.createElement("li");
       const addButton = document.createElement("button")
+      const addText = document.createElement("p")
 
 
       newLi.appendChild(addButton);
+      
       addButton.classList.add("btn");
       newLi.classList.add("card-panel");
-      addButton.innerText = `${medicamento}`;
+      addButton.innerText = `${medicamentoObj.medicamento}`;
       newUl.appendChild(newLi);
-
+      newLi.appendChild(addText);
 
       addButton.addEventListener("click", (event) => {
         const ajaxRequest = new XMLHttpRequest();
         ajaxRequest.addEventListener("load", function () {
           if (this.status == 200) {
-            const resultData = JSON.parse(this.responseText);
-            lista(resultData);
+            addText.classList("blue-text text-darken-2");
+            addText.innerText = "Medicamento añadido a favoritos";
+          };
+          if (this.status == 500) {
+            addText.innerText = "Error al añadir";
           };
         });
-        ajaxRequest.open("POST", `/remedio?remedio=${medicamento}`);
-        ajaxRequest.send();
+        ajaxRequest.open("POST", `/medicamentoFav`);
+        ajaxRequest.setRequestHeader("Content-Type", "application/json");
+        ajaxRequest.send(JSON.stringify(medicamentoObj));
       });
+    }
+
+    divListaMedicamentos.appendChild(newUl);
+    divListaMedicamentos.classList.add("card-panel");
 
 
-
-
-  }
-
-  listaMedicamentos.appendChild(newUl);
-  listaMedicamentos.classList.add("card-panel");
-    
-    
   }
 
 </script>

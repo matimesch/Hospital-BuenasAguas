@@ -47,6 +47,12 @@ body{
     padding: 7px;
   }
 
+  .text-success{
+    border-color: green;
+    background-color: lightgreen;
+    color: darkgreen;
+    padding: 7px;
+  }
   
 .signup-message {
     display: block;
