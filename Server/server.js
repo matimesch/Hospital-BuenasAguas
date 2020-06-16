@@ -84,6 +84,7 @@ app.get("/changepassword", (req, res) => {
   if (req.session.loggedUser) {
     res.render("changepassword", {
       layout: "main2",
+      user: req.session.loggedUser,
       message: req.session.message
     });
   } else {
@@ -261,7 +262,7 @@ app.post("/changepassword", (req, res) => {
 });
 
 
-//medicamento
+//medicamentos
 
 app.get("/medicines", (req, res) => {
 
@@ -315,6 +316,8 @@ app.post("/removeMedicamento", (req, res) => {
     functions.removeMedicamento(req.body, req.session.loggedUser.email, medicamentoAgregado => {
       if (medicamentoAgregado) {
         console.log("hola")
+        console.log(medicamentoAgregado.medicamento)
+
         req.session.loggedUser.medicamentos.pop(medicamentoAgregado);
 
 
@@ -352,6 +355,14 @@ app.post("/removeMedicamentoAJAX", (req, res) => {
 
   }
 })
+
+//medicos
+
+
+
+
+
+
 
 
 
