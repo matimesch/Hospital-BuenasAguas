@@ -24,40 +24,104 @@
 </script>
 
 <script>
+  const medicamentoInput = document.getElementById("medicamento");
+  const divListaMedicamentos = document.getElementById("listaMedicamentos");
+  const medicamentosForm = document.getElementById("medicamentosForm")
 
-    const form = document.getElementById("formMedicos");
-    const surnameMedico = document.getElementById("surnameMedico");
-    const especialidad = document.getElementById("especialidad");
-    const listaMedicos = document.getElementById("listaMedicos");
+  const getMedicamento = (medicamento) => {
+    const ajaxRequest = new XMLHttpRequest();
+    ajaxRequest.addEventListener("load", function () {
+      if (this.status == 200) {
+        const medicamentoList = JSON.parse(this.responseText);
+        createLista(medicamentoList);
+      };
+    });
+    ajaxRequest.open("GET", `/medicines?filtro=${medicamento}`);
+    ajaxRequest.send();
+  };
 
-    const requestPeople = (surnameMedico, especialidad) => {
+  medicamentosForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    getMedicamento(medicamentoInput.value);
+  })
+
+
+
+  function createLista(medicamentosList) {
+
+    divListaMedicamentos.innerHTML = "";
+    const newUl = document.createElement("ul");
+
+    for (let i = 0; i < medicamentosList.length; i++) {
+      const medicamentoObj = medicamentosList[i];
+      const newDiv = document.createElement("div");
+      const newDivStacked = document.createElement("div");
+      const newDivCard = document.createElement("div");
+      const newLi = document.createElement("li");
+      const addButton = document.createElement("button")
+      const addSpan = document.createElement("span");
+      const addText = document.createElement("span")
+      const newAHref = document.createElement("a")
+      const newIcono = document.createElement("i")
+
+      newDiv.className = "card horizontal";
+      newLi.appendChild(newDiv);
+      newDivStacked.className = "card-stacked";
+      newDiv.appendChild(newDivStacked)
+      newDivCard.className = "card-content grey lighten-2";
+      newDivStacked.appendChild(newDivCard);
+
+      newAHref.className = "btn-floating btn-large waves-effect waves-light";
+      newDivCard.appendChild(newAHref);
+      newIcono.className = "material-icons";
+      newIcono.innerText = "star_border";
+      newAHref.appendChild(newIcono)
+      addSpan.className = "light-blue-text lighten-3 flow-text";
+      addSpan.style.fontWeight = "bold";
+      addSpan.style.marginLeft = "20px";
+      //addSpan.style.fontSize = "1.5vw";
+      addSpan.innerText = `${medicamentoObj.medicamento}`;
+      newDivCard.appendChild(addSpan);
+
+      addText.className = "green accent-3"
+      addText.style.marginLeft = "10px";
+      addText.style.color = "dark green";
+      addText.style.fontFamily = "italic";
+
+      const newAHref2 = document.createElement("a")
+      const newIcono2 = document.createElement("i")
+      newAHref2.appendChild(newIcono2)
+      newDivCard.appendChild(newAHref2);
+      newUl.appendChild(newLi);
+
+
+      newDivCard.appendChild(addText);
+
+      newAHref.addEventListener("click", (event) => {
         const ajaxRequest = new XMLHttpRequest();
-
         ajaxRequest.addEventListener("load", function () {
-            if (this.status == 200) {
-                const resultData = JSON.parse(this.responseText);
-                lista(resultData);
-            };
+          if (this.status == 200) {
+            //añadir alguna clase
+            newAHref2.className = "floating waves-effect waves-dark blue-grey darken-4"
+            newAHref2.style.marginLeft = "20px"
+            newIcono2.className = "material-icons";
+            newIcono2.innerText = "done";
+            addText.innerText = "Medicamento añadido a favoritos";
+          };
+          if (this.status == 500) {
+            addText.innerText = "Error al añadir";
+          };
         });
-
-        ajaxRequest.open("GET", `/medico?surnameMedico=${surnameMedico}&especialidad=${especialidad}`);
-        ajaxRequest.send();
-    };
-
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        requestPeople(surnameMedico.value, especialidad.value);
-    })
-
-    function lista(medicos) {
-        listaMedicos.innerHTML = "";
-        const newUl = document.createElement("ul");
-        for (let i = 0; i < medicos.length; i++) {
-            const medico = medicos[i];
-            const newLi = document.createElement("li");
-            newLi.innerText = `${medico.surnameMedico}, ${medico.especialidad}`;
-            newUl.appendChild(newLi);
-        }
-        listaMedicos.appendChild(newUl);
+        ajaxRequest.open("POST", `/medicamentoFav`);
+        ajaxRequest.setRequestHeader("Content-Type", "application/json");
+        ajaxRequest.send(JSON.stringify(medicamentoObj));
+      });
     }
+
+    divListaMedicamentos.appendChild(newUl);
+    divListaMedicamentos.classList.add("card-panel");
+
+
+  }
+
 </script>

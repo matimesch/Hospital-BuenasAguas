@@ -10,8 +10,6 @@ const getMedicamentos = (cbResult) => {
             const hospitaldb = client.db("hospitaldb");
             const usersCollection = hospitaldb.collection("medicamentos");
 
-            console.log("llegue a get")
-
             usersCollection.find().toArray(function (err, cursor) {
                 // cursor.toArray(cbResult);
                 if (err) {
@@ -63,7 +61,10 @@ const saveMedicamento = (medicamentoObj, email, cbResult) => {
                     console.log(err)
                     cbResult(false);
                 } else {
-                    cbResult(medicamentoObj);
+                    cbResult({
+                        agregado: result.modifiedCount > 0 ? true : false,
+                        medicamentoObj: medicamentoObj
+                      });
                 }
 
                 client.close();
@@ -76,50 +77,53 @@ const saveMedicamento = (medicamentoObj, email, cbResult) => {
 
 ////////////////
 
-// const removeMedicamento = (medicamentoObj, email, cbResult) => {
-//     mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
+const removeMedicamento = (medicamentoObj, email, cbResult) => {
+    mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
 
-//         if (err) {
+        if (err) {
 
-//             cbResult(false);
+            cbResult(false);
 
-//         } else {
+        } else {
 
-//             const hospitaldb = client.db("hospitaldb");
-//             const usersCollection = hospitaldb.collection("persons");
+            const hospitaldb = client.db("hospitaldb");
+            const usersCollection = hospitaldb.collection("persons");
 
-//             const findQuery = { email: email };
+            const findQuery = { email: email };
 
-//             const newMedicamento = {
-//                 $$pull: {
-//                     medicamentos: medicamentoObj
-//                 }
-//             };
+            const DeleteMedicamento = {
+                $pull: {
+                    medicamentos: {$elemMatch:{
+                        medicamento : medicamentoObj.medicamento
+                    }} 
+                }
+            };
 
-//             // Insertamos el user en la DB
+            // Eliminamos el user en la DB
 
 
-//             usersCollection.updateOne(findQuery, newMedicamento, (err, result) => {
+            usersCollection.updateOne(findQuery, DeleteMedicamento, (err, result) => {
 
-//                 if (err) {
-//                     console.log(err)
-//                     cbResult(false);
-//                 } else {
-//                     cbResult(medicamentoObj);
-//                 }
+                if (err) {
+                    console.log(err)
+                    cbResult(false);
+                } else {
+                    cbResult({
+                        medicamentoObj: medicamentoObj
+                      });
+                }
 
-//                 client.close();
-//             });
+                client.close();
+            });
 
-//         }
+        }
 
-//     });
-// }
-
+    });
+}
 
 module.exports = {
     saveMedicamento,
     getMedicamentos,
-    // removeMedicamento
+    removeMedicamento
 
 }

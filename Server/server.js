@@ -9,7 +9,7 @@ const expSession = require("express-session");
 const app = express();
 
 const auth = require("./auth");
-const functions = require ("./functions")
+const functions = require("./functions")
 // const turnos = require("./turnos");
 
 
@@ -127,7 +127,7 @@ app.get("/medicamentos", (req, res) => {
 
 app.get("/mismedicamentos", (req, res) => {
   if (req.session.loggedUser) {
-    res.render("mismedicamentos", { layout: "main2", user: req.session.loggedUser});
+    res.render("mismedicamentos", { layout: "main2", user: req.session.loggedUser });
   } else {
     res.redirect("/login");
   }
@@ -266,7 +266,7 @@ app.post("/changepassword", (req, res) => {
 app.get("/medicines", (req, res) => {
 
 
-  functions.getMedicamentos(medicamentoList =>{
+  functions.getMedicamentos(medicamentoList => {
     if (req.query.filtro) {
       medicamentoList = medicamentoList.filter(function (item) {
         let nombreDataBase = item.medicamento.toUpperCase();
@@ -274,7 +274,7 @@ app.get("/medicines", (req, res) => {
         return nombreDataBase.includes(nombreRecibido);
       })
     };
-  
+
     res.json(medicamentoList.slice(0, 5));
   });
 
@@ -289,7 +289,10 @@ app.post("/medicamentoFav", (req, res) => {
 
     functions.saveMedicamento(req.body, req.session.loggedUser.email, medicamentoAgregado => {
       if (medicamentoAgregado) {
-        req.session.loggedUser.medicamentos.push(medicamentoAgregado);
+
+        if (medicamentoAgregado.agregado) {
+          req.session.loggedUser.medicamentos.push(medicamentoAgregado.medicamentoObj)
+        }
 
 
         res.sendStatus(200);
@@ -302,29 +305,53 @@ app.post("/medicamentoFav", (req, res) => {
     });
 
 
-  } 
+  }
 });
 
-// app.post("/removeMedicamento", (req, res) => {
-//   if (req.session.loggedUser) {
+app.post("/removeMedicamento", (req, res) => {
+  if (req.session.loggedUser) {
+    console.log(req.body)
 
-//     functions.removeMedicamento(req.body, req.session.loggedUser.email, medicamentoAgregado => {
-//       if (medicamentoAgregado) {
-//         req.session.loggedUser.medicamentos.push(medicamentoAgregado);
-
-
-//         res.sendStatus(200);
-
-//       } else {
-//         res.sendStatus(500);
-//         console.log("error")
-
-//       }
-//     });
+    functions.removeMedicamento(req.body, req.session.loggedUser.email, medicamentoAgregado => {
+      if (medicamentoAgregado) {
+        console.log("hola")
+        req.session.loggedUser.medicamentos.pop(medicamentoAgregado);
 
 
-//   } 
-// });
+        res.sendStatus(200);
+
+      } else {
+        res.sendStatus(500);
+        console.log("error")
+
+      }
+    });
+
+
+  }
+});
+
+app.post("/removeMedicamentoAJAX", (req, res) => {
+  if (req.session.loggedUser) {
+
+    functions.removeMedicamento, (req.body, req.session.loggedUser.email, medicamentoAgregado => {
+      if (medicamentoAgregado) {
+
+        req.session.loggedUser.medicamentos.pop(medicamentoAgregado.medicamentoObj)
+
+
+        res.sendStatus(200);
+
+      } else {
+        res.sendStatus(500);
+        console.log("error")
+
+      }
+    });
+
+
+  }
+})
 
 
 

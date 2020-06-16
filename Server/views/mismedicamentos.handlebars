@@ -14,11 +14,14 @@
 
             <tbody>
                 {{#each user.medicamentos}}
-                <tr>
-                    <td>{{this.medicamento}}</td>
+                <tr id="tableRow">
+                    <form id="misMedicamentosForm" class="card-panel">
+                    <td id="medicamentoName">{{this.medicamento}}</td>
                     <td>{{this.tipo}}</td>
                     <td>{{this.via}}</td>
-                    <td><button id="deleteMedicamento" type="submit">Eliminar</button></td>
+                    <td><button id="deleteMedicamentoBtn" type="submit">Eliminar</button>
+                    </td>
+                    </form>
                     {{/each}}
                 </tr>
 
@@ -27,24 +30,50 @@
     </div>
 </div>
 
-{{!-- <script>
-    const deleteMedicamento = document.getElementById("deleteMedicamento");
-
-    deleteMedicamento.addEventListener("submit", (event) => {
-        event.preventDefault();
-        getMedicamento(medicamentoInput.value);
-    })
+<script>
+    const deleteMedicamentoBtn = document.getElementById("deleteMedicamentoBtn");
+    const tableRow = document.getElementById("tableRow");
+    const medicamentoName = document.getElementById("medicamentoName");
+    const misMedicamentosForm = document.getElementById("misMedicamentosForm");
 
     const removeMedicamento = (medicamento) => {
         const ajaxRequest = new XMLHttpRequest();
         ajaxRequest.addEventListener("load", function () {
             if (this.status == 200) {
+                console.log(this.responseText)
                 const medicamentoList = JSON.parse(this.responseText);
-                removeLista(medicamentoList);
+                removeData(medicamentoList);
             };
         });
         ajaxRequest.open("POST", "/removeMedicamento");
-        ajaxRequest.send();
+        ajaxRequest.send(JSON.stringify(medicamentoName));
     };
 
-</script> --}}
+    misMedicamentosForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        removeMedicamento(medicamentoName.value);
+    });
+
+    function removeData(medicamentosList) {
+        for (let i = 0; i < medicamentosList.length; i++) {
+            deleteMedicamentoBtn.addEventListener("click", (event) => {
+                const ajaxRequest = new XMLHttpRequest();
+                ajaxRequest.addEventListener("load", function () {
+                    if (this.status == 200) {
+                        console.log("funciona!")
+                        tableRow.innerHTML = "";
+                    };
+                    if (this.status == 500) {
+                        console.log("error")
+                    };
+                });
+                ajaxRequest.open("POST", `/removeMedicamentoAJAX`);
+                ajaxRequest.setRequestHeader("Content-Type", "application/json");
+                ajaxRequest.send(JSON.stringify(medicamentoName));
+            });
+
+        }
+
+    }
+
+</script>
