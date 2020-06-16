@@ -209,45 +209,7 @@ const changePassword = (email, newPassword, cbResult) => {
 
 }
 
-const saveMedicamento = (medicamentoObj, email, cbResult) => {
-    mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
 
-        if (err) {
-
-            cbResult(false);
-
-        } else {
-
-            const hospitaldb = client.db("hospitaldb");
-            const usersCollection = hospitaldb.collection("persons");
-
-            const findQuery = { email: email };
-
-            const newMedicamento = {
-                $addToSet: {
-                    medicamentos: medicamentoObj
-                }
-            };
-
-            // Insertamos el user en la DB
-
-
-            usersCollection.updateOne(findQuery, newMedicamento, (err, result) => {
-
-                if (err) {
-                    console.log(err)
-                    cbResult(false);
-                } else {
-                    cbResult( medicamentoObj);
-                }
-
-                client.close();
-            });
-
-        }
-
-    });
-}
 
 
 
@@ -258,5 +220,4 @@ module.exports = {
     login,
     getUser,
     changePassword,
-    saveMedicamento
 }

@@ -9,6 +9,7 @@ const expSession = require("express-session");
 const app = express();
 
 const auth = require("./auth");
+const functions = require ("./functions")
 // const turnos = require("./turnos");
 
 
@@ -267,20 +268,20 @@ app.post("/changepassword", (req, res) => {
 
 app.get("/medicines", (req, res) => {
 
-  // getMedicamento(function (medicamentoList) {
-  let medicamentoList = getMedicamento();
 
-  if (req.query.filtro) {
-    medicamentoList = medicamentoList.filter(function (item) {
-      let nombreDataBase = item.medicamento.toUpperCase();
-      let nombreRecibido = req.query.filtro.toUpperCase();
-      return nombreDataBase.includes(nombreRecibido);
-    })
-  };
+  functions.getMedicamentos(medicamentoList =>{
+    if (req.query.filtro) {
+      medicamentoList = medicamentoList.filter(function (item) {
+        let nombreDataBase = item.medicamento.toUpperCase();
+        let nombreRecibido = req.query.filtro.toUpperCase();
+        return nombreDataBase.includes(nombreRecibido);
+      })
+    };
+  
+    res.json(medicamentoList.slice(0, 5));
+  });
 
-  res.json(medicamentoList.slice(0, 5));
 
-  // });
 
 
 });
@@ -289,7 +290,34 @@ app.get("/medicines", (req, res) => {
 app.post("/medicamentoFav", (req, res) => {
   if (req.session.loggedUser) {
 
-    auth.saveMedicamento(req.body, req.session.loggedUser.email, medicamentoAgregado => {
+    functions.saveMedicamento(req.body, req.session.loggedUser.email, medicamentoAgregado => {
+      if (medicamentoAgregado) {
+        console.log("medicamento guardado en favoritos",medicamentoAgregado);
+        req.session.loggedUser.medicamentos.push(medicamentoAgregado);
+
+        console.log(req.session.loggedUser)
+
+        req.session.messageRem = {
+          class: "success",
+          text: "Medicamento guardado en favoritos"
+        }
+        res.sendStatus(200);
+
+      } else {
+        res.sendStatus(500);
+        console.log("error")
+
+      }
+    });
+
+
+  } 
+});
+
+app.post("/removeMedicamento", (req, res) => {
+  if (req.session.loggedUser) {
+
+    functions.removeMedicamento(req.body, req.session.loggedUser.email, medicamentoAgregado => {
       if (medicamentoAgregado) {
         console.log("medicamento guardado en favoritos",medicamentoAgregado);
         req.session.loggedUser.medicamentos.push(medicamentoAgregado);
@@ -314,16 +342,6 @@ app.post("/medicamentoFav", (req, res) => {
 });
 
 
-function getMedicamento() {
-  const medicamentos = [{ medicamento: "ibupirac", tipo: "comprimido", via: "oral" },
-  { medicamento: "amoxidal", tipo: "comprimido", via: "oral" },
-  { medicamento: "penoral", tipo: "comprimido", via: "oral" },
-  { medicamento: "roaocutan", tipo: "cápsula", via: "oral" },
-  { medicamento: "paracetamol", tipo: "comprimido", via: "oral" },
-  { medicamento: "globulitos", tipo: "cápsula", via: "oral" }
-  ];
-  return medicamentos
-}
 
 //turnos
 
