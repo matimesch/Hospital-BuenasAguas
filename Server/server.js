@@ -127,7 +127,6 @@ app.get("/medicamentos", (req, res) => {
 
 app.get("/mismedicamentos", (req, res) => {
   if (req.session.loggedUser) {
-    console.log("hola",req.session.loggedUser)
     res.render("mismedicamentos", { layout: "main2", user: req.session.loggedUser});
   } else {
     res.redirect("/login");
@@ -143,8 +142,6 @@ app.post("/login", (req, res) => {
     if (result.user) {
 
       req.session.loggedUser = result.user;
-
-      console.log("sesion" ,req.session.loggedUser)
 
       res.redirect("/home");
 
@@ -292,15 +289,9 @@ app.post("/medicamentoFav", (req, res) => {
 
     functions.saveMedicamento(req.body, req.session.loggedUser.email, medicamentoAgregado => {
       if (medicamentoAgregado) {
-        console.log("medicamento guardado en favoritos",medicamentoAgregado);
         req.session.loggedUser.medicamentos.push(medicamentoAgregado);
 
-        console.log(req.session.loggedUser)
 
-        req.session.messageRem = {
-          class: "success",
-          text: "Medicamento guardado en favoritos"
-        }
         res.sendStatus(200);
 
       } else {
@@ -314,32 +305,26 @@ app.post("/medicamentoFav", (req, res) => {
   } 
 });
 
-app.post("/removeMedicamento", (req, res) => {
-  if (req.session.loggedUser) {
+// app.post("/removeMedicamento", (req, res) => {
+//   if (req.session.loggedUser) {
 
-    functions.removeMedicamento(req.body, req.session.loggedUser.email, medicamentoAgregado => {
-      if (medicamentoAgregado) {
-        console.log("medicamento guardado en favoritos",medicamentoAgregado);
-        req.session.loggedUser.medicamentos.push(medicamentoAgregado);
-
-        console.log(req.session.loggedUser)
-
-        req.session.messageRem = {
-          class: "success",
-          text: "Medicamento guardado en favoritos"
-        }
-        res.sendStatus(200);
-
-      } else {
-        res.sendStatus(500);
-        console.log("error")
-
-      }
-    });
+//     functions.removeMedicamento(req.body, req.session.loggedUser.email, medicamentoAgregado => {
+//       if (medicamentoAgregado) {
+//         req.session.loggedUser.medicamentos.push(medicamentoAgregado);
 
 
-  } 
-});
+//         res.sendStatus(200);
+
+//       } else {
+//         res.sendStatus(500);
+//         console.log("error")
+
+//       }
+//     });
+
+
+//   } 
+// });
 
 
 

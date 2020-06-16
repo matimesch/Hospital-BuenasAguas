@@ -1,3 +1,6 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
 <div id="content" class="container">
   <form id="medicamentosForm" class="card-panel">
     <input type="text" id="medicamento" placeholder="medicamento">
@@ -39,24 +42,69 @@
 
     for (let i = 0; i < medicamentosList.length; i++) {
       const medicamentoObj = medicamentosList[i];
+      const newDiv = document.createElement("div");
+      const newDivStacked = document.createElement("div");
+      const newDivCard = document.createElement("div");
       const newLi = document.createElement("li");
       const addButton = document.createElement("button")
-      const addText = document.createElement("p")
+      const addSpan = document.createElement("span");
+      const addText = document.createElement("span")
+      const newAHref = document.createElement("a")
+      const newIcono = document.createElement("i")
+
+      newDiv.className = "card horizontal";
+      newLi.appendChild(newDiv);
+      newDivStacked.className = "card-stacked";
+      newDiv.appendChild(newDivStacked)
+      newDivCard.className = "card-content grey lighten-2";
+      newDivStacked.appendChild(newDivCard);
+
+      newAHref.className = "btn-floating btn-large waves-effect waves-light";
+      newDivCard.appendChild(newAHref);
+      newIcono.className = "material-icons";
+      newIcono.innerText = "star_border";
+      newAHref.appendChild(newIcono)
+      addSpan.className = "light-blue-text lighten-3 flow-text";
+      addSpan.style.fontWeight = "bold";
+      addSpan.style.marginLeft = "20px";
+      //addSpan.style.fontSize = "1.5vw";
+      addSpan.innerText = `${medicamentoObj.medicamento}`;
+      newDivCard.appendChild(addSpan);
+
+      addText.className = "green accent-3"
+      addText.style.marginLeft = "10px";
+      addText.style.color = "dark green";
+      addText.style.fontFamily = "italic";
 
 
-      newLi.appendChild(addButton);
-      
-      addButton.classList.add("btn");
-      newLi.classList.add("card-panel");
-      addButton.innerText = `${medicamentoObj.medicamento}`;
+      const newAHref2 = document.createElement("a")
+      const newIcono2 = document.createElement("i")
+
+      newAHref2.appendChild(newIcono2)
+
+
+
+
+
+
+
+
+
+      newDivCard.appendChild(newAHref2);
       newUl.appendChild(newLi);
-      newLi.appendChild(addText);
 
-      addButton.addEventListener("click", (event) => {
+
+      newDivCard.appendChild(addText);
+
+      newAHref.addEventListener("click", (event) => {
         const ajaxRequest = new XMLHttpRequest();
         ajaxRequest.addEventListener("load", function () {
           if (this.status == 200) {
             //añadir alguna clase
+            newAHref2.className = "floating waves-effect waves-dark blue-grey darken-4"
+            newAHref2.style.marginLeft = "20px"
+            newIcono2.className = "material-icons";
+            newIcono2.innerText = "done";
             addText.innerText = "Medicamento añadido a favoritos";
           };
           if (this.status == 500) {
