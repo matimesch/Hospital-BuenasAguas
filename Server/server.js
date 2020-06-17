@@ -9,7 +9,8 @@ const expSession = require("express-session");
 const app = express();
 
 const auth = require("./auth");
-const functions = require("./functions")
+const functions = require("./functions");
+const { stringify } = require("querystring");
 // const turnos = require("./turnos");
 
 
@@ -317,51 +318,33 @@ app.post("/medicamentoFav", (req, res) => {
   }
 });
 
-// app.post("/removeMedicamento", (req, res) => {
-//   if (req.session.loggedUser) {
+app.post("/removeMedicamento", (req, res) => {
+  if (req.session.loggedUser) {
+    console.log("body",req.body);
+    
+    functions.removeMedicamento(req.body, req.session.loggedUser.email, medicamentoBorrado => {
+      if (medicamentoBorrado) {
+        console.log("hola")
+        console.log("med borrado",medicamentoBorrado)
+        console.log("session", req.session.loggedUser.email)
+        
 
-//     functions.removeMedicamento(req.body, req.session.loggedUser.email, medicamentoAgregado => {
-//       if (medicamentoAgregado) {
-//         console.log("hola")
-//         console.log(medicamentoAgregado.medicamento)
-
-//         req.session.loggedUser.medicamentos.pop(medicamentoAgregado);
-
-
-//         res.sendStatus(200);
-
-//       } else {
-//         res.sendStatus(500);
-//         console.log("error")
-
-//       }
-//     });
+        // req.session.loggedUser.medicamentos.pop(medicamentoBorrado);
 
 
-//   }
-// });
+        res.sendStatus(200);
 
-// app.post("/removeMedicamentoAJAX", (req, res) => {
-//   if (req.session.loggedUser) {
+      } else {
+        res.sendStatus(500);
+        console.log("error")
 
-//     functions.removeMedicamento, (req.body, req.session.loggedUser.email, medicamentoAgregado => {
-//       if (medicamentoAgregado) {
-
-//         req.session.loggedUser.medicamentos.pop(medicamentoAgregado.medicamentoObj)
+      }
+    });
 
 
-//         res.sendStatus(200);
+  }
+});
 
-//       } else {
-//         res.sendStatus(500);
-//         console.log("error")
-
-//       }
-//     });
-
-
-//   }
-// })
 
 //medicos
 

@@ -77,7 +77,7 @@ const saveMedicamento = (medicamentoObj, email, cbResult) => {
 
 //////////////// REMOVE
 
-const removeMedicamento = (medicamentoObj, email, cbResult) => {
+const removeMedicamento = (medicamentoFilter, email, cbResult) => {
     mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
 
         if (err) {
@@ -94,7 +94,7 @@ const removeMedicamento = (medicamentoObj, email, cbResult) => {
             const DeleteMedicamento = {
                 $pull: {
                     medicamentos: {$elemMatch:{
-                        medicamento : medicamentoObj.medicamento
+                        medicamento : medicamentoFilter
                     }} 
                 }
             };
@@ -108,8 +108,9 @@ const removeMedicamento = (medicamentoObj, email, cbResult) => {
                     console.log(err)
                     cbResult(false);
                 } else {
-                    cbResult({
-                        medicamentoObj: medicamentoObj
+                    console.log(result.result.nModified, result.modifiedCount)
+                    cbResult(
+                        {medicamentoObj: medicamentoFilter
                       });
                 }
 

@@ -18,8 +18,9 @@
                         <td id="medicamentoName">{{this.medicamento}}</td>
                         <td id="medicamentoTipo">{{this.tipo}}</td>
                         <td id="medicamentoVia">{{this.via}}</td>
-                        <td><button id="deleteMedicamentoBtn" type="submit" class="btn-floating btn waves-effect waves-light red">
-                                <i class="material-icons">delete</i>>Eliminar</button>
+                        <td><button id="deleteMedicamentoBtn" type="submit"
+                                class="btn-floating btn waves-effect waves-light red" onclick=deleteMedicamento("{{this.medicamento}}")>
+                                <i class="material-icons">delete</i>Eliminar</button>
                         </td>
                     </form>
                     {{/each}}
@@ -38,35 +39,25 @@
     const medicamentoVia = document.getElementById("medicamentoVia");
     const misMedicamentosForm = document.getElementById("misMedicamentosForm");
 
-
-    function RecorreArray (medicamentoList){
-    for (let i = 0; i < medicamentoList.length; i++) {
-    const medicamentoObj= {
-        medicamento: medicamentoName.value[i],
-        tipo: medicamentoTipo.value[i],
-        via: medicamentoVia.value[i]}
-    console.log(medicamentoObj)
-    }
-    }
-
-    const removeMedicamento = (medicamento) => {
+    function deleteMedicamento(medicamento,tipo,via) {
         const ajaxRequest = new XMLHttpRequest();
         ajaxRequest.addEventListener("load", function () {
             if (this.status == 200) {
                 const medicamentoList = JSON.parse(this.responseText);
-                RecorreArray(medicamentoList)
-                removeData(medicamentoList);
+                console.log(medicamentoList)
+              //  tableRow.innerHTML = "";
+             // removeData(medicamentoList);
             };
         });
         ajaxRequest.open("POST", "/removeMedicamento");
-        ajaxRequest.send(JSON.stringify(medicamentoObj));
-    };
+        ajaxRequest.setRequestHeader("Content-Type", "application/json");
+        ajaxRequest.send(JSON.stringify({medicamento}));
+    }
 
-    misMedicamentosForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        console.log(medicamentoObj)
-        removeMedicamento(medicamentoObj);
-    });
+
+
+
+
 
     function removeData(medicamentosList) {
         for (let i = 0; i < medicamentosList.length; i++) {
