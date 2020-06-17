@@ -1,7 +1,7 @@
 <div id="content" class="container">
   <form id="formMedicos" class="card-panel">
     <h4><i class="material-icons" style="margin-right: 10px;">group_add</i>Médicos</h4>
-    <input type="text" id="medicoInput" placeholder="Medico">
+    <input type="text" id="medicoInput" placeholder="Medico" class="autocomplete">
 
     <select class="input-field" id="especialidad" name="especialidad" style="display: block;">
             <option value="" disabled selected>Especialidad</option>
@@ -16,6 +16,38 @@
   <div id="divListaMedicos"></div>
 
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        //Autocomplete
+        $(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/medicosAjax?fields=name',
+                success: function (response) {
+                    var nameArray = response;
+                    var data = {};
+                    for (var i = 0; i < nameArray.length; i++) {
+                        //console.log(nameArray[i].name);
+                        data[nameArray[i].name] = nameArray[i].flag; //nameArray[i].flag or null
+                    }
+                    $('input.autocomplete').autocomplete({
+                        data: data,
+                        limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+
 
 <script>
   const medicoInput = document.getElementById("medicoInput");

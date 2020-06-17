@@ -376,7 +376,6 @@ app.get("/medicosAjax", (req, res) => {
         return nombreDataBase.includes(nombreRecibido);
       })
     };
-    console.log(req.query.filterByEspecialidad)
     if (req.query.filterByEspecialidad) {
       medicosList = medicosList.filter(function (item2) {
         let especialidadDB = item2.especialidad.toUpperCase();
@@ -399,11 +398,8 @@ app.post("/medicoFav", (req, res) => {
 
     functions.saveMedico(req.body, req.session.loggedUser.email, medicoAgregado => {
       if (medicoAgregado) {
-        console.log("session",req.session.loggedUser)
-        console.log("medico", req.session.loggedUser.medicoAgregado)
 
         if (medicoAgregado.agregado) {
-          console.log("que pasa!!!", medicoAgregado)
           req.session.loggedUser.medicos.push(medicoAgregado.medicoObj)
         }
 
