@@ -75,7 +75,7 @@ const saveMedicamento = (medicamentoObj, email, cbResult) => {
     });
 }
 
-////////////////
+//////////////// REMOVE
 
 const removeMedicamento = (medicamentoObj, email, cbResult) => {
     mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
@@ -121,9 +121,88 @@ const removeMedicamento = (medicamentoObj, email, cbResult) => {
     });
 }
 
+///////// Medicos
+
+const getMedicos = (cbResult) => {
+    mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
+        if (err) {
+            cbResult(false);
+        }
+        else {
+            const hospitaldb = client.db("hospitaldb");
+            const usersCollection = hospitaldb.collection("medicos");
+
+            usersCollection.find().toArray(function (err, cursor) {
+                // cursor.toArray(cbResult);
+                if (err) {
+                    console.log(err);
+                } else {
+                    cbResult(cursor);
+
+                }
+                client.close();
+
+            });
+
+            // usersCollection.find({}).toArray,(err,result) =>{
+            //         console.log("result",result)
+            //         cbResult(true);
+            //     };
+
+        }
+
+    });
+}
+
+const saveMedico = (medicoObj, email, cbResult) => {
+    mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
+
+        if (err) {
+
+            cbResult(false);
+
+        } else {
+
+            const hospitaldb = client.db("hospitaldb");
+            const usersCollection = hospitaldb.collection("persons");
+
+            const findQuery = { email: email };
+
+            const newMedico = {
+                $addToSet: {
+                    medicos: medicoObj
+                }
+            };
+
+            // Insertamos el user en la DB
+
+
+            usersCollection.updateOne(findQuery, newMedico, (err, result) => {
+
+                if (err) {
+                    console.log(err)
+                    cbResult(false);
+                } else {
+                    cbResult({
+                        agregado: result.modifiedCount > 0 ? true : false,
+                        medicoObj: medicoObj
+                      });
+                }
+
+                client.close();
+            });
+
+        }
+
+    });
+}
+
+
+
 module.exports = {
     saveMedicamento,
     getMedicamentos,
-    removeMedicamento
-
+    removeMedicamento,
+    getMedicos,
+    saveMedico
 }

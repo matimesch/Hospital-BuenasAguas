@@ -1,52 +1,53 @@
 <div id="content" class="container">
-    <form id="formMedicos" class="card-panel">
-        <input type="text" id="surnameMedico" placeholder="apellido">
+  <form id="formMedicos" class="card-panel">
+    <h4><i class="material-icons" style="margin-right: 10px;">group_add</i>Médicos</h4>
+    <input type="text" id="medicoInput" placeholder="Medico">
 
-        <select class="input-field" id="especialidad" name="especialidad" style="display: block;">
+    {{!-- <select class="input-field" id="especialidad" name="especialidad" style="display: block;">
             <option value="" disabled selected>Especialidad</option>
             <option value="Pediatra">Pediatra</option>
             <option value="Otorrino">Otorrino</option>
             <option value="Oftalmólogo">Oftalmólogo</option>
             <option value="Odontólogo">Odontólogo</option>
             <option value="Cirujano">Cirujano</option>
-        </select>
-        <input class="btn" type="submit" style="margin-top: 30px"></button>
-    </form>
-    <div id="listaMedicos"></div>
+        </select> --}}
+    <input class="btn" type="submit"></button>
+  </form>
+  <div id="divListaMedicos"></div>
 
 </div>
 
-{{!-- <script>
-  const medicamentoInput = document.getElementById("medicamento");
-  const divListaMedicamentos = document.getElementById("listaMedicamentos");
-  const medicamentosForm = document.getElementById("medicamentosForm")
+<script>
+  const medicoInput = document.getElementById("medicoInput");
+  const divListaMedicos = document.getElementById("divListaMedicos");
+  const formMedicos = document.getElementById("formMedicos")
 
-  const getMedicamento = (medicamento) => {
+  const getMedicos = (name) => {
     const ajaxRequest = new XMLHttpRequest();
     ajaxRequest.addEventListener("load", function () {
       if (this.status == 200) {
-        const medicamentoList = JSON.parse(this.responseText);
-        createLista(medicamentoList);
+        const medicoList = JSON.parse(this.responseText);
+        createLista(medicoList);
       };
     });
-    ajaxRequest.open("GET", `/medicines?filtro=${medicamento}`);
+    ajaxRequest.open("GET", `/medicosAjax?filtroByName=${name}`);
     ajaxRequest.send();
   };
 
-  medicamentosForm.addEventListener("submit", (event) => {
+  formMedicos.addEventListener("submit", (event) => {
     event.preventDefault();
-    getMedicamento(medicamentoInput.value);
+    getMedicos(medicoInput.value);
   })
 
 
 
-  function createLista(medicamentosList) {
+  function createLista(medicosList) {
 
-    divListaMedicamentos.innerHTML = "";
+    divListaMedicos.innerHTML = "";
     const newUl = document.createElement("ul");
 
-    for (let i = 0; i < medicamentosList.length; i++) {
-      const medicamentoObj = medicamentosList[i];
+    for (let i = 0; i < medicosList.length; i++) {
+      const medicoObj = medicosList[i];
       const newDiv = document.createElement("div");
       const newDivStacked = document.createElement("div");
       const newDivCard = document.createElement("div");
@@ -56,7 +57,6 @@
       const addText = document.createElement("span")
       const newAHref = document.createElement("a")
       const newIcono = document.createElement("i")
-
       newDiv.className = "card horizontal";
       newLi.appendChild(newDiv);
       newDivStacked.className = "card-stacked";
@@ -73,7 +73,7 @@
       addSpan.style.fontWeight = "bold";
       addSpan.style.marginLeft = "20px";
       //addSpan.style.fontSize = "1.5vw";
-      addSpan.innerText = `${medicamentoObj.medicamento}`;
+      addSpan.innerText = `${medicoObj.name} ${medicoObj.especialidad} `;
       newDivCard.appendChild(addSpan);
 
       addText.className = "green accent-3"
@@ -81,9 +81,12 @@
       addText.style.color = "dark green";
       addText.style.fontFamily = "italic";
 
+
       const newAHref2 = document.createElement("a")
       const newIcono2 = document.createElement("i")
+
       newAHref2.appendChild(newIcono2)
+
       newDivCard.appendChild(newAHref2);
       newUl.appendChild(newLi);
 
@@ -99,22 +102,22 @@
             newAHref2.style.marginLeft = "20px"
             newIcono2.className = "material-icons";
             newIcono2.innerText = "done";
-            addText.innerText = "Medicamento añadido a favoritos";
+            addText.innerText = "medico añadido a favoritos";
           };
           if (this.status == 500) {
             addText.innerText = "Error al añadir";
           };
         });
-        ajaxRequest.open("POST", `/medicamentoFav`);
+        ajaxRequest.open("POST", `/medicoFav`);
         ajaxRequest.setRequestHeader("Content-Type", "application/json");
-        ajaxRequest.send(JSON.stringify(medicamentoObj));
+        ajaxRequest.send(JSON.stringify(medicoObj));
       });
     }
 
-    divListaMedicamentos.appendChild(newUl);
-    divListaMedicamentos.classList.add("card-panel");
+    divListaMedicos.appendChild(newUl);
+    divListaMedicos.classList.add("card-panel");
 
 
   }
 
-</script> --}}
+</script>

@@ -1,25 +1,24 @@
 <div id="content" class="container">
     <div id="medicamentosFav" class="card-panel">
-        <h3 class="col s12">Medicamentos Favoritos</h3>
-        <table>
+        <h3 class="col s12">Medicos Favoritos</h3>
+        <table class="responsive-table highlight">
             <thead>
                 <tr>
-                    <th>Medicamento</th>
-                    <th>Tipo</th>
-                    <th>Via</th>
+                    <th>Medico</th>
+                    <th>Especialidad</th>
                     <th>Eliminar</th>
-
                 </tr>
             </thead>
 
             <tbody>
-                {{#each user.medicamentos}}
+                {{#each user.medicos}}
                 <tr id="tableRow">
                     <form id="misMedicamentosForm" class="card-panel">
-                        <td id="medicamentoName">{{this.medicamento}}</td>
-                        <td id="medicamentoTipo">{{this.tipo}}</td>
-                        <td id="medicamentoVia">{{this.via}}</td>
-                        <td><button id="deleteMedicamentoBtn" type="submit">Eliminar</button>
+                        <td id="medicoName">{{this.name}}</td>
+                        <td id="medicoEspecialidad">{{this.especialidad}}</td>
+                        <td><button id="deleteMedico" type="submit"
+                                class="btn-floating btn waves-effect waves-light red">
+                                <i class="material-icons">delete</i>Eliminar</button>
                         </td>
                     </form>
                     {{/each}}
@@ -29,66 +28,3 @@
         </table>
     </div>
 </div>
-
-<script>
-    const deleteMedicamentoBtn = document.getElementById("deleteMedicamentoBtn");
-    const tableRow = document.getElementById("tableRow");
-    const medicamentoName = document.getElementById("medicamentoName");
-    const medicamentoTipo = document.getElementById("medicamentoTipo");
-    const medicamentoVia = document.getElementById("medicamentoVia");
-    const misMedicamentosForm = document.getElementById("misMedicamentosForm");
-
-
-    function RecorreArray (medicamentoList){
-    for (let i = 0; i < medicamentoList.length; i++) {
-    const medicamentoObj= {
-        medicamento: medicamentoName.value[i],
-        tipo: medicamentoTipo.value[i],
-        via: medicamentoVia.value[i]}
-    console.log(medicamentoObj)
-    }
-    }
-
-    const removeMedicamento = (medicamento) => {
-        const ajaxRequest = new XMLHttpRequest();
-        ajaxRequest.addEventListener("load", function () {
-            if (this.status == 200) {
-                const medicamentoList = JSON.parse(this.responseText);
-                RecorreArray(medicamentoList)
-                removeData(medicamentoList);
-            };
-        });
-        ajaxRequest.open("POST", "/removeMedicamento");
-        ajaxRequest.send(JSON.stringify(medicamentoObj));
-    };
-
-    misMedicamentosForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        console.log(medicamentoObj)
-        removeMedicamento(medicamentoObj);
-    });
-
-    function removeData(medicamentosList) {
-        for (let i = 0; i < medicamentosList.length; i++) {
-
-            deleteMedicamentoBtn.addEventListener("click", (event) => {
-                const ajaxRequest = new XMLHttpRequest();
-                ajaxRequest.addEventListener("load", function () {
-                    if (this.status == 200) {
-                        console.log("funciona!")
-                        tableRow.innerHTML = "";
-                    };
-                    if (this.status == 500) {
-                        console.log("error")
-                    };
-                });
-                ajaxRequest.open("POST", `/removeMedicamentoAJAX`);
-                ajaxRequest.setRequestHeader("Content-Type", "application/json");
-                ajaxRequest.send(JSON.stringify(medicamentoName));
-            });
-
-        }
-
-    }
-
-</script>

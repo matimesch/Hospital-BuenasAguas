@@ -1,14 +1,13 @@
 <div id="content" class="container">
     <div id="medicamentosFav" class="card-panel">
         <h3 class="col s12">Medicamentos Favoritos</h3>
-        <table>
+        <table class="responsive-table highlight">
             <thead>
                 <tr>
                     <th>Medicamento</th>
                     <th>Tipo</th>
                     <th>Via</th>
                     <th>Eliminar</th>
-
                 </tr>
             </thead>
 
@@ -19,7 +18,8 @@
                         <td id="medicamentoName">{{this.medicamento}}</td>
                         <td id="medicamentoTipo">{{this.tipo}}</td>
                         <td id="medicamentoVia">{{this.via}}</td>
-                        <td><button id="deleteMedicamentoBtn" type="submit">Eliminar</button>
+                        <td><button id="deleteMedicamentoBtn" type="submit" class="btn-floating btn waves-effect waves-light red">
+                                <i class="material-icons">delete</i>>Eliminar</button>
                         </td>
                     </form>
                     {{/each}}

@@ -1,92 +1,58 @@
 [
     {
-        "name": "Lucas",
-        "surname": "Rojas",
-        "especialidad": "Pediatra",
-        "disponibilidad_turnos": [
-            {
-                "fecha": "2020-06-13",
-                "turnos": [
-                    {
-                        "horario": "11:00"
-                    },
-                    {
-                        "horario": "11:30",
-                        "reservado_por": "jose@gmail.com"
-                    },
-                    {
-                        "horario": "12:00"
-                    },
-                    {
-                        "horario": "12:30"
-                    }
-                ]
-            }
-        ]
+        "name": "Lucas Rojas",
+        "especialidad": "Pediatra"
     },
     {
-        "name": "Lucas",
-        "surname": "Dominguez",
+        "name": "Lucas Dominguez",
         "especialidad": "Otorrino"
     },
     {
-        "name": "Fernando",
-        "surname": "Montoya",
+        "name": "Fernando Montoya",
         "especialidad": "Odontólogo"
     },
     {
-        "name": "Matías",
-        "surname": "Roschen",
+        "name": "Matías Roschen",
         "especialidad": "Oftalmólogo"
     },
     {
-        "name": "Vicente",
-        "surname": "Chas",
+        "name": "Vicente Chas",
         "especialidad": "Cirujano"
     },
     {
-        "name": "Augusto",
-        "surname": "Calissano",
+        "name": "Augusto Calissano",
         "especialidad": "Pediatra"
     },
     {
-        "name": "Federico",
-        "surname": "Vazquez",
+        "name": "Federico Vazquez",
         "especialidad": "Otorrino"
     },
     {
-        "name": "Lucas",
-        "surname": "Pizarro",
+        "name": "Lucas Pizarro",
         "especialidad": "Cirujano"
     },
     {
-        "name": "Aaron",
-        "surname": "Blanco",
+        "name": "Aaron Blanco",
         "especialidad": "Otorrino"
     },
     {
-        "name": "Camilo",
-        "surname": "Molina",
+        "name": "Camilo Molina",
         "especialidad": "Oftalmólogo"
     },
     {
-        "name": "Camila",
-        "surname": "Verdura",
+        "name": "Camila Verdura",
         "especialidad": "Otorrino"
     },
     {
-        "name": "Aitor",
-        "surname": "Lopez",
+        "name": "Aitor Lopez",
         "especialidad": "Pediatra"
     },
     {
-        "name": "Morena",
-        "surname": "Benedetto",
+        "name": "Morena Benedetto",
         "especialidad": "Oftalmólogo"
     },
     {
-        "name": "Mia",
-        "surname": "Modini",
+        "name": "Mia Modini",
         "especialidad": "Oftalmólogo"
     }
 ]

@@ -37,7 +37,8 @@ const login = (email, password, cbResult) => {
                                 name: foundUser.name,
                                 surname: foundUser.surname,
                                 email: foundUser.email,
-                                medicamentos: foundUser.medicamentos
+                                medicamentos: foundUser.medicamentos,
+                                medicos: foundUser.medicos
                             }
                         });
                     }
@@ -117,7 +118,8 @@ const register = (name, surname, email, password, cbResult) => {
                 email: email,
                 password: password,
                 profile: "user",
-                medicamentos: []
+                medicamentos: [],
+                medicos: []
             };
 
             // Insertamos el user en la DB
