@@ -369,11 +369,19 @@ app.get("/medicosAjax", (req, res) => {
 
 
   functions.getMedicos(medicosList => {
-    if (req.query.filtroByName) {
+    if (req.query.filterByName) {
       medicosList = medicosList.filter(function (item) {
         let nombreDataBase = item.name.toUpperCase();
-        let nombreRecibido = req.query.filtroByName.toUpperCase();
+        let nombreRecibido = req.query.filterByName.toUpperCase();
         return nombreDataBase.includes(nombreRecibido);
+      })
+    };
+    console.log(req.query.filterByEspecialidad)
+    if (req.query.filterByEspecialidad) {
+      medicosList = medicosList.filter(function (item2) {
+        let especialidadDB = item2.especialidad.toUpperCase();
+        let especialidadRecibida = req.query.filterByEspecialidad.toUpperCase();
+        return especialidadDB.includes(especialidadRecibida);
       })
     };
 

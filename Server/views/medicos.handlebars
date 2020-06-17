@@ -3,15 +3,15 @@
     <h4><i class="material-icons" style="margin-right: 10px;">group_add</i>Médicos</h4>
     <input type="text" id="medicoInput" placeholder="Medico">
 
-    {{!-- <select class="input-field" id="especialidad" name="especialidad" style="display: block;">
+    <select class="input-field" id="especialidad" name="especialidad" style="display: block;">
             <option value="" disabled selected>Especialidad</option>
             <option value="Pediatra">Pediatra</option>
             <option value="Otorrino">Otorrino</option>
             <option value="Oftalmólogo">Oftalmólogo</option>
             <option value="Odontólogo">Odontólogo</option>
             <option value="Cirujano">Cirujano</option>
-        </select> --}}
-    <input class="btn" type="submit"></button>
+        </select>
+    <input class="btn" type="submit" style="margin-top: 30px;"></button>
   </form>
   <div id="divListaMedicos"></div>
 
@@ -19,10 +19,11 @@
 
 <script>
   const medicoInput = document.getElementById("medicoInput");
+  const especialidadSelect = document.getElementById("especialidad")
   const divListaMedicos = document.getElementById("divListaMedicos");
   const formMedicos = document.getElementById("formMedicos")
 
-  const getMedicos = (name) => {
+  const getMedicos = (name,especialidad) => {
     const ajaxRequest = new XMLHttpRequest();
     ajaxRequest.addEventListener("load", function () {
       if (this.status == 200) {
@@ -30,13 +31,14 @@
         createLista(medicoList);
       };
     });
-    ajaxRequest.open("GET", `/medicosAjax?filtroByName=${name}`);
+    ajaxRequest.open("GET", `/medicosAjax?filterByName=${name}&filterByEspecialidad=${especialidad}`);
     ajaxRequest.send();
   };
 
   formMedicos.addEventListener("submit", (event) => {
     event.preventDefault();
-    getMedicos(medicoInput.value);
+    console.log(especialidadSelect.value)
+    getMedicos(medicoInput.value, especialidadSelect.value);
   })
 
 
