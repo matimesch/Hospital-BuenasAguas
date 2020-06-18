@@ -1,0 +1,25 @@
+<table class="responsive-table highlight">
+            <thead>
+                <tr>
+                    <th>Medico</th>
+                    <th>Especialidad</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each user.turnos}}
+                <tr id="tableRow">
+                    <form id="misMedicamentosForm" class="card-panel">
+                        <td id="medicoName">{{this.name}}</td>
+                        <td id="medicoEspecialidad">{{this.especialidad}}</td>
+                        <td><button id="deleteMedicoBtn" type="submit"
+                                class="btn-floating btn waves-effect waves-light red" onclick=deleteMedico("{{this._id}}")>
+                                <i class="material-icons">delete</i>Eliminar</button>
+                        </td>
+                    </form>
+                    {{/each}}
+                </tr>
+
+            </tbody>
+        </table>

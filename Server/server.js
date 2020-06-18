@@ -143,6 +143,13 @@ app.get("/mismedicos", (req, res) => {
   }
 });
 
+app.get("/reserva", (req, res) => {
+  if (req.session.loggedUser) {
+    res.render("reserva", { layout: "main2", user: req.session.loggedUser });
+  } else {
+    res.redirect("/login");
+  }
+});
 
 // POSTS
 
@@ -423,82 +430,72 @@ app.get("/medicosAutocomplete", (req, res) => {
 
 });
 
+app.post("/removeMedico", (req, res) => {
+  if (req.session.loggedUser) {
+    console.log("body", req.body);
+
+    functions.removeMedico(req.body.id, req.session.loggedUser.email, medicoBorrado => {
+      if (medicoBorrado) {
+        console.log("hola")
+        console.log("med borrado", medicoBorrado)
+
+        console.log("session",req.session.loggedUser)
+
+        req.session.loggedUser.medicos = req.session.loggedUser.medicos.filter(item =>{
+          console.log("medicamento en session", item._id)
+          console.log("reqbody", req.body.id)
+          return item._id != req.body.id
+        });
+
+
+        res.status(200).send("va bien");
+
+      } else {
+        res.sendStatus(500);
+        console.log("error")
+
+      }
+    });
+
+
+  }
+});
 
 ////////////////////// TURNOS
 
 app.post("/sacarTurno", (req, res) => {
   console.log("body", req.body)
   console.log("name", req.body.name);
-  console.log("esp", req.body.especialidad);
-  console.log("fecha", req.body.fecha);
-  console.log("hora", req.body.hora);
-  if (req.session.loggedUser) { 
-  console.log("pase1", req.session.loggedUser);
-  functions.getMedicos(medicosList => {
-    if (req.body.name || req.body.especialidad && req.body.fecha && req.body.hora) {
-      medicosList = medicosList.filter(function (item) {
-        let nombreDataBase = item.name.toUpperCase();
-        let nombreRecibido = req.body.name.toUpperCase();
-        let medicoName = nombreDataBase.includes(nombreRecibido);
+  // console.log("esp", req.body.especialidad);
 
-        let especialidadDB = item.especialidad
-        let especialidadRecibida = req.body.especialidad
-        let medicoEspecialidad = especialidadDB == especialidadRecibida;
+  if (req.session.loggedUser) {
+    functions.getMedicos(medicosList => {
+      if (req.body.name) {
+        medicosList = medicosList.filter(function (item) {
+          let nombreDataBase = item.name.toUpperCase();
+          let nombreRecibido = req.body.name.toUpperCase();
+          return nombreDataBase.includes(nombreRecibido);
+        })
+      }
+      // else if (req.body.especialidad) {
+      //   medicosList = medicosList.filter(function (item2) {
+      //     let especialidadDB = item2.especialidad.toUpperCase();
+      //     let especialidadRecibida = req.body.especialidad.toUpperCase();
+      //     return especialidadDB.includes(especialidadRecibida);
+      //   })
+      // };
+  
+      req.session.loggedUser.turnos.push(turnos.medico)
 
-        let fechaDB = item.fecha
-        let fechaRecibida = req.body.fecha
-        let medicoFecha = fechaDB == fechaRecibida;
+      
+      
 
-        let horaDB = item.horario
-        let horaRecibida = req.body.hora
-        let medicohora = horaDB == horaRecibida;
-        
-        let turnoObj = {
-          medico : medicoName,
-          especialidad : medicoEspecialidad,
-          fecha: medicoFecha,
-          hora: medicohora
-        }
 
-        functions.saveTurno(turnoObj, req.session.loggedUser.email, turnoAgregado => {
-          if (turnoAgregado) {
-    
-            if (turnoAgregado.agregado) {
-              req.session.loggedUser.medicos.push(turnoAgregado.turnoObj)
+    });
 
-            }
-
-            req.session.turnoMessage = {
-              class: "success",
-              text: "Turno agregado satisfactoriamente"
-            };
-    
-            res.render("turnos", {layout: "main2", user: req.session.loggedUser});
-    
-          } else {
-            req.session.turnoMessage = {
-              class: "failure",
-              text: "El turno ya está ocupado"
-            };
-
-            res.render("turnos", {layout: "main2", user: req.session.loggedUser});
-            
-          }
-        });
-      })
-    };
-
-    
-    
-  });
-
-   
-  } else {
-    res.redirect("/login");
   }
 
-
-});
+})
 
 
 

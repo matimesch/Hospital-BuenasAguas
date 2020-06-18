@@ -194,7 +194,7 @@ const saveMedico = (medicoObj, email, cbResult) => {
     });
 }
 
-const removeMedico = (medicoFilter, email, cbResult) => {
+const removeMedico = (id, email, cbResult) => {
     mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
 
         if (err) {
@@ -208,14 +208,14 @@ const removeMedico = (medicoFilter, email, cbResult) => {
 
             const findQuery = { email: email };
 
-            const DeleteMedicamento = {
-                $pull: { medicos: { name : medicoFilter } }
+            const deleteMedico = {
+                $pull: { medicos: { _id : id } }
             };
 
             // Eliminamos el user en la DB
 
 
-            usersCollection.updateOne(findQuery, DeleteMedicamento, (err, result) => {
+            usersCollection.updateOne(findQuery, deleteMedico, (err, result) => {
 
                 if (err) {
                     console.log(err)
@@ -223,7 +223,7 @@ const removeMedico = (medicoFilter, email, cbResult) => {
                 } else {
                     console.log(result.result.nModified, result.modifiedCount,result.matchedCount)
                     cbResult(
-                        {medicoObj: medicoFilter
+                        {medicoObj: id.toString()
                       });
                 }
 
@@ -291,5 +291,6 @@ module.exports = {
     removeMedicamento,
     getMedicos,
     saveMedico,
+    removeMedico,
     saveTurno
 }

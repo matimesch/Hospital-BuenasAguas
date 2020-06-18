@@ -13,14 +13,12 @@
             <tbody>
                 {{#each user.medicos}}
                 <tr id="tableRow">
-                    <form id="misMedicamentosForm" class="card-panel">
-                        <td id="medicoName">{{this.name}}</td>
-                        <td id="medicoEspecialidad">{{this.especialidad}}</td>
-                        <td><button id="deleteMedico" type="submit"
-                                class="btn-floating btn waves-effect waves-light red">
-                                <i class="material-icons">delete</i>Eliminar</button>
-                        </td>
-                    </form>
+                    <td id="medicoName">{{this.name}}</td>
+                    <td id="medicoEspecialidad">{{this.especialidad}}</td>
+                    <td><button id="deleteMedicoBtn" class="btn-floating btn waves-effect waves-light red"
+                            onclick="deleteMedico(this, '{{this._id}}')">
+                            <i class="material-icons">delete</i>Eliminar</button>
+                    </td>
                     {{/each}}
                 </tr>
 
@@ -28,3 +26,20 @@
         </table>
     </div>
 </div>
+
+<script>
+    const tableRow = document.getElementById("tableRow");
+
+    function deleteMedico(button, id) {
+        const ajaxRequest = new XMLHttpRequest();
+        ajaxRequest.addEventListener("load", function () {
+            if (this.status == 200) {
+                button.parentNode.parentNode.remove()
+            };
+        });
+        ajaxRequest.open("POST", "/removeMedico");
+        ajaxRequest.setRequestHeader("Content-Type", "application/json");
+        ajaxRequest.send(JSON.stringify({ id }));
+    }
+
+</script>
