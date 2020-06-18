@@ -57,7 +57,7 @@ app.get("/locations", (req, res) => {
   res.render("locations", { layout: "main" });
 });
 
-// Landing page
+// Página principal
 
 app.get("/portal", (req, res) => {
   if (req.session.loggedUser) {
@@ -150,6 +150,7 @@ app.post("/login", (req, res) => {
 
   auth.login(req.body.email, req.body.password, result => {
     if (result.user) {
+
 
       req.session.loggedUser = result.user;
 
@@ -320,14 +321,14 @@ app.post("/medicamentoFav", (req, res) => {
 
 app.post("/removeMedicamento", (req, res) => {
   if (req.session.loggedUser) {
-    console.log("body",req.body);
-    
+    console.log("body", req.body);
+
     functions.removeMedicamento(req.body, req.session.loggedUser.email, medicamentoBorrado => {
       if (medicamentoBorrado) {
         console.log("hola")
-        console.log("med borrado",medicamentoBorrado)
+        console.log("med borrado", medicamentoBorrado)
         console.log("session", req.session.loggedUser.email)
-        
+
 
         // req.session.loggedUser.medicamentos.pop(medicamentoBorrado);
 
@@ -400,33 +401,99 @@ app.post("/medicoFav", (req, res) => {
   }
 });
 
+/////////////
+app.get("/medicosAutocomplete", (req, res) => {
 
 
+  functions.getMedicos(medicosList => {
+    if (req.query.filterByName) {
+      medicosList = medicosList.filter(function (item) {
+        let nombreDataBase = item.name.toUpperCase();
+        let nombreRecibido = req.query.filterByName.toUpperCase();
+        return nombreDataBase.includes(nombreRecibido);
+      })
+    };
+
+    res.json(medicosList)
+  });
+
+});
 
 
+////////////////////// TURNOS
+
+app.post("/sacarTurno", (req, res) => {
+  console.log("body", req.body)
+  console.log("name", req.body.name);
+  console.log("esp", req.body.especialidad);
+  console.log("fecha", req.body.fecha);
+  console.log("hora", req.body.hora);
+  if (req.session.loggedUser) { 
+  console.log("pase1", req.session.loggedUser);
+  functions.getMedicos(medicosList => {
+    if (req.body.name || req.body.especialidad && req.body.fecha && req.body.hora) {
+      medicosList = medicosList.filter(function (item) {
+        let nombreDataBase = item.name.toUpperCase();
+        let nombreRecibido = req.body.name.toUpperCase();
+        let medicoName = nombreDataBase.includes(nombreRecibido);
+
+        let especialidadDB = item.especialidad
+        let especialidadRecibida = req.body.especialidad
+        let medicoEspecialidad = especialidadDB == especialidadRecibida;
+
+        let fechaDB = item.fecha
+        let fechaRecibida = req.body.fecha
+        let medicoFecha = fechaDB == fechaRecibida;
+
+        let horaDB = item.hora
+        let horaRecibida = req.body.hora
+        let medicohora = horaDB == horaRecibida;
+        
+        let turnoObj = {
+          medico : medicoName,
+          especialidad : medicoEspecialidad,
+          fecha: medicoFecha,
+          hora: medicohora
+        }
+
+        functions.saveTurno(turnoObj, req.session.loggedUser.email, turnoAgregado => {
+          if (turnoAgregado) {
+    
+            if (turnoAgregado.agregado) {
+              req.session.loggedUser.medicos.push(turnoAgregado.turnoObj)
+            }
+
+            req.session.turnoMessage = {
+              class: "success",
+              text: "Turno agregado satisfactoriamente"
+            };
+    
+            res.render("turnos", {layout: "main2", user: req.session.loggedUser});
+    
+          } else {
+            req.session.turnoMessage = {
+              class: "failure",
+              text: "El turno ya está ocupado"
+            };
+
+            res.render("turnos", {layout: "main2", user: req.session.loggedUser});
+            
+          }
+        });
+      })
+    };
+
+    
+    
+  });
+
+   
+  } else {
+    res.redirect("/login");
+  }
 
 
-
-//turnos
-
-// app.post("/turnos", (req, res) => {
-//   turnos.getTurno(req.body.medico, req.body.especialidad, req.body.dateTime, result => {
-//     if (result.turno) {
-//       res.render("turnos", {
-//         layout: "main2",
-//         message: {
-//           class: "failure",
-//           text: "Turno ya ocupado"
-//         }
-//       })
-//       return
-//     } else{
-//       turnos.register{
-//       }
-//     }
-//   });
-// });
-
+});
 
 
 

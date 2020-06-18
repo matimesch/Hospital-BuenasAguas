@@ -29,7 +29,7 @@
         $(function () {
             $.ajax({
                 type: 'GET',
-                url: '/medicosAjax?fields=name',
+                url: '/medicosAutocomplete?fields=name',
                 success: function (response) {
                     var nameArray = response;
                     var data = {};

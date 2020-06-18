@@ -108,7 +108,7 @@ const removeMedicamento = (medicamentoFilter, email, cbResult) => {
                     console.log(err)
                     cbResult(false);
                 } else {
-                    console.log(result.result.nModified, result.modifiedCount)
+                    console.log(result.result.nModified, result.modifiedCount,result.matchedCount)
                     cbResult(
                         {medicamentoObj: medicamentoFilter
                       });
@@ -199,11 +199,56 @@ const saveMedico = (medicoObj, email, cbResult) => {
 }
 
 
+const saveTurno = (turnoObj, email, cbResult) => {
+    mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
+
+        if (err) {
+
+            cbResult(false);
+
+        } else {
+
+            const hospitaldb = client.db("hospitaldb");
+            const usersCollection = hospitaldb.collection("persons");
+
+            const findQuery = { email: email };
+
+            const newturno = {
+                $addToSet: {
+                    turnos: turnoObj
+                }
+            };
+
+            // Insertamos el user en la DB
+
+
+            usersCollection.updateOne(findQuery, newturno, (err, result) => {
+
+                if (err) {
+                    console.log(err)
+                    cbResult(false);
+                } else {
+                    cbResult({
+                        agregado: result.modifiedCount > 0 ? true : false,
+                        turnoObj: turnoObj
+                      });
+                }
+
+                client.close();
+            });
+
+        }
+
+    });
+}
+
+
 
 module.exports = {
     saveMedicamento,
     getMedicamentos,
     removeMedicamento,
     getMedicos,
-    saveMedico
+    saveMedico,
+    saveTurno
 }
