@@ -29,7 +29,7 @@
                 <option value="2020-06-26">2020-06-26</option>
             </select>
 
-            <select class="input-field col" id="fecha" name="hora" style="display: block;">
+            <select class="input-field col" id="hora" name="hora" style="display: block;">
                 <option value="" disabled selected>Hora</option>
                 <option value="11:00">11:00</option>
                 <option value="12:00">12:00</option>
@@ -52,7 +52,7 @@
 
 </div>
 
-{{!-- <script>
+<script>
     $(document).ready(function () {
         //Autocomplete
         $(function () {
@@ -74,120 +74,4 @@
             });
         });
     });
-</script> --}}
-
-{{!-- <script>
-    const medicoInput = document.getElementById("medicoInput");
-    const especialidadSelect = document.getElementById("especialidad");
-    const fecha = document.getElementById("fecha")
-    const horariosDiv = document.getElementById("horariosDiv");
-    const horarios = document.getElementById("horarios");
-    const turnosForm = document.getElementById("turnosForm");
-
-    const getHorarios = (name, especialidad, fecha) => {
-
-        const ajaxRequest = new XMLHttpRequest();
-
-        ajaxRequest.addEventListener("load", function () {
-            if (this.status == 200) {
-                console.log("llegue")
-                const medicoList = JSON.parse(this.responseText);
-                console.log(medicoList);
-            };
-        });
-        ajaxRequest.open("GET", `/turnos?filterByName=${name}&filterByEspecialidad=${especialidad}&fecha=${fecha}`);
-        ajaxRequest.setRequestHeader("Content-Type", "application/json");
-        ajaxRequest.send(JSON.stringify(medicamentoName));
-    };
-
-    turnosForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        console.log(fecha.value)
-        getHorarios(medicoInput.value, especialidadSelect.value, fecha.value);
-    })
-
-
-
-    function createLista(medicosList) {
-
-        divListaMedicos.innerHTML = "";
-        const newUl = document.createElement("ul");
-
-        for (let i = 0; i < medicosList.length; i++) {
-            const medicoObj = medicosList[i];
-            const newDiv = document.createElement("div");
-            const newDivStacked = document.createElement("div");
-            const newDivCard = document.createElement("div");
-            const newLi = document.createElement("li");
-            const addButton = document.createElement("button")
-            const addSpan = document.createElement("span");
-            const addText = document.createElement("span")
-            const newAHref = document.createElement("a")
-            const newIcono = document.createElement("i")
-            newDiv.className = "card horizontal";
-            newLi.appendChild(newDiv);
-            newDivStacked.className = "card-stacked";
-            newDiv.appendChild(newDivStacked)
-            newDivCard.className = "card-content grey lighten-2";
-            newDivStacked.appendChild(newDivCard);
-
-            newAHref.className = "btn-floating btn-large waves-effect waves-light";
-            newDivCard.appendChild(newAHref);
-            newIcono.className = "material-icons";
-            newIcono.innerText = "star_border";
-            newAHref.appendChild(newIcono)
-            addSpan.className = "light-blue-text lighten-3 flow-text";
-            addSpan.style.fontWeight = "bold";
-            addSpan.style.marginLeft = "20px";
-            //addSpan.style.fontSize = "1.5vw";
-            addSpan.innerText = `${medicoObj.name} ${medicoObj.especialidad} `;
-            newDivCard.appendChild(addSpan);
-
-            addText.className = "green accent-3"
-            addText.style.marginLeft = "10px";
-            addText.style.color = "dark green";
-            addText.style.fontFamily = "italic";
-
-
-            const newAHref2 = document.createElement("a")
-            const newIcono2 = document.createElement("i")
-
-            newAHref2.appendChild(newIcono2)
-
-            newDivCard.appendChild(newAHref2);
-            newUl.appendChild(newLi);
-
-
-            newDivCard.appendChild(addText);
-
-            newAHref.addEventListener("click", (event) => {
-                const ajaxRequest = new XMLHttpRequest();
-                ajaxRequest.addEventListener("load", function () {
-                    if (this.status == 200) {
-                        //añadir alguna clase
-                        newAHref2.className = "floating waves-effect waves-dark blue-grey darken-4"
-                        newAHref2.style.marginLeft = "20px"
-                        newIcono2.className = "material-icons";
-                        newIcono2.innerText = "done";
-                        addText.innerText = "medico añadido a favoritos";
-                    };
-                    if (this.status == 500) {
-                        addText.innerText = "Error al añadir";
-                    };
-                });
-                ajaxRequest.open("POST", `/medicoFav`);
-                ajaxRequest.setRequestHeader("Content-Type", "application/json");
-                ajaxRequest.send(JSON.stringify(medicoObj));
-            });
-        }
-
-        divListaMedicos.appendChild(newUl);
-        divListaMedicos.classList.add("card-panel");
-
-
-    }
-
-
-
-
-</script> --}}
+</script>

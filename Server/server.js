@@ -461,6 +461,7 @@ app.post("/sacarTurno", (req, res) => {
     
             if (turnoAgregado.agregado) {
               req.session.loggedUser.medicos.push(turnoAgregado.turnoObj)
+
             }
 
             req.session.turnoMessage = {
