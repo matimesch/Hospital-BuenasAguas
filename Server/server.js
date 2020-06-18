@@ -477,17 +477,10 @@ app.post("/sacarTurno", (req, res) => {
           return nombreDataBase.includes(nombreRecibido);
         })
       }
-      // else if (req.body.especialidad) {
-      //   medicosList = medicosList.filter(function (item2) {
-      //     let especialidadDB = item2.especialidad.toUpperCase();
-      //     let especialidadRecibida = req.body.especialidad.toUpperCase();
-      //     return especialidadDB.includes(especialidadRecibida);
-      //   })
-      // };
   
       req.session.loggedUser.turnos.push(turnos.medico)
 
-      
+      res.redirect("/reserva")
       
 
 

@@ -1,58 +1,235 @@
-[
+[{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12e4"
+  },
+  "name": "Lucas Rojas",
+  "especialidad": "Pediatra",
+  "disponibilidad_turnos":[
     {
-        "name": "Lucas Rojas",
-        "especialidad": "Pediatra"
+      "fecha" : "2020-06-22",
+      "hora": "11:00",
+      "reservado": ""
     },
     {
-        "name": "Lucas Dominguez",
-        "especialidad": "Otorrino"
-    },
-    {
-        "name": "Fernando Montoya",
-        "especialidad": "Odontólogo"
-    },
-    {
-        "name": "Matías Roschen",
-        "especialidad": "Oftalmólogo"
-    },
-    {
-        "name": "Vicente Chas",
-        "especialidad": "Cirujano"
-    },
-    {
-        "name": "Augusto Calissano",
-        "especialidad": "Pediatra"
-    },
-    {
-        "name": "Federico Vazquez",
-        "especialidad": "Otorrino"
-    },
-    {
-        "name": "Lucas Pizarro",
-        "especialidad": "Cirujano"
-    },
-    {
-        "name": "Aaron Blanco",
-        "especialidad": "Otorrino"
-    },
-    {
-        "name": "Camilo Molina",
-        "especialidad": "Oftalmólogo"
-    },
-    {
-        "name": "Camila Verdura",
-        "especialidad": "Otorrino"
-    },
-    {
-        "name": "Aitor Lopez",
-        "especialidad": "Pediatra"
-    },
-    {
-        "name": "Morena Benedetto",
-        "especialidad": "Oftalmólogo"
-    },
-    {
-        "name": "Mia Modini",
-        "especialidad": "Oftalmólogo"
+      "fecha": "2020-06-23",
+      "hora": "14:00",
+      "reservado": ""
     }
-]
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12e5"
+  },
+  "name": "Lucas Dominguez",
+  "especialidad": "Otorrino",
+  "disponibilidad_turnos":[
+    {
+      "fecha" : "2020-06-22",
+      "hora": "11:00",
+      "reservado": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "hora": "14:00",
+      "reservado": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12e6"
+  },
+  "name": "Fernando Montoya",
+  "especialidad": "Odontólogo",
+  "disponibilidad_turnos":[
+    {
+      "fecha" : "2020-06-22",
+      "hora": "11:00",
+      "reservado": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "hora": "14:00",
+      "reservado": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12e7"
+  },
+  "name": "Matías Roschen",
+  "especialidad": "Oftalmólogo",
+  "disponibilidad_turnos":[
+    {
+      "fecha" : "2020-06-22",
+      "hora": "11:00",
+      "reservado": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "hora": "14:00",
+      "reservado": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12e8"
+  },
+  "name": "Vicente Chas",
+  "especialidad": "Cirujano",
+  "disponibilidad_turnos":[
+    {
+      "fecha" : "2020-06-22",
+      "hora": "11:00",
+      "reservado": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "hora": "14:00",
+      "reservado": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12e9"
+  },
+  "name": "Augusto Calissano",
+  "especialidad": "Pediatra",
+  "disponibilidad_turnos":[
+    {
+      "fecha" : "2020-06-22",
+      "hora": "11:00",
+      "reservado": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "hora": "14:00",
+      "reservado": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12ea"
+  },
+  "name": "Federico Vazquez",
+  "especialidad": "Otorrino",
+  "disponibilidad_turnos":[
+    {
+      "fecha" : "2020-06-22",
+      "hora": "11:00",
+      "reservado": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "hora": "14:00",
+      "reservado": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12eb"
+  },
+  "name": "Lucas Pizarro",
+  "especialidad": "Cirujano",
+  "disponibilidad_turnos":[
+    {
+      "fecha" : "2020-06-22",
+      "hora": "11:00",
+      "reservado": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "hora": "14:00",
+      "reservado": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12ec"
+  },
+  "name": "Aaron Blanco",
+  "especialidad": "Otorrino",
+  "disponibilidad_turnos":[
+    {
+      "fecha" : "2020-06-22",
+      "hora": "11:00",
+      "reservado": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "hora": "14:00",
+      "reservado": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12ed"
+  },
+  "name": "Camilo Molina",
+  "especialidad": "Oftalmólogo",
+  "disponibilidad_turnos":[
+    {
+      "fecha" : "2020-06-22",
+      "hora": "11:00",
+      "reservado": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "hora": "14:00",
+      "reservado": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12ee"
+  },
+  "name": "Camila Verdura",
+  "especialidad": "Otorrino",
+  "disponibilidad_turnos":[
+    {
+      "fecha" : "2020-06-22",
+      "hora": "11:00",
+      "reservado": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "hora": "14:00",
+      "reservado": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12f0"
+  },
+  "name": "Morena Benedetto",
+  "especialidad": "Oftalmólogo",
+  "disponibilidad_turnos":[
+    {
+      "fecha" : "2020-06-22",
+      "hora": "11:00",
+      "reservado": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "hora": "14:00",
+      "reservado": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12f1"
+  },
+  "name": "Mia Modini",
+  "especialidad": "Oftalmólogo",
+  "disponibilidad_turnos":[
+    {
+      "fecha" : "2020-06-22",
+      "hora": "11:00",
+      "reservado": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "hora": "14:00",
+      "reservado": ""
+    }
+  ]
+}]

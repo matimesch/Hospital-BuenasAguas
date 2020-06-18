@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Lucas Rojas",
+        "especialidad": "Pediatra"
+    },
+    {
+        "name": "Lucas Dominguez",
+        "especialidad": "Otorrino"
+    },
+    {
+        "name": "Fernando Montoya",
+        "especialidad": "Odontólogo"
+    },
+    {
+        "name": "Matías Roschen",
+        "especialidad": "Oftalmólogo"
+    },
+    {
+        "name": "Vicente Chas",
+        "especialidad": "Cirujano"
+    },
+    {
+        "name": "Augusto Calissano",
+        "especialidad": "Pediatra"
+    },
+    {
+        "name": "Federico Vazquez",
+        "especialidad": "Otorrino"
+    },
+    {
+        "name": "Lucas Pizarro",
+        "especialidad": "Cirujano"
+    },
+    {
+        "name": "Aaron Blanco",
+        "especialidad": "Otorrino"
+    },
+    {
+        "name": "Camilo Molina",
+        "especialidad": "Oftalmólogo"
+    },
+    {
+        "name": "Camila Verdura",
+        "especialidad": "Otorrino"
+    },
+    {
+        "name": "Aitor Lopez",
+        "especialidad": "Pediatra"
+    },
+    {
+        "name": "Morena Benedetto",
+        "especialidad": "Oftalmólogo"
+    },
+    {
+        "name": "Mia Modini",
+        "especialidad": "Oftalmólogo"
+    }
+]

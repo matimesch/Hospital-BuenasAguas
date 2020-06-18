@@ -1,16 +1,270 @@
 [
-    {
-        "id" : 1,
-        "name" : "Matías",
-        "surname" : "Mesch",
-        "email" : "matimesch@gmail.com",
-        "password" : "contraseña"
+  {
+    "_id": {
+      "$oid": "5edfa1d2186ee9d328ff06d9"
     },
-    {
-        "id" : 2,
-        "name" : "Miguel",
-        "surname" : "Mesch",
-        "email" : "miguemesch@gmail.com",
-        "password" : "contrasenia"
-    }
+    "name": "Matías",
+    "surname": "Mesch",
+    "email": "matimesch@gmail.com",
+    "password": "hola",
+    "profile": "admin",
+    "medicamentos": [
+      {
+        "_id": "5ee82ff3fb892a198474387a",
+        "medicamento": "Amoxidal",
+        "tipo": "suspensión oral",
+        "via": "oral"
+      }
+    ],
+    "medicos": [
+      {
+        "_id": "5ee9271248b5a352a04e12eb",
+        "name": "Lucas Pizarro",
+        "especialidad": "Cirujano"
+      }
+    ],
+    "turnos":[]
+  },
+  {
+    "_id": {
+      "$oid": "5edfa1d2186ee9d328ff06da"
+    },
+    "name": "Miguel",
+    "surname": "Mesch",
+    "email": "miguemesch@gmail.com",
+    "password": "ola",
+    "profile": "admin",
+    "medicamentos": [],
+    "medicos": [],
+    "turnos":[]
+  },
+  {
+    "_id": {
+      "$oid": "5ee0d299fb57b907c1684e8a"
+    },
+    "name": "Jose",
+    "surname": "Rodriguez",
+    "email": "jose@gmail.com",
+    "password": "asd",
+    "profile": "user",
+    "medicamentos": [
+      {
+        "_id": "5ee82ff3fb892a1984743879",
+        "medicamento": "Ibupirac",
+        "tipo": "comprimido",
+        "via": "oral"
+      },
+      {
+        "_id": "5ee82ff3fb892a198474387a",
+        "medicamento": "Amoxidal",
+        "tipo": "suspensión oral",
+        "via": "oral"
+      },
+      {
+        "_id": "5ee82ff3fb892a198474388b",
+        "medicamento": "JUXTAPID",
+        "tipo": "cápsula dura",
+        "via": "oral"
+      }
+    ],
+    "medicos": [
+      {
+        "_id": "5ee9271248b5a352a04e12e4",
+        "name": "Lucas Rojas",
+        "especialidad": "Pediatra"
+      }
+    ],
+    "turnos":[]
+  },
+  {
+    "_id": {
+      "$oid": "5ee227c53e99404ac8633b13"
+    },
+    "name": "Juan",
+    "surname": "Lopez",
+    "email": "juan@gmail.com",
+    "password": "asd",
+    "profile": "user",
+    "medicamentos": [],
+    "medicos": [],
+    "turnos":[]
+  },
+  {
+    "_id": {
+      "$oid": "5ee27f2c6f14b1829ce19692"
+    },
+    "name": "Jotaro",
+    "surname": "Kujo",
+    "email": "dolphin123@gmail.com.jp",
+    "profile": "user",
+    "password": "jolyne",
+    "medicamentos": [],
+    "medicos": [],
+    "turnos":[]
+  },
+  {
+    "_id": {
+      "$oid": "5ee2d257aac1d2c698510ae4"
+    },
+    "name": "Augusto",
+    "surname": "Calissano",
+    "email": "augusto.cali@hotmail.com",
+    "password": "augusto",
+    "profile": "user",
+    "medicamentos": [],
+    "medicos": [],
+    "turnos":[]
+  },
+  {
+    "_id": {
+      "$oid": "5ee4479b9d2bab76c0978773"
+    },
+    "name": "Fernando",
+    "surname": "Diaz",
+    "email": "ferdiaz@gmail.com",
+    "password": "asd",
+    "profile": "user",
+    "medicamentos": [],
+    "medicos": [],
+    "turnos":[]
+  },
+  {
+    "_id": {
+      "$oid": "5ee47142ef39c0c8143cf714"
+    },
+    "name": "Lucas Andrés",
+    "surname": "Pizarro",
+    "email": "lpizarro@gmail.com",
+    "password": "pelu",
+    "profile": "user",
+    "medicamentos": [],
+    "medicos": [],
+    "turnos":[]
+  },
+  {
+    "_id": {
+      "$oid": "5ee51d19f9bf40fe18fb3b5f"
+    },
+    "name": "Juana",
+    "surname": "Rodriguez",
+    "email": "jrodriguez@gmail.com",
+    "password": "asd",
+    "profile": "user",
+    "medicamentos": [],
+    "medicos": [],
+    "turnos":[]
+  },
+  {
+    "_id": {
+      "$oid": "5ee5fd559401a03b58f17ff6"
+    },
+    "name": "HolaMati",
+    "surname": "Mesch",
+    "email": "estanbuenostus@handlebars.com",
+    "password": "seguiasi",
+    "profile": "user",
+    "medicamentos": [],
+    "medicos": [],
+    "turnos":[]
+  },
+  {
+    "_id": {
+      "$oid": "5ee6282980a4a51df5e4060e"
+    },
+    "name": "Jonan",
+    "surname": "Switz",
+    "email": "jonan@gmail.com",
+    "password": "jnd",
+    "profile": "user",
+    "medicamentos": [],
+    "medicos": [],
+    "turnos":[]
+  },
+  {
+    "_id": {
+      "$oid": "5ee65dc54db3a5638c510ec1"
+    },
+    "name": "David",
+    "surname": "Scherecnidsf",
+    "email": "deivi@gmail.com",
+    "password": "mf",
+    "profile": "user",
+    "medicamentos": [],
+    "medicos": [],
+    "turnos":[]
+  },
+  {
+    "_id": {
+      "$oid": "5ee7da1af29a3cacac87870e"
+    },
+    "name": "Camilo",
+    "surname": "Di Napoli",
+    "email": "colo@gmail.com",
+    "password": "colo",
+    "profile": "user",
+    "medicamentos": [],
+    "medicos": [],
+    "turnos":[]
+  },
+  {
+    "_id": {
+      "$oid": "5ee7e1d4f269ae7c34fd7a55"
+    },
+    "name": "Roberto",
+    "surname": "Sánchez",
+    "email": "sandrodeamerica@gmail.com",
+    "password": "sandro",
+    "profile": "user",
+    "medicamentos": [],
+    "medicos": [],
+    "turnos":[]
+  },
+  {
+    "_id": {
+      "$oid": "5eea810461d9acfad0e3a66c"
+    },
+    "name": "Federico",
+    "surname": "Vazquez",
+    "email": "fedevb@gmail.com",
+    "password": "fede",
+    "profile": "user",
+    "medicamentos": [
+      {
+        "_id": "5ee82ff3fb892a1984743879",
+        "medicamento": "Ibupirac",
+        "tipo": "comprimido",
+        "via": "oral"
+      },
+      {
+        "_id": "5ee82ff3fb892a198474387b",
+        "medicamento": "AmoxidalDuo",
+        "tipo": "suspensión oral",
+        "via": "oral"
+      },
+      {
+        "_id": "5ee82ff3fb892a198474387c",
+        "medicamento": "Penoral",
+        "tipo": "comprimido",
+        "via": "oral"
+      }
+    ],
+    "medicos": [
+      {
+        "_id": "5ee9271248b5a352a04e12e6",
+        "name": "Fernando Montoya",
+        "especialidad": "Odontólogo"
+      },
+      {
+        "_id": "5ee9271248b5a352a04e12e5",
+        "name": "Lucas Dominguez",
+        "especialidad": "Otorrino"
+      },
+      {
+        "_id": "5ee9271248b5a352a04e12eb",
+        "name": "Lucas Pizarro",
+        "especialidad": "Cirujano"
+      }
+    ],
+    "turnos":[]
+  }
 ]

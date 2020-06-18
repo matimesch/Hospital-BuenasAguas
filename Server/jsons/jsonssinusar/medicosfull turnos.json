@@ -1,719 +1,182 @@
 [{
   "_id": {
-    "$oid": "5ee9271248b5a352a04e12e4"
-  },
-  "name": "Lucas Rojas",
-  "especialidad": "Pediatra",
-  "disponibilidad_turnos":[
-    {
-      "fecha" : "2020-06-22",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "16:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-24",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-25",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-26",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "16:00",
-      "reservado_por": ""
-    }
-  ]
-},{
-  "_id": {
-    "$oid": "5ee9271248b5a352a04e12e5"
-  },
-  "name": "Lucas Dominguez",
-  "especialidad": "Otorrino",
-  "disponibilidad_turnos":[
-    {
-      "fecha" : "2020-06-22",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "16:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-24",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-25",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-26",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "16:00",
-      "reservado_por": ""
-    }
-  ]
-},{
-  "_id": {
     "$oid": "5ee9271248b5a352a04e12e6"
   },
   "name": "Fernando Montoya",
   "especialidad": "Odontólogo",
-  "disponibilidad_turnos":[
+  "disponibilidad_turnos": [
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "16:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-24",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-25",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-26",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "16:00",
-      "reservado_por": ""
-    }
-  ]
-},{
-  "_id": {
-    "$oid": "5ee9271248b5a352a04e12e7"
-  },
-  "name": "Matías Roschen",
-  "especialidad": "Oftalmólogo",
-  "disponibilidad_turnos":[
-    {
-      "fecha" : "2020-06-22",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-23",
       "horario": "16:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-24",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-24",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-24",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-24",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-24",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-24",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-24",
       "horario": "16:00",
       "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-24",
+    },
+    {
+      "fecha": "2020-06-25",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-25",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-25",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-25",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-25",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-25",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-25",
       "horario": "16:00",
       "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-25",
+    },
+    {
+      "fecha": "2020-06-26",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-26",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-26",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-26",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-26",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-26",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-26",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
+      "fecha": "2020-06-26",
       "horario": "16:00",
       "reservado_por": ""
     }
@@ -724,1436 +187,362 @@
   },
   "name": "Vicente Chas",
   "especialidad": "Cirujano",
-  "disponibilidad_turnos":[
+  "disponibilidad_turnos": [
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "16:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "16:00",
       "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-24",
+    },
+    {
+      "fecha": "2020-06-24",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-24",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-24",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-24",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-24",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-24",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-24",
       "horario": "16:00",
       "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-25",
+    },
+    {
+      "fecha": "2020-06-25",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-25",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-25",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-25",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-25",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-25",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-25",
       "horario": "16:00",
       "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-26",
+    },
+    {
+      "fecha": "2020-06-26",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-26",
+      "fecha": "2020-06-26",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-26",
+      "fecha": "2020-06-26",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-26",
+      "fecha": "2020-06-26",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-26",
+      "fecha": "2020-06-26",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-26",
+      "fecha": "2020-06-26",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-26",
+      "fecha": "2020-06-26",
       "horario": "16:00",
       "reservado_por": ""
     }
   ]
 },{
   "_id": {
-    "$oid": "5ee9271248b5a352a04e12e9"
+    "$oid": "5ee9271248b5a352a04e12e4"
   },
-  "name": "Augusto Calissano",
+  "name": "Lucas Rojas",
   "especialidad": "Pediatra",
-  "disponibilidad_turnos":[
+  "disponibilidad_turnos": [
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "16:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-24",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-25",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-26",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "16:00",
-      "reservado_por": ""
-    }
-  ]
-},{
-  "_id": {
-    "$oid": "5ee9271248b5a352a04e12ea"
-  },
-  "name": "Federico Vazquez",
-  "especialidad": "Otorrino",
-  "disponibilidad_turnos":[
-    {
-      "fecha" : "2020-06-22",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-23",
       "horario": "16:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-24",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-24",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-24",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-24",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-24",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-24",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-24",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-25",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-26",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "16:00",
-      "reservado_por": ""
-    }
-  ]
-},{
-  "_id": {
-    "$oid": "5ee9271248b5a352a04e12eb"
-  },
-  "name": "Lucas Pizarro",
-  "especialidad": "Cirujano",
-  "disponibilidad_turnos":[
-    {
-      "fecha" : "2020-06-22",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-24",
       "horario": "16:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-25",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-25",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-25",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-25",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-25",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-25",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-24",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-25",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-26",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "16:00",
-      "reservado_por": ""
-    }
-  ]
-},{
-  "_id": {
-    "$oid": "5ee9271248b5a352a04e12ec"
-  },
-  "name": "Aaron Blanco",
-  "especialidad": "Otorrino",
-  "disponibilidad_turnos":[
-    {
-      "fecha" : "2020-06-22",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-25",
       "horario": "16:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-26",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-26",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-26",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-26",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-26",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-26",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-24",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-25",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-26",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "16:00",
-      "reservado_por": ""
-    }
-  ]
-},{
-  "_id": {
-    "$oid": "5ee9271248b5a352a04e12ed"
-  },
-  "name": "Camilo Molina",
-  "especialidad": "Oftalmólogo",
-  "disponibilidad_turnos":[
-    {
-      "fecha" : "2020-06-22",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "16:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-24",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-25",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-26",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "16:00",
-      "reservado_por": ""
-    }
-  ]
-},{
-  "_id": {
-    "$oid": "5ee9271248b5a352a04e12ee"
-  },
-  "name": "Camila Verdura",
-  "especialidad": "Otorrino",
-  "disponibilidad_turnos":[
-    {
-      "fecha" : "2020-06-22",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "16:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-24",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-25",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-26",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "16:00",
-      "reservado_por": ""
-    }
-  ]
-},{
-  "_id": {
-    "$oid": "5ee9271248b5a352a04e12f0"
-  },
-  "name": "Morena Benedetto",
-  "especialidad": "Oftalmólogo",
-  "disponibilidad_turnos":[
-    {
-      "fecha" : "2020-06-22",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-22",
-      "horario": "16:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-23",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-24",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-24",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-25",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-25",
-      "horario": "16:00",
-      "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-26",
-      "horario": "11:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "12:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "14:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:00",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
-      "horario": "15:30",
-      "reservado_por": ""
-    },
-    {
-      "fecha" : "2020-06-26",
+      "fecha": "2020-06-26",
       "horario": "16:00",
       "reservado_por": ""
     }
@@ -2164,176 +553,1826 @@
   },
   "name": "Mia Modini",
   "especialidad": "Oftalmólogo",
-  "disponibilidad_turnos":[
+  "disponibilidad_turnos": [
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-22",
+      "fecha": "2020-06-22",
       "horario": "16:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-23",
+      "fecha": "2020-06-23",
       "horario": "16:00",
       "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-24",
+    },
+    {
+      "fecha": "2020-06-24",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-24",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-24",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-24",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-24",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-24",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-24",
+      "fecha": "2020-06-24",
       "horario": "16:00",
       "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-25",
+    },
+    {
+      "fecha": "2020-06-25",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-25",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-25",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-25",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-25",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-25",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-25",
+      "fecha": "2020-06-25",
       "horario": "16:00",
       "reservado_por": ""
-    },    {
-      "fecha" : "2020-06-26",
+    },
+    {
+      "fecha": "2020-06-26",
       "horario": "11:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-26",
+      "fecha": "2020-06-26",
       "horario": "12:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-26",
+      "fecha": "2020-06-26",
       "horario": "14:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-26",
+      "fecha": "2020-06-26",
       "horario": "14:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-26",
+      "fecha": "2020-06-26",
       "horario": "15:00",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-26",
+      "fecha": "2020-06-26",
       "horario": "15:30",
       "reservado_por": ""
     },
     {
-      "fecha" : "2020-06-26",
+      "fecha": "2020-06-26",
+      "horario": "16:00",
+      "reservado_por": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12e5"
+  },
+  "name": "Lucas Dominguez",
+  "especialidad": "Otorrino",
+  "disponibilidad_turnos": [
+    {
+      "fecha": "2020-06-22",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "16:00",
+      "reservado_por": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12ec"
+  },
+  "name": "Aaron Blanco",
+  "especialidad": "Otorrino",
+  "disponibilidad_turnos": [
+    {
+      "fecha": "2020-06-22",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "16:00",
+      "reservado_por": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12ee"
+  },
+  "name": "Camila Verdura",
+  "especialidad": "Otorrino",
+  "disponibilidad_turnos": [
+    {
+      "fecha": "2020-06-22",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "16:00",
+      "reservado_por": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12f0"
+  },
+  "name": "Morena Benedetto",
+  "especialidad": "Oftalmólogo",
+  "disponibilidad_turnos": [
+    {
+      "fecha": "2020-06-22",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "16:00",
+      "reservado_por": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12e7"
+  },
+  "name": "Matías Roschen",
+  "especialidad": "Oftalmólogo",
+  "disponibilidad_turnos": [
+    {
+      "fecha": "2020-06-22",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "16:00",
+      "reservado_por": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12ed"
+  },
+  "name": "Camilo Molina",
+  "especialidad": "Oftalmólogo",
+  "disponibilidad_turnos": [
+    {
+      "fecha": "2020-06-22",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "16:00",
+      "reservado_por": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12e9"
+  },
+  "name": "Augusto Calissano",
+  "especialidad": "Pediatra",
+  "disponibilidad_turnos": [
+    {
+      "fecha": "2020-06-22",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "16:00",
+      "reservado_por": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12ea"
+  },
+  "name": "Federico Vazquez",
+  "especialidad": "Otorrino",
+  "disponibilidad_turnos": [
+    {
+      "fecha": "2020-06-22",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "16:00",
+      "reservado_por": ""
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ee9271248b5a352a04e12eb"
+  },
+  "name": "Pelu Pizarro",
+  "especialidad": "Cirujano",
+  "disponibilidad_turnos": [
+    {
+      "fecha": "2020-06-22",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-22",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-23",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-24",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-25",
+      "horario": "16:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "11:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "12:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "14:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:00",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
+      "horario": "15:30",
+      "reservado_por": ""
+    },
+    {
+      "fecha": "2020-06-26",
       "horario": "16:00",
       "reservado_por": ""
     }
