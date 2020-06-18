@@ -6,6 +6,12 @@ que están guardados en una base de datos y también eliminarlos!
 También permite sacar "turnos". 
 </pre>
 
+## Qué usa?
+
+<pre>
+Utiliza NodeJS, Express, Handlebars y MaterializeCSS.
+</pre>
+
 
 ## Instalación
 

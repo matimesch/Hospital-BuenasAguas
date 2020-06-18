@@ -306,7 +306,6 @@ app.get("/medicines", (req, res) => {
 
 });
 
-
 app.post("/medicamentoFav", (req, res) => {
   if (req.session.loggedUser) {
 
@@ -329,6 +328,26 @@ app.post("/medicamentoFav", (req, res) => {
 
 
   }
+});
+
+app.get("/medicamentoAutocomplete", (req, res) => {
+
+
+  functions.getMedicamentos(medicamentoList => {
+    if (req.query.filtro) {
+      medicamentoList = medicamentoList.filter(function (item) {
+        let nombreDataBase = item.medicamento.toUpperCase();
+        let nombreRecibido = req.query.filtro.toUpperCase();
+        return nombreDataBase.includes(nombreRecibido);
+      })
+    };
+
+    res.json(medicamentoList);
+  });
+
+
+
+
 });
 
 app.post("/removeMedicamento", (req, res) => {
@@ -417,7 +436,6 @@ app.post("/medicoFav", (req, res) => {
   }
 });
 
-/////////////
 app.get("/medicosAutocomplete", (req, res) => {
 
 

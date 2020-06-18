@@ -4,12 +4,38 @@
 <div id="content" class="container">
   <form id="medicamentosForm" class="card-panel">
     <h4><i class="material-icons" style="margin-right: 10px;">healing</i>Medicamentos</h4>
-    <input type="text" id="medicamento" placeholder="Medicamento" autocomplete="off">
+    <input type="text" id="medicamento" placeholder="Medicamento" class="autocomplete" autocomplete="off">
     <button class="btn" type="submit">Enviar</button>
   </form>
   <div id="listaMedicamentos"></div>
 
 </div>
+
+<script>
+
+    $(document).ready(function () {
+        //Autocomplete
+        $(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/medicamentoAutocomplete?fields=medicamento',
+                success: function (response) {
+                    var nameArray = response;
+                    var data = {};
+                    for (var i = 0; i < nameArray.length; i++) {
+                        //console.log(nameArray[i].name);
+                        data[nameArray[i].medicamento] = nameArray[i].flag; //nameArray[i].flag or null
+                    }
+                    $('input.autocomplete').autocomplete({
+                        data: data,
+                        limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
+                    });
+                }
+            });
+        });
+    });
+</script>
+
 
 <script>
   const medicamentoInput = document.getElementById("medicamento");
