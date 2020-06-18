@@ -1,6 +1,6 @@
 <div id="content" class="container">
     <div id="medicamentosFav" class="card-panel">
-
+        <h4>Paciente : {{user.name}} {{user.surname}}</h3>
         <table class="responsive-table highlight">
             <thead>
                 <tr>
@@ -12,7 +12,9 @@
             </thead>
 
             <tbody>
+                {{#if medicoDisponible}}
                 {{#each user.turnos}}
+                <form id="turnosForm" class="card-panel" action="/sacarTurnoParte1" method="POST">
                 <tr id="tableRow">
                     <td id="medicoName">{{this.name}}</td>
                     <td id="medicoEspecialidad">{{this.especialidad}}</td>
@@ -20,8 +22,14 @@
                     <td id="hora"> </td>
                     {{/each}}
                 </tr>
+                </form>
+                {{/if}}
 
             </tbody>
         </table>
     </div>
 </div>
+
+{{#if turnoMessage}}<div class="input-field col s12">
+    <p class="message-{{turnoMessage.class}}">{{turnoMessage.text}}</p>
+</div>{{/if}}

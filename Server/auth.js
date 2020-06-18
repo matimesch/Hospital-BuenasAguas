@@ -38,7 +38,8 @@ const login = (email, password, cbResult) => {
                                 surname: foundUser.surname,
                                 email: foundUser.email,
                                 medicamentos: foundUser.medicamentos,
-                                medicos: foundUser.medicos
+                                medicos: foundUser.medicos,
+                                turnos: foundUser.turnos
                             }
                         });
                     }

@@ -143,13 +143,6 @@ app.get("/mismedicos", (req, res) => {
   }
 });
 
-app.get("/reserva", (req, res) => {
-  if (req.session.loggedUser) {
-    res.render("reserva", { layout: "main2", user: req.session.loggedUser });
-  } else {
-    res.redirect("/login");
-  }
-});
 
 // POSTS
 
@@ -463,9 +456,10 @@ app.post("/removeMedico", (req, res) => {
 
 ////////////////////// TURNOS
 
-app.post("/sacarTurno", (req, res) => {
+app.post("/sacarTurnoParte1", (req, res) => {
   console.log("body", req.body)
   console.log("name", req.body.name);
+  console.log("session", req.session.loggedUser);
   // console.log("esp", req.body.especialidad);
 
   if (req.session.loggedUser) {
@@ -477,10 +471,15 @@ app.post("/sacarTurno", (req, res) => {
           return nombreDataBase.includes(nombreRecibido);
         })
       }
-  
-      req.session.loggedUser.turnos.push(turnos.medico)
+      
+      
 
-      res.redirect("/reserva")
+        if (req.session.loggedUser) {
+          res.render("reserva", { layout: "main2", user: req.session.loggedUser});
+        } else {
+          res.redirect("/login");
+        }
+      
       
 
 
@@ -490,6 +489,39 @@ app.post("/sacarTurno", (req, res) => {
 
 })
 
+
+app.post("/sacarTurnoParte2", (req, res) => {
+  if (req.session.loggedUser) {
+
+    functions.saveTurno(turnoObj, req.session.loggedUser.email, turnoAgregado => {
+      if (turnoAgregado) {
+
+        if (turnoAgregado.agregado) {
+          req.session.loggedUser.turnos.push(turnoAgregado.turnoObj)
+
+        }
+
+        req.session.turnoMessage = {
+          class: "success",
+          text: "Turno agregado satisfactoriamente"
+        };
+
+        res.render("turnos", {layout: "main2", user: req.session.loggedUser});
+
+      } else {
+        req.session.turnoMessage = {
+          class: "failure",
+          text: "El turno ya está ocupado"
+        };
+
+        res.render("turnos", {layout: "main2", user: req.session.loggedUser});
+        
+      }
+    });
+
+
+  }
+});
 
 
 app.listen(HTTP_PORT, () => {
