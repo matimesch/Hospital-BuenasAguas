@@ -323,17 +323,21 @@ app.post("/removeMedicamento", (req, res) => {
   if (req.session.loggedUser) {
     console.log("body", req.body);
 
-    functions.removeMedicamento(req.body, req.session.loggedUser.email, medicamentoBorrado => {
+    functions.removeMedicamento(req.body.medicamento, req.session.loggedUser.email, medicamentoBorrado => {
       if (medicamentoBorrado) {
         console.log("hola")
         console.log("med borrado", medicamentoBorrado)
-        console.log("session", req.session.loggedUser.email)
+
+        console.log("session",req.session.loggedUser)
+
+        req.session.loggedUser.medicamentos = req.session.loggedUser.medicamentos.filter(item =>{
+          console.log("medicamento en session", item.medicamento)
+          console.log("reqbody", req.body.medicamento)
+          return item.medicamento != req.body.medicamento
+        });
 
 
-        // req.session.loggedUser.medicamentos.pop(medicamentoBorrado);
-
-
-        res.sendStatus(200);
+        res.status(200).send("va bien");
 
       } else {
         res.sendStatus(500);
@@ -445,7 +449,7 @@ app.post("/sacarTurno", (req, res) => {
         let fechaRecibida = req.body.fecha
         let medicoFecha = fechaDB == fechaRecibida;
 
-        let horaDB = item.hora
+        let horaDB = item.horario
         let horaRecibida = req.body.hora
         let medicohora = horaDB == horaRecibida;
         

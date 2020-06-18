@@ -43,10 +43,8 @@
         const ajaxRequest = new XMLHttpRequest();
         ajaxRequest.addEventListener("load", function () {
             if (this.status == 200) {
-                const medicamentoList = JSON.parse(this.responseText);
-                console.log(medicamentoList)
-              //  tableRow.innerHTML = "";
-             // removeData(medicamentoList);
+                console.log("hola", this.status)
+               event.target.parentNode.parentNode.parentNode.remove()
             };
         });
         ajaxRequest.open("POST", "/removeMedicamento");
@@ -59,27 +57,5 @@
 
 
 
-    function removeData(medicamentosList) {
-        for (let i = 0; i < medicamentosList.length; i++) {
-
-            deleteMedicamentoBtn.addEventListener("click", (event) => {
-                const ajaxRequest = new XMLHttpRequest();
-                ajaxRequest.addEventListener("load", function () {
-                    if (this.status == 200) {
-                        console.log("funciona!")
-                        tableRow.innerHTML = "";
-                    };
-                    if (this.status == 500) {
-                        console.log("error")
-                    };
-                });
-                ajaxRequest.open("POST", `/removeMedicamentoAJAX`);
-                ajaxRequest.setRequestHeader("Content-Type", "application/json");
-                ajaxRequest.send(JSON.stringify(medicamentoName));
-            });
-
-        }
-
-    }
 
 </script>

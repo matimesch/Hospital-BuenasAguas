@@ -92,11 +92,7 @@ const removeMedicamento = (medicamentoFilter, email, cbResult) => {
             const findQuery = { email: email };
 
             const DeleteMedicamento = {
-                $pull: {
-                    medicamentos: {$elemMatch:{
-                        medicamento : medicamentoFilter
-                    }} 
-                }
+                $pull: { medicamentos: { medicamento : medicamentoFilter } }
             };
 
             // Eliminamos el user en la DB
