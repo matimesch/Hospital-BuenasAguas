@@ -1,6 +1,6 @@
 <div id="content" class="container">
     <div id="medicamentosFav" class="card-panel">
-        <h3 class="col s12">Medicamentos Favoritos</h3>
+        <h3 class="col s12">Turnos</h3>
         <table class="responsive-table highlight">
             <thead>
                 <tr>
@@ -19,7 +19,7 @@
                         <td id="medicamentoTipo">{{this.especialidad}}</td>
                         <td id="medicamentoVia">{{this.fecha}}</td>
                         <td id="medicamentoVia">{{this.hora}}</td>
-                        <td><button id="deleteMedicamentoBtn" class="btn-floating btn waves-effect waves-light red" onclick="deleteMedicamento(this, '{{this._id}}')">
+                        <td><button id="deleteMedicamentoBtn" class="btn-floating btn waves-effect waves-light red">
                                 <i class="material-icons">delete</i>Eliminar</button>
                         </td>
                     {{/each}}
