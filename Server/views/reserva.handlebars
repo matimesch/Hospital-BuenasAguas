@@ -8,22 +8,30 @@
                     <th>Especialidad</th>
                     <th>Fecha</th>
                     <th>Hora</th>
+                    <th>anadir</th>
                 </tr>
             </thead>
 
             <tbody>
-                {{#if medicoDisponible}}
-                {{#each user.turnos}}
-                <form id="turnosForm" class="card-panel" action="/sacarTurnoParte1" method="POST">
+                {{#each medicosList}}
+                
+                {{#each this.disponibilidad_turnos}}
+                {{#if this.reservado}}
+                {{else}}
+                <form id="turnosForm" class="card-panel" action="/sacarTurnoParte2" method="POST">
                 <tr id="tableRow">
-                    <td id="medicoName">{{this.name}}</td>
-                    <td id="medicoEspecialidad">{{this.especialidad}}</td>
-                    <td id="fecha"> </td>
-                    <td id="hora"> </td>
-                    {{/each}}
+                    <td><input type="text" name="name" hidden value="{{../this.name}}">{{../this.name}}</td>
+                    <td><input type="text" name="especialidad" hidden value="{{../this.especialidad}}">{{../this.especialidad}}</td>
+                    <td><input type="text" name="fecha" hidden value="{{this.fecha}}">{{this.fecha}}</td>
+                    <td><input type="text" name="hora" hidden value="{{this.hora}}">{{this.hora}}</td>
+                    <td><button type="submit" class="btn-floating btn waves-effect waves-light green">
+                                <i class="material-icons">add</i>Agregar</button> </td>
+                    
                 </tr>
                 </form>
-                {{/if}}
+                {{/if}} 
+                {{/each}}    
+                {{/each}}
 
             </tbody>
         </table>

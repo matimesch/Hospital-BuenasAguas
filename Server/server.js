@@ -43,6 +43,11 @@ app.use(expSession({
 
 //-----------------------------------------------------------
 
+app.use('/', (req,res,next) => { 
+  console.log("body", req.body);
+  next();
+  });
+
 // GETS fuera de session
 
 app.get("/", (req, res) => {
@@ -143,6 +148,13 @@ app.get("/mismedicos", (req, res) => {
   }
 });
 
+app.get("/misturnos", (req, res) => {
+  if (req.session.loggedUser) {
+    res.render("misturnos", { layout: "main2", user: req.session.loggedUser });
+  } else {
+    res.redirect("/login");
+  }
+});
 
 // POSTS
 
@@ -472,10 +484,10 @@ app.post("/sacarTurnoParte1", (req, res) => {
         })
       }
       
-      
+      console.log("medico",medicosList)
 
         if (req.session.loggedUser) {
-          res.render("reserva", { layout: "main2", user: req.session.loggedUser});
+          res.render("reserva", { layout: "main2", user: req.session.loggedUser, medicosList: medicosList});
         } else {
           res.redirect("/login");
         }
@@ -493,24 +505,27 @@ app.post("/sacarTurnoParte1", (req, res) => {
 app.post("/sacarTurnoParte2", (req, res) => {
   if (req.session.loggedUser) {
 
-    functions.saveTurno(turnoObj, req.session.loggedUser.email, turnoAgregado => {
-      if (turnoAgregado) {
+    functions.saveTurno(req.body, req.session.loggedUser.email, turnoAgregado => {
+      console.log("test", req.body);
 
+      if (turnoAgregado) {
         if (turnoAgregado.agregado) {
           req.session.loggedUser.turnos.push(turnoAgregado.turnoObj)
-
+          // functions.saveReservado(req.body.name, req.body.fecha, req.body.hora, result =>{
+          //   result = req.session.loggedUser.email
+          // })
         }
 
-        req.session.turnoMessage = {
-          class: "success",
+        const turnoMessage = {
+          class: "green-text accent-3",
           text: "Turno agregado satisfactoriamente"
         };
 
-        res.render("turnos", {layout: "main2", user: req.session.loggedUser});
+        res.render("turnos", {layout: "main2", user: req.session.loggedUser, turnoMessage});
 
       } else {
-        req.session.turnoMessage = {
-          class: "failure",
+        const turnoMessage = {
+          class: "red-text accent-3",
           text: "El turno ya está ocupado"
         };
 

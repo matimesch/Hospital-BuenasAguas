@@ -64,7 +64,7 @@ const saveMedicamento = (medicamentoObj, email, cbResult) => {
                     cbResult({
                         agregado: result.modifiedCount > 0 ? true : false,
                         medicamentoObj: medicamentoObj
-                      });
+                    });
                 }
 
                 client.close();
@@ -92,7 +92,7 @@ const removeMedicamento = (medicamentoFilter, email, cbResult) => {
             const findQuery = { email: email };
 
             const DeleteMedicamento = {
-                $pull: { medicamentos: { medicamento : medicamentoFilter } }
+                $pull: { medicamentos: { medicamento: medicamentoFilter } }
             };
 
             // Eliminamos el user en la DB
@@ -104,10 +104,11 @@ const removeMedicamento = (medicamentoFilter, email, cbResult) => {
                     console.log(err)
                     cbResult(false);
                 } else {
-                    console.log(result.result.nModified, result.modifiedCount,result.matchedCount)
+                    console.log(result.result.nModified, result.modifiedCount, result.matchedCount)
                     cbResult(
-                        {medicamentoObj: medicamentoFilter
-                      });
+                        {
+                            medicamentoObj: medicamentoFilter
+                        });
                 }
 
                 client.close();
@@ -183,7 +184,7 @@ const saveMedico = (medicoObj, email, cbResult) => {
                     cbResult({
                         agregado: result.modifiedCount > 0 ? true : false,
                         medicoObj: medicoObj
-                      });
+                    });
                 }
 
                 client.close();
@@ -209,7 +210,7 @@ const removeMedico = (id, email, cbResult) => {
             const findQuery = { email: email };
 
             const deleteMedico = {
-                $pull: { medicos: { _id : id } }
+                $pull: { medicos: { _id: id } }
             };
 
             // Eliminamos el user en la DB
@@ -221,10 +222,11 @@ const removeMedico = (id, email, cbResult) => {
                     console.log(err)
                     cbResult(false);
                 } else {
-                    console.log(result.result.nModified, result.modifiedCount,result.matchedCount)
+                    console.log(result.result.nModified, result.modifiedCount, result.matchedCount)
                     cbResult(
-                        {medicoObj: id.toString()
-                      });
+                        {
+                            medicoObj: id.toString()
+                        });
                 }
 
                 client.close();
@@ -272,7 +274,54 @@ const saveTurno = (turnoObj, email, cbResult) => {
                     cbResult({
                         agregado: result.modifiedCount > 0 ? true : false,
                         turnoObj: turnoObj
-                      });
+                    });
+                }
+
+                client.close();
+            });
+
+        }
+
+    });
+}
+
+
+const saveReservado = (name, fecha, hora, cbResult) => {
+    mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
+
+        if (err) {
+
+            cbResult(false);
+
+        } else {
+
+            const hospitaldb = client.db("hospitaldb");
+            const usersCollection = hospitaldb.collection("medicos");
+
+            const findQuery = {
+                name: name, disponibilidad_turnos: {
+                    $elemMatch: { fecha: fecha, hora: hora }
+                }
+            };
+
+            const newReserva = {
+                disponibilidad_turnos: {
+                    $elemMatch: {reservado}
+                }
+            }
+
+            // Insertamos el user en la DB
+
+
+            usersCollection.updateOne(findQuery, newReserva, (err, result) => {
+
+                if (err) {
+                    console.log(err)
+                    cbResult(false);
+                } else {
+                    cbResult(
+                        console.log(result)
+                    );
                 }
 
                 client.close();
@@ -292,5 +341,6 @@ module.exports = {
     getMedicos,
     saveMedico,
     removeMedico,
-    saveTurno
+    saveTurno,
+    saveReservado
 }
