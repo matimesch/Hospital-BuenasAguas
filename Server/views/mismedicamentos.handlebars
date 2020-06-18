@@ -39,7 +39,7 @@
     const medicamentoVia = document.getElementById("medicamentoVia");
     const misMedicamentosForm = document.getElementById("misMedicamentosForm");
 
-    function deleteMedicamento(medicamento,tipo,via) {
+    function deleteMedicamento(medicamento) {
         const ajaxRequest = new XMLHttpRequest();
         ajaxRequest.addEventListener("load", function () {
             if (this.status == 200) {
@@ -51,11 +51,5 @@
         ajaxRequest.setRequestHeader("Content-Type", "application/json");
         ajaxRequest.send(JSON.stringify({medicamento}));
     }
-
-
-
-
-
-
 
 </script>

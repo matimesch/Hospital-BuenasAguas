@@ -194,6 +194,51 @@ const saveMedico = (medicoObj, email, cbResult) => {
     });
 }
 
+const removeMedico = (medicoFilter, email, cbResult) => {
+    mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
+
+        if (err) {
+
+            cbResult(false);
+
+        } else {
+
+            const hospitaldb = client.db("hospitaldb");
+            const usersCollection = hospitaldb.collection("persons");
+
+            const findQuery = { email: email };
+
+            const DeleteMedicamento = {
+                $pull: { medicos: { name : medicoFilter } }
+            };
+
+            // Eliminamos el user en la DB
+
+
+            usersCollection.updateOne(findQuery, DeleteMedicamento, (err, result) => {
+
+                if (err) {
+                    console.log(err)
+                    cbResult(false);
+                } else {
+                    console.log(result.result.nModified, result.modifiedCount,result.matchedCount)
+                    cbResult(
+                        {medicoObj: medicoFilter
+                      });
+                }
+
+                client.close();
+            });
+
+        }
+
+    });
+}
+
+
+
+
+////////////////////////
 
 const saveTurno = (turnoObj, email, cbResult) => {
     mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
