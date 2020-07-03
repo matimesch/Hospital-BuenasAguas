@@ -1,5 +1,5 @@
 <div id="content" class="container">
-    <div id="medicamentosFav" class="card-panel">
+    <div class="card-panel">
         <h4>Paciente : {{user.name}} {{user.surname}}</h3>
         <table class="responsive-table highlight">
             <thead>
@@ -8,13 +8,12 @@
                     <th>Especialidad</th>
                     <th>Fecha</th>
                     <th>Hora</th>
-                    <th>anadir</th>
+                    <th>Añadir</th>
                 </tr>
             </thead>
 
             <tbody>
-                {{#each medicosList}}
-                
+                {{#each medicosList}}                
                 {{#each this.disponibilidad_turnos}}
                 {{#if this.reservado}}
                 {{else}}
@@ -32,12 +31,7 @@
                 {{/if}} 
                 {{/each}}    
                 {{/each}}
-
             </tbody>
         </table>
     </div>
 </div>
-
-{{#if turnoMessage}}<div class="input-field col s12">
-    <p class="message-{{turnoMessage.class}}">{{turnoMessage.text}}</p>
-</div>{{/if}}

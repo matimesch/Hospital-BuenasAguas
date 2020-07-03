@@ -1,0 +1,50 @@
+<div id="register-page" class="section container">
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row">
+        <form action="/registerMedicos" method="POST" class="col s12">
+            <div class="row card-panel">
+                <div class="input-field col s6">
+                    <input id="name" name="name" type="text" class="white-text validate" required>
+                    <label for="name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="surname" name="surname" type="text" class="white-text validate" required>
+                    <label for="surname">Surname</label>
+                </div>
+                <div class="input-field col s12">
+                    <select class="input-field" id="especialidad" name="especialidad" style="display: block;">
+                        <option value="" disabled selected>Especialidad</option>
+                        <option value="Pediatra">Pediatra</option>
+                        <option value="Otorrino">Otorrino</option>
+                        <option value="Oftalmólogo">Oftalmólogo</option>
+                        <option value="Odontólogo">Odontólogo</option>
+                        <option value="Cirujano">Cirujano</option>
+                    </select>
+
+                </div>
+                <div class="input-field col s12">
+                    <select class="input-field" id="Horarios Disponibles" name="Horarios Disponibles" style="display: block;">
+                        <option value="" disabled selected>Horarios Disponibles</option>
+                    </select>
+
+                </div>
+                <div class="input-field col s12">
+                    <input id="password" name="password" type="password" class="white-text validate" required>
+                    <label for="password">Password</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="confirmPassword" name="confirmPassword" type="password" class="white-text validate"
+                        required>
+                    <label for="confirmPassword">Confirm Password </label>
+                </div>
+                <div class="input-field col s12"> <input class="btn" type="submit" value="Registrar"></div>
+                {{#if message}}<div class="input-field col s12">
+                    <p class="message-{{message.class}}">{{message.text}}</p>
+                </div>{{/if}}
+            </div>
+
+    </div>
+
+    </form>
+</div>

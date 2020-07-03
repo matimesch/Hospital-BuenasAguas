@@ -304,11 +304,8 @@ const saveReservado = (name, fecha, hora, cbResult) => {
                 }
             };
 
-            const newReserva = {
-                disponibilidad_turnos: {
-                    $elemMatch: {reservado}
-                }
-            }
+            const newReserva =
+                { $set: { "disponibilidad_turnos.$.reservado": "true" } };
 
             // Insertamos el user en la DB
 

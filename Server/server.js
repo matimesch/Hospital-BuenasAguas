@@ -43,10 +43,10 @@ app.use(expSession({
 
 //-----------------------------------------------------------
 
-app.use('/', (req,res,next) => { 
+app.use('/', (req, res, next) => {
   console.log("body", req.body);
   next();
-  });
+});
 
 // GETS fuera de session
 
@@ -359,9 +359,9 @@ app.post("/removeMedicamento", (req, res) => {
         console.log("hola")
         console.log("med borrado", medicamentoBorrado)
 
-        console.log("session",req.session.loggedUser)
+        console.log("session", req.session.loggedUser)
 
-        req.session.loggedUser.medicamentos = req.session.loggedUser.medicamentos.filter(item =>{
+        req.session.loggedUser.medicamentos = req.session.loggedUser.medicamentos.filter(item => {
           console.log("medicamento en session", item.medicamento)
           console.log("reqbody", req.body.medicamento)
           return item.medicamento != req.body.medicamento
@@ -462,9 +462,9 @@ app.post("/removeMedico", (req, res) => {
         console.log("hola")
         console.log("med borrado", medicoBorrado)
 
-        console.log("session",req.session.loggedUser)
+        console.log("session", req.session.loggedUser)
 
-        req.session.loggedUser.medicos = req.session.loggedUser.medicos.filter(item =>{
+        req.session.loggedUser.medicos = req.session.loggedUser.medicos.filter(item => {
           console.log("medicamento en session", item._id)
           console.log("reqbody", req.body.id)
           return item._id != req.body.id
@@ -500,17 +500,36 @@ app.post("/sacarTurnoParte1", (req, res) => {
           let nombreRecibido = req.body.name.toUpperCase();
           return nombreDataBase.includes(nombreRecibido);
         })
-      }
-      
-      console.log("medico",medicosList)
 
+        // for (let i = 0; i < medicosList.length; i++) {
+        //   const element = medicosList[i];
+        //   console.log("dfasdfsafasdf",element.name)
+        //   let nombretest = element.name
+        // }
         if (req.session.loggedUser) {
-          res.render("reserva", { layout: "main2", user: req.session.loggedUser, medicosList: medicosList});
+          const reservaMSG = {
+            class: "red-text accent-3",
+            text: "El médico no tiene turnos disponibles"
+          };
+          
+
+  
+          res.render("reserva", { layout: "main2", user: req.session.loggedUser, medicosList: medicosList, reservaMSG });
         } else {
           res.redirect("/login");
         }
-      
-      
+      } else{
+        const turnoNoEmptyMSG = {
+          class: "red-text accent-3",
+          text: "Introduce el nombre de un médico por favor"
+        }
+        res.render("turnos", { layout: "main2", user: req.session.loggedUser, turnoNoEmptyMSG });
+      }
+
+
+
+
+
 
 
     });
@@ -529,9 +548,11 @@ app.post("/sacarTurnoParte2", (req, res) => {
       if (turnoAgregado) {
         if (turnoAgregado.agregado) {
           req.session.loggedUser.turnos.push(turnoAgregado.turnoObj)
-          // functions.saveReservado(req.body.name, req.body.fecha, req.body.hora, result =>{
-          //   result = req.session.loggedUser.email
-          // })
+          functions.saveReservado(req.body.name, req.body.fecha, req.body.hora, result => {
+            if (result) {
+              console.log("hola!")
+            }
+          })
         }
 
         const turnoMessage = {
@@ -539,7 +560,7 @@ app.post("/sacarTurnoParte2", (req, res) => {
           text: "Turno agregado satisfactoriamente"
         };
 
-        res.render("turnos", {layout: "main2", user: req.session.loggedUser, turnoMessage});
+        res.render("turnos", { layout: "main2", user: req.session.loggedUser, turnoMessage });
 
       } else {
         const turnoMessage = {
@@ -547,14 +568,24 @@ app.post("/sacarTurnoParte2", (req, res) => {
           text: "El turno ya está ocupado"
         };
 
-        res.render("turnos", {layout: "main2", user: req.session.loggedUser});
-        
+        res.render("turnos", { layout: "main2", user: req.session.loggedUser, turnoMessage });
+
       }
     });
 
 
   }
 });
+
+
+/////////////////// Medicos SIDE
+
+//Register
+
+app.get("/xdasdf", (req, res) => {
+  res.render("signupmedicos", { layout: "main" });
+});
+
 
 
 app.listen(HTTP_PORT, () => {
