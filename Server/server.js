@@ -5,6 +5,7 @@ const path = require("path");
 const expHbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const expSession = require("express-session");
+const bcrypt = require('bcrypt');
 
 const app = express();
 
@@ -12,7 +13,7 @@ const auth = require("./auth");
 const functions = require("./functions");
 const { stringify } = require("querystring");
 // const turnos = require("./turnos");
-
+const saltRounds = 5;
 
 // ----------------------------------------------------------
 // Configuración de Handlebars

@@ -1,7 +1,7 @@
 const mongodb = require("mongodb");
 const uri = "mongodb+srv://m3sch:admin@moviesdb-irhan.mongodb.net/hospitaldb?retryWrites=true&w=majority";
-
-
+const bcrypt = require('bcrypt');
+const saltRounds = 5;
 
 // función login
 
@@ -17,7 +17,9 @@ const login = (email, password, cbResult) => {
             const hospitaldb = client.db("hospitaldb");
             const usersCollection = hospitaldb.collection("persons");
 
-            usersCollection.findOne({ email: email, password: password }, (err, foundUser) => {
+
+
+            usersCollection.findOne({ email: email }, (err, foundUser) => {
 
                 if (err) {
 
@@ -28,11 +30,19 @@ const login = (email, password, cbResult) => {
                 } else {
 
                     if (!foundUser) {
-                        cbResult({
-                            msg: "Mail o contraseña inválidos"
+                        return cbResult({
+                            msg: "Email o contraseña inválida"
                         });
-                    } else {
-                        cbResult({
+
+                    }
+                    bcrypt.compare(password, foundUser.password, function (err, same) {
+                        if (err || !same) {
+                            return cbResult({
+                                msg: "Email o contraseña inválida"
+                            });
+                        } 
+                        
+                        return cbResult({
                             user: {
                                 name: foundUser.name,
                                 surname: foundUser.surname,
@@ -42,12 +52,18 @@ const login = (email, password, cbResult) => {
                                 turnos: foundUser.turnos
                             }
                         });
-                    }
+
+
+                    })
+
+
+
 
                 }
 
                 client.close();
             });
+
 
         }
 
@@ -113,27 +129,31 @@ const register = (name, surname, email, password, cbResult) => {
             const hospitaldb = client.db("hospitaldb");
             const usersCollection = hospitaldb.collection("persons");
 
-            const newUser = {
-                name: name.charAt(0).toUpperCase() + name.slice(1),
-                surname: surname.charAt(0).toUpperCase() + surname.slice(1),
-                email: email,
-                password: password,
-                profile: "user",
-                medicamentos: [],
-                medicos: []
-            };
+            bcrypt.hash(password, saltRounds, function (err, hash) {
+                const newUser = {
+                    name: name.charAt(0).toUpperCase() + name.slice(1),
+                    surname: surname.charAt(0).toUpperCase() + surname.slice(1),
+                    email: email,
+                    password: hash,
+                    profile: "user",
+                    medicamentos: [],
+                    medicos: []
+                };
 
-            // Insertamos el user en la DB
-            usersCollection.insertOne(newUser, (err, result) => {
-                if (err) {
-                    cbResult(false);
-                } else {
-                    cbResult(true);
-                }
 
-                client.close();
+
+
+                // Insertamos el user en la DB
+                usersCollection.insertOne(newUser, (err, result) => {
+                    if (err) {
+                        cbResult(false);
+                    } else {
+                        cbResult(true);
+                    }
+
+                    client.close();
+                });
             });
-
         }
 
     });
