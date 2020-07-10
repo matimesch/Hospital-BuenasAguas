@@ -5,15 +5,16 @@ const path = require("path");
 const expHbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const expSession = require("express-session");
-const bcrypt = require('bcrypt');
+const moment = require("moment");
+
 
 const app = express();
 
 const auth = require("./auth");
 const functions = require("./functions");
 const { stringify } = require("querystring");
+const e = require("express");
 // const turnos = require("./turnos");
-const saltRounds = 5;
 
 // ----------------------------------------------------------
 // Configuración de Handlebars
@@ -74,7 +75,24 @@ app.get("/portal", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  res.render("portal", { layout: "main", message: req.session.message });
+  if (req.session.loggedUser) {
+    res.redirect("/home");
+  }else{
+    res.render("portal", { layout: "main", message: req.session.message });
+  }
+  
+});
+
+app.get("/pending", (req, res) => {
+  if (req.session.loggedUser) {
+    functions.getMedicos(medicosList => {
+      console.log(medicosList)
+      res.render("pending", { layout: "main2", user: req.session.loggedUser, medicosList: medicosList });
+    })
+
+  } else {
+    res.redirect("/login");
+  }
 });
 
 app.get("/logout", (req, res) => {
@@ -117,7 +135,7 @@ app.get("/turnos", (req, res) => {
   }
 });
 
-app.get("/medicos", (req, res) => {
+app.get("/medicosFAV", (req, res) => {
   if (req.session.loggedUser) {
     res.render("medicos", { layout: "main2", user: req.session.loggedUser });
   } else {
@@ -125,7 +143,7 @@ app.get("/medicos", (req, res) => {
   }
 });
 
-app.get("/medicamentos", (req, res) => {
+app.get("/medicamentosFAV", (req, res) => {
   if (req.session.loggedUser) {
     res.render("medicamentos", { layout: "main2", user: req.session.loggedUser });
   } else {
@@ -160,12 +178,17 @@ app.get("/misturnos", (req, res) => {
 // POSTS
 
 app.post("/login", (req, res) => {
-
   auth.login(req.body.email, req.body.password, result => {
     if (result.user) {
-
-
       req.session.loggedUser = result.user;
+      console.log("asd", req.session.loggedUser)
+      if (req.session.loggedUser.profile == "admin") {
+        res.redirect("/pending");
+        // res.render("reserva", { layout: "main2", user: req.session.loggedUser, medicosList: medicosList, reservaMSG });
+
+
+        return
+      }
 
       res.redirect("/home");
 
@@ -502,36 +525,25 @@ app.post("/sacarTurnoParte1", (req, res) => {
           return nombreDataBase.includes(nombreRecibido);
         })
 
-        // for (let i = 0; i < medicosList.length; i++) {
-        //   const element = medicosList[i];
-        //   console.log("dfasdfsafasdf",element.name)
-        //   let nombretest = element.name
-        // }
         if (req.session.loggedUser) {
           const reservaMSG = {
             class: "red-text accent-3",
             text: "El médico no tiene turnos disponibles"
           };
-          
 
-  
+
+
           res.render("reserva", { layout: "main2", user: req.session.loggedUser, medicosList: medicosList, reservaMSG });
         } else {
           res.redirect("/login");
         }
-      } else{
+      } else {
         const turnoNoEmptyMSG = {
           class: "red-text accent-3",
           text: "Introduce el nombre de un médico por favor"
         }
         res.render("turnos", { layout: "main2", user: req.session.loggedUser, turnoNoEmptyMSG });
       }
-
-
-
-
-
-
 
     });
 
@@ -583,9 +595,94 @@ app.post("/sacarTurnoParte2", (req, res) => {
 
 //Register
 
-app.get("/xdasdf", (req, res) => {
-  res.render("signupmedicos", { layout: "main" });
+app.get("/registerMedicos", (req, res) => {
+  res.render("signupmedicos", { layout: "main3" });
 });
+
+app.get("/medicos", (req, res) => {
+  if (req.session.loggedMedico) {
+    res.redirect("/homemedicos");
+  }else{
+    res.render("loginmedicos", { layout: "main3", message: req.session.message });
+  }
+});
+
+app.get("/logoutmedicos", (req, res) => {
+  req.session.destroy();
+  res.redirect("/medicos");
+});
+
+app.get("/homemedicos", (req, res) => {
+  if (req.session.loggedMedico) {
+    res.render("homemedicos", { layout: "main3", user: req.session.loggedMedico });
+  } else {
+    res.redirect("/medicos");
+  }
+});
+
+app.post("/registerMedicos", (req, res) => {
+  console.log(req.body)
+  auth.getMedico(req.body.email, result => {
+    if (!result.success) {
+      console.log("error al conectar a la base de datos");
+      res.redirect("/medicos");
+      return
+    }
+    if (result.email) {
+      console.log("email ya en uso");
+      res.redirect("/medicos");
+      return
+    }
+    if (!req.body.password || req.body.password !== req.body.confirmPassword) {
+      req.session.message = {
+        class: "failure",
+        text: "Las contraseñas deben ser iguales"
+      }
+      res.redirect("/medicos");
+      return;
+    }
+
+    auth.registerMedicos(req.body.name, req.body.surname, req.body.email, req.body.especialidad, req.body.horarios, req.body.password, result => {
+      if (result) {
+
+        console.log("registración completa");
+        res.redirect("/medicos");
+
+      }
+    })
+  })
+})
+
+app.post("/loginMedicos", (req, res) => {
+
+  auth.loginMedicos(req.body.email, req.body.password, result => {
+    if (result.medico) {
+      req.session.loggedMedico = result.medico;
+      console.log("soy epico")
+      res.redirect("/homemedicos");
+
+    } else {
+      req.session.message = {
+        class: "failure",
+        text: result.msg
+      };
+
+      res.redirect("/medicos");
+    }
+  })
+});
+
+app.post("/aprobarMedico", (req, res) => {
+
+  functions.aprobarMedico(req.body.email, result => {
+    if (result) {
+      console.log("hola!");
+      res.redirect("/pending");
+    }
+  })
+
+})
+
 
 
 

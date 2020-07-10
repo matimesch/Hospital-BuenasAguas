@@ -21,46 +21,35 @@ const login = (email, password, cbResult) => {
 
             usersCollection.findOne({ email: email }, (err, foundUser) => {
 
-                if (err) {
+                if (err || !foundUser) {
 
-                    cbResult({
-                        msg: "Usuario no registrado, registrate por favor."
+                    return cbResult({
+                        msg: "Email o contraseña inválida"
                     });
-
-                } else {
-
-                    if (!foundUser) {
-                        return cbResult({
-                            msg: "Email o contraseña inválida"
-                        });
-
-                    }
-                    bcrypt.compare(password, foundUser.password, function (err, same) {
-                        if (err || !same) {
-                            return cbResult({
-                                msg: "Email o contraseña inválida"
-                            });
-                        } 
-                        
-                        return cbResult({
-                            user: {
-                                name: foundUser.name,
-                                surname: foundUser.surname,
-                                email: foundUser.email,
-                                medicamentos: foundUser.medicamentos,
-                                medicos: foundUser.medicos,
-                                turnos: foundUser.turnos
-                            }
-                        });
-
-
-                    })
-
-
-
 
                 }
 
+                bcrypt.compare(password, foundUser.password, function (err, same) {
+                    if (err || !same) {
+                        return cbResult({
+                            msg: "Email o contraseña inválida"
+                        });
+                    }
+
+                    return cbResult({
+                        user: {
+                            name: foundUser.name,
+                            surname: foundUser.surname,
+                            email: foundUser.email,
+                            profile: foundUser.profile,
+                            medicamentos: foundUser.medicamentos,
+                            medicos: foundUser.medicos,
+                            turnos: foundUser.turnos
+                        }
+                    });
+
+
+                })
                 client.close();
             });
 
@@ -137,7 +126,8 @@ const register = (name, surname, email, password, cbResult) => {
                     password: hash,
                     profile: "user",
                     medicamentos: [],
-                    medicos: []
+                    medicos: [],
+                    turnos: []
                 };
 
 
@@ -232,10 +222,149 @@ const changePassword = (email, newPassword, cbResult) => {
 
 }
 
+///////
+
+const getMedico = (email, cbResult) => {
+    mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
+        if (err) {
+            cbResult({
+                success: false
+            });
+        }
+        else {
+            const hospitaldb = client.db("hospitaldb");
+            const usersCollection = hospitaldb.collection("medicos");
+
+            usersCollection.findOne({ email: email }, (err, result) => {
+                if (err) {
+                    cbResult({
+                        success: false
+                    });
+                }
+                else {
+                    cbResult({
+                        success: true,
+                        email: result
+                    });
+                }
+                client.close();
+            });
+        }
+
+    });
+}
+
+///////
+
+const registerMedicos = (name, surname, email, especialidad, horarios, password, cbResult) => {
+    mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
+
+        if (err) {
+
+            console.log(err)
+            cbResult(false);
+
+        } else {
+
+            const hospitaldb = client.db("hospitaldb");
+            const usersCollection = hospitaldb.collection("medicos");
+
+            let disponibilidad_turnos = []
+            for (let horario of horarios) {
+                disponibilidad_turnos.push({
+                    fecha: horario.slice(0, 10),
+                    hora: horario.slice(11)
+                })
+            }
+
+            bcrypt.hash(password, saltRounds, function (err, hash) {
+                const newUser = {
+                    name: name.charAt(0).toUpperCase() + name.slice(1),
+                    surname: surname.charAt(0).toUpperCase() + surname.slice(1),
+                    email: email,
+                    especialidad: especialidad,
+                    disponibilidad_turnos: disponibilidad_turnos,
+                    password: hash,
+                    approval: false
+                };
 
 
 
 
+                // Insertamos el user en la DB
+                usersCollection.insertOne(newUser, (err, result) => {
+                    if (err) {
+                        cbResult(false);
+                    } else {
+                        cbResult(true);
+                    }
+
+                    client.close();
+                });
+            });
+        }
+
+    });
+}
+
+
+const loginMedicos = (email, password, cbResult) => {
+    mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
+
+        if (err) {
+            cbResult({
+                msg: "No se pudo conectar a la base de datos"
+            });
+
+        } else {
+            const hospitaldb = client.db("hospitaldb");
+            const usersCollection = hospitaldb.collection("medicos");
+
+
+
+            usersCollection.findOne({ email: email }, (err, foundMedico) => {
+
+                if (err || !foundMedico) {
+
+                    return cbResult({
+                        msg: "Email o contraseña inválida"
+                    });
+
+                }
+                if (!foundMedico.approval) {
+                    console.log("necesitas ser aprobadoetc")
+                    return cbResult({
+                        msg: "Necesitas ser aprobado como un médico oficial por el admin, por favor espera"
+                    });
+                }
+
+                bcrypt.compare(password, foundMedico.password, function (err, same) {
+                    if (err || !same) {
+                        return cbResult({
+                            msg: "Email o contraseña inválida"
+                        });
+                    }
+
+                    return cbResult({
+                        medico: {
+                            name: foundMedico.name,
+                            surname: foundMedico.surname,
+                            email: foundMedico.email,
+                            especialidad: foundMedico.especialidad,
+                            disponibilidad_turnos: foundMedico.disponibilidad_turnos
+                        }
+                    });
+
+
+                })
+                client.close();
+            });
+
+
+        }
+
+    });
+}
 
 
 module.exports = {
@@ -243,4 +372,7 @@ module.exports = {
     login,
     getUser,
     changePassword,
+    registerMedicos,
+    getMedico,
+    loginMedicos
 }

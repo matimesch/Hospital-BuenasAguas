@@ -329,6 +329,47 @@ const saveReservado = (name, fecha, hora, cbResult) => {
     });
 }
 
+const aprobarMedico = (email, cbResult) => {
+    mongodb.MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
+
+        if (err) {
+
+            cbResult(false);
+
+        } else {
+
+            const hospitaldb = client.db("hospitaldb");
+            const usersCollection = hospitaldb.collection("medicos");
+
+            const findQuery = {
+                email: email
+            };
+
+            const Aprobado =
+                { $set: { approval: true } };
+
+            // Insertamos el user en la DB
+
+
+            usersCollection.updateOne(findQuery, Aprobado, (err, result) => {
+
+                if (err) {
+                    console.log(err)
+                    cbResult(false);
+                } else {
+                    cbResult(
+                        console.log(result)
+                    );
+                }
+
+                client.close();
+            });
+
+        }
+
+    });
+}
+
 
 
 module.exports = {
@@ -339,5 +380,6 @@ module.exports = {
     saveMedico,
     removeMedico,
     saveTurno,
-    saveReservado
+    saveReservado,
+    aprobarMedico
 }

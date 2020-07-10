@@ -1,3 +1,16 @@
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<!--jQuery-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+<link rel="stylesheet" href="datetime-picker/material-datetime-picker.css">
+
+
 <div id="register-page" class="section container">
     <div class="row"></div>
     <div class="row"></div>
@@ -5,15 +18,19 @@
         <form action="/registerMedicos" method="POST" class="col s12">
             <div class="row card-panel">
                 <div class="input-field col s6">
-                    <input id="name" name="name" type="text" class="white-text validate" required>
-                    <label for="name">First Name</label>
+                    <input id="name" name="name" type="text" class="validate" required>
+                    <label for="name">Nombre</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="surname" name="surname" type="text" class="white-text validate" required>
-                    <label for="surname">Surname</label>
+                    <input id="surname" name="surname" type="text" class="validate" required>
+                    <label for="surname">Apellido</label>
                 </div>
                 <div class="input-field col s12">
-                    <select class="input-field" id="especialidad" name="especialidad" style="display: block;">
+                    <input id="email" name="email" type="email" class="validate" required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-field col s12">
+                    <select class="input-field" id="especialidad" name="especialidad" class="validate" required>
                         <option value="" disabled selected>Especialidad</option>
                         <option value="Pediatra">Pediatra</option>
                         <option value="Otorrino">Otorrino</option>
@@ -21,20 +38,22 @@
                         <option value="Odontólogo">Odontólogo</option>
                         <option value="Cirujano">Cirujano</option>
                     </select>
-
                 </div>
                 <div class="input-field col s12">
-                    <select class="input-field" id="Horarios Disponibles" name="Horarios Disponibles" style="display: block;">
-                        <option value="" disabled selected>Horarios Disponibles</option>
-                    </select>
-
+                    <input type="text" placeholder="Elegir horarios disponibles" id="datetime" class="validate"/>
+                    <button onclick="add()" class="btn">Añadir turno</button>
+                </div>
+                <div class="col s12">
+                    <div id="divHorarios" class="col s12">
+                    </div>
+                    <div class="col s2" id="deleteDiv"></div>
                 </div>
                 <div class="input-field col s12">
-                    <input id="password" name="password" type="password" class="white-text validate" required>
+                    <input id="password" name="password" type="password" class="validate" required>
                     <label for="password">Password</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="confirmPassword" name="confirmPassword" type="password" class="white-text validate"
+                    <input id="confirmPassword" name="confirmPassword" type="password" class="validate"
                         required>
                     <label for="confirmPassword">Confirm Password </label>
                 </div>
@@ -48,3 +67,142 @@
 
     </form>
 </div>
+
+
+<script>
+
+    let horarios = [];
+
+    function add() {
+        event.preventDefault()
+        const divHorarios = document.getElementById("divHorarios");
+
+        const inputDateTime = document.getElementById("datetime");
+        if (inputDateTime.value != "") {
+            const divCadaHorario = document.createElement("div");
+
+
+            // Button delete
+            const deleteButton = document.createElement("input");
+            const deleteDiv = document.getElementById("deleteDiv");
+
+            deleteButton.addEventListener("click", function () {
+                horarios.splice(horarios.indexOf(deleteButton.parentNode.children[1].value), 1)
+                deleteButton.parentNode.remove()
+            })
+
+
+            deleteButton.type = "button"
+            deleteButton.style.display = "block"
+            deleteButton.className = "col s2 btn red"
+
+            // new input
+            let newInput = document.createElement("input");
+
+            newInput.style.backgroundColor = "green";
+            newInput.className = "col s10"
+            newInput.type = "text"
+            newInput.name = "horarios"
+
+
+            newInput.value = inputDateTime.value;
+
+            horarios.push(newInput.value)
+
+            divCadaHorario.appendChild(deleteButton);
+
+            divCadaHorario.appendChild(newInput);
+
+            //       newInput.id = `${i}`
+
+            divHorarios.appendChild(divCadaHorario);
+            inputDateTime.value = "";
+            console.log(horarios)
+        }
+    }
+
+
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        M.AutoInit();
+        var DateField = MaterialDateTimePicker.create($('#datetime'))
+    });
+</script>
+
+
+
+<script>
+    var MaterialDateTimePicker = {
+        control: null,
+        dateRange: null,
+        pickerOptions: null,
+        create: function (element) {
+            this.control = element == undefined ? $('#' + localStorage.getItem('element')) : element;
+            element = this.control;
+            if (this.control.is("input[type='text']")) {
+                var defaultDate = new Date();
+                element.off('click');
+                element.datepicker({
+                    format: 'yyyy/mm/dd',
+                    selectMonths: true,
+                    dismissable: false,
+                    autoClose: true,
+                    onClose: function () {
+                        element.datepicker('destroy');
+                        element.timepicker({
+                            dismissable: false,
+                            onSelect: function (hr, min) {
+                                element.attr('selectedTime', (hr + ":" + min).toString());
+                            },
+                            onCloseEnd: function () {
+                                element.blur();
+                            }
+                        });
+                        $('button.btn-flat.timepicker-close.waves-effect')[0].remove();
+
+                        if (element.val() != "") {
+                            element.attr('selectedDate', element.val().toString());
+                        }
+                        else {
+                            element.val(defaultDate.getFullYear().toString() + "/" + (defaultDate.getMonth() + 1).toString() + "/" + defaultDate.getDate().toString())
+                            element.attr('selectedDate', element.val().toString());
+                        }
+                        element.timepicker('open');
+                    }
+                });
+                element.unbind('change');
+                element.off('change');
+                element.on('change', function () {
+                    if (element.val().indexOf(':') > -1) {
+                        element.attr('selectedTime', element.val().toString());
+                        element.val(element.attr('selectedDate') + " " + element.attr('selectedTime'));
+                        element.timepicker('destroy');
+                        element.unbind('click');
+                        element.off('click');
+                        element.on('click', function (e) {
+                            element.val("");
+                            element.removeAttr("selectedDate");
+                            element.removeAttr("selectedTime");
+                            localStorage.setItem('element', element.attr('id'));
+                            MaterialDateTimePicker.create.call(element);
+                            element.trigger('click');
+                        });
+                    }
+                });
+                $('button.btn-flat.datepicker-cancel.waves-effect, button.btn-flat.datepicker-done.waves-effect').remove();
+                function addCSSRules() {
+                    $('html > head').append($('<style>div.modal-overlay { pointer-events:none; }</style>'));
+                }
+                addCSSRules()
+                return element;
+            }
+            else {
+                console.error("The HTML Control provided is not a valid Input Text type.")
+            }
+        }
+
+    }
+</script>

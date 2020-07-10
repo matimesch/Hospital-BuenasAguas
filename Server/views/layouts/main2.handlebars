@@ -33,7 +33,11 @@
 
         #main2 {
             flex: 1 0 auto;
-            background-color: #004d40;
+            background-image: url("img/background-home.jpg");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
             min-height: 91vh;
             flex-direction: column;
         }
@@ -54,8 +58,8 @@
         <div id="menu">
             <ul id="slide-out" class="side-nav fixed show-on-large-only">
                 <li><a href="/turnos">Turnos</a></li>
-                <li><a href="/medicamentos">Medicamentos</a></li>
-                <li><a href="/medicos">Médicos</a></li>
+                <li><a href="/medicamentosFAV">Medicamentos</a></li>
+                <li><a href="/medicosFAV">Médicos</a></li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
                         <li>
@@ -97,10 +101,6 @@
     </footer>
 
 
-    <script>
-
-
-    </script>
     <script>
 
         $('.button-collapse').sideNav({
