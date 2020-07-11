@@ -40,7 +40,7 @@
                     </select>
                 </div>
                 <div class="input-field col s12">
-                    <input type="text" placeholder="Elegir horarios disponibles" id="datetime" class="validate"/>
+                    <input type="text" placeholder="Elegir horarios disponibles" id="datetime" class="validate" />
                     <button onclick="add()" class="btn">Añadir turno</button>
                 </div>
                 <div class="col s12">
@@ -53,8 +53,7 @@
                     <label for="password">Password</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="confirmPassword" name="confirmPassword" type="password" class="validate"
-                        required>
+                    <input id="confirmPassword" name="confirmPassword" type="password" class="validate" required>
                     <label for="confirmPassword">Confirm Password </label>
                 </div>
                 <div class="input-field col s12"> <input class="btn" type="submit" value="Registrar"></div>
@@ -92,14 +91,16 @@
             })
 
 
+
             deleteButton.type = "button"
-            deleteButton.style.display = "block"
-            deleteButton.className = "col s2 btn red"
+//            deleteButton.style.display = "block"
+            deleteButton.className = "btn red col s1"
+           deleteButton.style.marginRight = "30px"
 
             // new input
             let newInput = document.createElement("input");
 
-            newInput.style.backgroundColor = "green";
+            newInput.style.borderColor = "green";
             newInput.className = "col s10"
             newInput.type = "text"
             newInput.name = "horarios"
@@ -113,7 +114,6 @@
 
             divCadaHorario.appendChild(newInput);
 
-            //       newInput.id = `${i}`
 
             divHorarios.appendChild(divCadaHorario);
             inputDateTime.value = "";

@@ -1,0 +1,115 @@
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{user.name}} {{user.surname}} - Hospital BuenasAguas</title>
+</head>
+
+<body>
+    <nav class="blue darken-4">
+        <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only"><i
+                class="material-icons">menu</i></a>
+        <div class="nav-wrapper">
+            <a href="/home" class="brand-logo right"><img src="/img/logoxddd.png" width="50px"
+                    style="margin-top: 4px;"></a>
+        </div>
+    </nav>
+    <style>
+        #sidenavContainer {
+            padding-left: 200px;
+        }
+
+
+        @media only screen and (max-width : 992px) {
+            #sidenavContainer {
+                padding-left: 0px;
+            }
+        }
+
+        #main2 {
+            flex: 1 0 auto;
+            background-image: url("img/background-home.jpg");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 91vh;
+            flex-direction: column;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .content {
+            padding-top: 30px;
+        }
+    </style>
+
+    <div id="sidenavContainer">
+
+        <div id="menu">
+            <ul id="slide-out" class="side-nav fixed show-on-large-only">
+                <li><a href="/pending" style="padding-bottom: 50px;">Pendientes de aprobación</a></li>
+                <li><a href="/turnos">Turnos</a></li>
+                <li><a href="/medicamentosFAV">Medicamentos</a></li>
+                <li><a href="/medicosFAV">Médicos</a></li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li>
+                            <a class="collapsible-header">Mis datos<i class="material-icons">arrow_drop_down</i></a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="/pending">Pendientes de aprobación</a></li>
+                                    <li><a href="/misturnos">Mis turnos</a></li>
+                                    <li><a href="/mismedicos">Mis médicos</a></li>
+                                    <li><a href="/mismedicamentos">Mis medicamentos</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li>
+                            <a class="collapsible-header">Mi cuenta<i class="material-icons">arrow_drop_down</i></a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="/changepassword">Cambiar contraseña</a></li>
+                                    <li><a href="/logout">Cerrar sesión</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+
+        <main id="main2" class="content">
+            {{{body}}}
+        </main>
+    </div>
+
+
+    <footer class="page-footer blue darken-4">
+    </footer>
+
+
+    <script>
+
+        $('.button-collapse').sideNav({
+            menuWidth: 250, // Default is 300
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            draggable: true // Choose whether you can drag to open on touch screens
+        });
+    </script>
+</body>

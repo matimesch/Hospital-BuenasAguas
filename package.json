@@ -14,7 +14,6 @@
     "express-handlebars": "^4.0.4",
     "express-sesssion": "^1.15.5",
     "jsonwebtoken": "^8.5.1",
-    "moment": "^2.26.0",
     "mongodb": "^3.5.8",
     "nodemailer": "^6.4.10"
   }

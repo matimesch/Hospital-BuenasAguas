@@ -1,30 +1,42 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
 
 <div id="content" class="container">
-  <form id="medicamentosForm" class="card-panel">
-    <h4><i class="material-icons" style="margin-right: 10px;">healing</i>Medicamentos</h4>
-    <input type="text" id="medicamento" placeholder="Medicamento" class="autocomplete" autocomplete="off">
-    <button class="btn" type="submit">Enviar</button>
+  <form id="formMedicos" class="card-panel">
+    <h4><i class="material-icons" style="margin-right: 10px;">group_add</i>Médicos</h4>
+    <input type="text" id="medicoInput" placeholder="Medico" class="autocomplete" autocomplete="off" name="name">
+
+    <select class="input-field" id="especialidad" name="especialidad" >
+            <option value="" disabled selected>Especialidad</option>
+            <option value="Pediatra">Pediatra</option>
+            <option value="Otorrino">Otorrino</option>
+            <option value="Oftalmólogo">Oftalmólogo</option>
+            <option value="Odontólogo">Odontólogo</option>
+            <option value="Cirujano">Cirujano</option>
+    </select>
+
+    
+
+    <input class="btn" type="submit" style="margin-top: 30px;"></button>
   </form>
-  <div id="listaMedicamentos"></div>
+  <div id="divListaMedicos"></div>
 
 </div>
 
-<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
 
+<script>
     $(document).ready(function () {
         //Autocomplete
         $(function () {
             $.ajax({
                 type: 'GET',
-                url: '/medicamentoAutocomplete?fields=medicamento',
+                url: '/medicosAutocomplete?fields=name',
                 success: function (response) {
                     var nameArray = response;
                     var data = {};
                     for (var i = 0; i < nameArray.length; i++) {
                         //console.log(nameArray[i].name);
-                        data[nameArray[i].medicamento] = nameArray[i].flag; //nameArray[i].flag or null
+                        data[nameArray[i].name] = nameArray[i].flag; //nameArray[i].flag or null
                     }
                     $('input.autocomplete').autocomplete({
                         data: data,
@@ -36,38 +48,39 @@
     });
 </script>
 
-
 <script>
-  const medicamentoInput = document.getElementById("medicamento");
-  const divListaMedicamentos = document.getElementById("listaMedicamentos");
-  const medicamentosForm = document.getElementById("medicamentosForm")
+  const medicoInput = document.getElementById("medicoInput");
+  const especialidadSelect = document.getElementById("especialidad")
+  const divListaMedicos = document.getElementById("divListaMedicos");
+  const formMedicos = document.getElementById("formMedicos")
 
-  const getMedicamento = (medicamento) => {
+  const getMedicos = (name,especialidad) => {
     const ajaxRequest = new XMLHttpRequest();
     ajaxRequest.addEventListener("load", function () {
       if (this.status == 200) {
-        const medicamentoList = JSON.parse(this.responseText);
-        createLista(medicamentoList);
+        const medicoList = JSON.parse(this.responseText);
+        createLista(medicoList);
       };
     });
-    ajaxRequest.open("GET", `/medicines?filtro=${medicamento}`);
+    ajaxRequest.open("GET", `/medicosAjax?filterByName=${name}&filterByEspecialidad=${especialidad}`);
     ajaxRequest.send();
   };
 
-  medicamentosForm.addEventListener("submit", (event) => {
+  formMedicos.addEventListener("submit", (event) => {
     event.preventDefault();
-    getMedicamento(medicamentoInput.value);
+    console.log(especialidadSelect.value)
+    getMedicos(medicoInput.value, especialidadSelect.value);
   })
 
 
 
-  function createLista(medicamentosList) {
+  function createLista(medicosList) {
 
-    divListaMedicamentos.innerHTML = "";
+    divListaMedicos.innerHTML = "";
     const newUl = document.createElement("ul");
 
-    for (let i = 0; i < medicamentosList.length; i++) {
-      const medicamentoObj = medicamentosList[i];
+    for (let i = 0; i < medicosList.length; i++) {
+      const medicoObj = medicosList[i];
       const newDiv = document.createElement("div");
       const newDivStacked = document.createElement("div");
       const newDivCard = document.createElement("div");
@@ -77,7 +90,6 @@
       const addText = document.createElement("span")
       const newAHref = document.createElement("a")
       const newIcono = document.createElement("i")
-
       newDiv.className = "card horizontal";
       newLi.appendChild(newDiv);
       newDivStacked.className = "card-stacked";
@@ -94,7 +106,7 @@
       addSpan.style.fontWeight = "bold";
       addSpan.style.marginLeft = "20px";
       //addSpan.style.fontSize = "1.5vw";
-      addSpan.innerText = `${medicamentoObj.medicamento}`;
+      addSpan.innerText = `${medicoObj.name} ${medicoObj.especialidad} `;
       newDivCard.appendChild(addSpan);
 
       addText.className = "green accent-3"
@@ -123,20 +135,20 @@
             newAHref2.style.marginLeft = "20px"
             newIcono2.className = "material-icons";
             newIcono2.innerText = "done";
-            addText.innerText = "Medicamento añadido a favoritos";
+            addText.innerText = "medico añadido a favoritos";
           };
           if (this.status == 500) {
             addText.innerText = "Error al añadir";
           };
         });
-        ajaxRequest.open("POST", `/medicamentoFav`);
+        ajaxRequest.open("POST", `/saveMedicoFav`);
         ajaxRequest.setRequestHeader("Content-Type", "application/json");
-        ajaxRequest.send(JSON.stringify(medicamentoObj));
+        ajaxRequest.send(JSON.stringify(medicoObj));
       });
     }
 
-    divListaMedicamentos.appendChild(newUl);
-    divListaMedicamentos.classList.add("card-panel");
+    divListaMedicos.appendChild(newUl);
+    divListaMedicos.classList.add("card-panel");
 
 
   }
