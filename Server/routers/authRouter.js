@@ -2,30 +2,29 @@ const express = require("express");
 
 const auth = require("../auth");
 
-const authRouter = express.Router()
+const authRouter = express.Router();
 
 // --- Login --- //
 
 authRouter.post("/login", (req, res) => {
-  auth.login(req.body.email, req.body.password, result => {
+  auth.login(req.body.email, req.body.password, (result) => {
     if (result.user) {
       req.session.loggedUser = result.user;
-      console.log("asd", req.session.loggedUser)
       if (req.session.loggedUser.profile == "admin") {
         res.redirect("/pending");
         // res.render("reserva", { layout: "main2", user: req.session.loggedUser, medicosList: medicosList, reservaMSG });
-        return
+        return;
       }
       res.redirect("/home");
     } else {
-      req.session.message = {
+      req.session.loginMsg = {
         class: "failure",
-        text: result.msg
+        text: result.loginMsg,
       };
 
       res.redirect("/login");
     }
-  })
+  });
 });
 
 // --- Register --- //
@@ -33,22 +32,22 @@ authRouter.post("/login", (req, res) => {
 authRouter.post("/register", (req, res) => {
   // Valido datos de registro -->
 
-  auth.getUser(req.body.email, result => {
+  auth.getUser(req.body.email, (result) => {
     if (!result.success) {
-      req.session.message = {
+      req.session.registerMsg = {
         class: "failure",
-        text: "No se pudo conectar a la base de datos."
-      }
+        text: "No se pudo conectar a la base de datos.",
+      };
 
       res.redirect("/signup");
       return;
-    };
+    }
 
     if (result.email) {
-      req.session.message = {
+      req.session.registerMsg = {
         class: "failure",
-        text: "Email en uso."
-      }
+        text: "Email en uso.",
+      };
 
       res.redirect("/signup");
 
@@ -56,10 +55,10 @@ authRouter.post("/register", (req, res) => {
     }
 
     if (!req.body.password || req.body.password !== req.body.confirmPassword) {
-      req.session.message = {
+      req.session.registerMsg = {
         class: "failure",
-        text: "Las contraseñas deben ser iguales"
-      }
+        text: "Las contraseñas deben ser iguales",
+      };
 
       res.redirect("/signup");
       return;
@@ -67,37 +66,38 @@ authRouter.post("/register", (req, res) => {
 
     // Si el usuario cumple -->
 
-    auth.register(req.body.name, req.body.surname, req.body.email, req.body.password, result => {
-      if (result) {
-
-        req.session.message = {
-          class: "success",
-          text: "Te has registrado con éxito"
-        };
-        res.redirect("/login");
-
-      } else {
-
-        req.session.message = {
-          class: "failure",
-          text: "Error al registrar, intente más tarde."
-        };
-        res.redirect("/signup");
-
+    auth.register(
+      req.body.name,
+      req.body.surname,
+      req.body.email,
+      req.body.password,
+      (result) => {
+        if (result) {
+          req.session.loginMsg = {
+            class: "success",
+            text: "Te has registrado con éxito",
+          };
+          res.redirect("/login");
+        } else {
+          req.session.registerMsg = {
+            class: "failure",
+            text: "Error al registrar, intente más tarde.",
+          };
+          res.redirect("/signup");
+        }
       }
-    });
+    );
   });
 });
 
 // Change Password //
 
 authRouter.get("/changepassword", (req, res) => {
-
   if (req.session.loggedUser) {
     res.render("paciente/changepassword", {
       layout: "main2",
       user: req.session.loggedUser,
-      message: req.session.message
+      message: req.session.message,
     });
   } else {
     res.redirect("/login");
@@ -105,46 +105,40 @@ authRouter.get("/changepassword", (req, res) => {
 });
 
 authRouter.post("/changepassword", (req, res) => {
-
   if (req.session.loggedUser) {
-
     if (!req.body.password || req.body.password !== req.body.confirmPassword) {
-
       req.session.message = {
         class: "failure",
-        text: "Passwords must be equal"
-      }
+        text: "Passwords must be equal",
+      };
 
       res.redirect("/changepassword");
       return;
     }
 
-    auth.changePassword(req.session.loggedUser.email, req.body.password, result => {
-      if (result) {
+    auth.changePassword(
+      req.session.loggedUser.email,
+      req.body.password,
+      (result) => {
+        if (result) {
+          req.session.message = {
+            class: "success",
+            text: "Contraseña cambiadas con éxito",
+          };
+          res.redirect("/login");
+        } else {
+          req.session.message = {
+            class: "failure",
+            text: "No se pudo guardar la nueva contraseña.",
+          };
 
-        req.session.message = {
-          class: "success",
-          text: "Contraseña cambiadas con éxito"
+          res.redirect("/changepassword");
         }
-        res.redirect("/login");
-
-      } else {
-        req.session.message = {
-          class: "failure",
-          text: "No se pudo guardar la nueva contraseña."
-        }
-
-        res.redirect("/changepassword");
       }
-    });
-
-
+    );
   } else {
-
     res.redirect("/login");
-
   }
-
 });
 
 // Logout //

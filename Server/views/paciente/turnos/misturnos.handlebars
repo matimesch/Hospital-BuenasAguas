@@ -1,5 +1,5 @@
 <div id="content" class="container">
-    <div id="medicamentosFav" class="card-panel">
+    <div id="turnos" class="card-panel">
         <h3 class="col s12">Turnos</h3>
         <table class="responsive-table highlight">
             <thead>
@@ -15,13 +15,15 @@
             <tbody>
                 {{#each user.turnos}}
                 <tr id="tableRow">
-                        <td id="medicamentoName">{{this.name}}</td>
-                        <td id="medicamentoTipo">{{this.especialidad}}</td>
-                        <td id="medicamentoVia">{{this.fecha}}</td>
-                        <td id="medicamentoVia">{{this.hora}}</td>
-                        <td><button id="deleteMedicamentoBtn" class="btn-floating btn waves-effect waves-light red">
-                                <i class="material-icons">delete</i>Eliminar</button>
-                        </td>
+                    <td id="turnoName">{{this.name}}</td>
+                    <td id="turnoTipo">{{this.especialidad}}</td>
+                    <td id="turnoVia">{{this.fecha}}</td>
+                    <td id="turnoVia">{{this.hora}}</td>
+                    <td><button id="deleteturnoBtn" class="btn-floating btn waves-effect waves-light red"
+                            onclick="deleteturno(this, '{{this.name}},{{this.fecha}},{{this.hora}}')">
+                            <i class="material-icons">delete</i>Eliminar
+                        </button>
+                    </td>
                     {{/each}}
                 </tr>
 
@@ -29,3 +31,26 @@
         </table>
     </div>
 </div>
+
+<script>
+    const deleteturnoBtn = document.getElementById("deleteturnoBtn");
+    const tableRow = document.getElementById("tableRow");
+    const turnoName = document.getElementById("turnoName");
+    const turnoTipo = document.getElementById("turnoTipo");
+    const turnoVia = document.getElementById("turnoVia");
+    const misturnosForm = document.getElementById("misturnosForm");
+
+    function deleteturno(button, medico, fecha, hora) {
+        const ajaxRequest = new XMLHttpRequest();
+        ajaxRequest.addEventListener("load", function () {
+            if (this.status == 200) {
+
+                button.parentNode.parentNode.remove()
+            };
+        });
+
+        ajaxRequest.open("POST", "/removeTurno");
+        ajaxRequest.setRequestHeader("Content-Type", "application/json");
+        ajaxRequest.send(JSON.stringify({ string: medico, fecha, hora }));
+    }
+</script>

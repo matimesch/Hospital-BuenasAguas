@@ -16,9 +16,12 @@ const { stringify } = require("querystring");
 
 app.set("view engine", "handlebars");
 
-app.engine("handlebars", expHbs({
-  layoutsDir: path.join(__dirname, "views/layouts")
-}));
+app.engine(
+  "handlebars",
+  expHbs({
+    layoutsDir: path.join(__dirname, "views/layouts"),
+  })
+);
 
 app.set("views", path.join(__dirname, "views"));
 
@@ -33,19 +36,20 @@ app.use(bodyParser.json());
 
 // Config obj session //
 
-app.use(expSession({
-  secret: "asdkjfaskdlfjsaldfa",
-  resave: false,
-  saveUninitialized: false
-}));
+app.use(
+  expSession({
+    secret: "asdkjfaskdlfjsaldfa",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
-// console.log req.body // 
+// console.log req.body //
 
-app.use('/', (req, res, next) => {
+app.use("/", (req, res, next) => {
   console.log("body", req.body);
   next();
 });
-
 
 // Routers //
 
@@ -64,5 +68,5 @@ app.use(medicosRouter);
 // start the server //
 
 app.listen(HTTP_PORT, () => {
-  console.log(`servidor iniciado en http://localhost:${HTTP_PORT}`)
-})
+  console.log(`servidor iniciado en http://localhost:${HTTP_PORT}`);
+});

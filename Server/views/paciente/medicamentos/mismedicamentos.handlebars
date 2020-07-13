@@ -14,12 +14,13 @@
             <tbody>
                 {{#each user.medicamentos}}
                 <tr id="tableRow">
-                        <td id="medicamentoName">{{this.medicamento}}</td>
-                        <td id="medicamentoTipo">{{this.tipo}}</td>
-                        <td id="medicamentoVia">{{this.via}}</td>
-                        <td><button id="deleteMedicamentoBtn" class="btn-floating btn waves-effect waves-light red" onclick="deleteMedicamento(this, '{{this.medicamento}}')">
-                                <i class="material-icons">delete</i>Eliminar</button>
-                        </td>
+                    <td id="medicamentoName">{{this.medicamento}}</td>
+                    <td id="medicamentoTipo">{{this.tipo}}</td>
+                    <td id="medicamentoVia">{{this.via}}</td>
+                    <td><button id="deleteMedicamentoBtn" class="btn-floating btn waves-effect waves-light red"
+                            onclick="deleteMedicamento(this, '{{this.medicamento}}')">
+                            <i class="material-icons">delete</i>Eliminar</button>
+                    </td>
                     {{/each}}
                 </tr>
 
@@ -41,12 +42,11 @@
         ajaxRequest.addEventListener("load", function () {
             if (this.status == 200) {
 
-               button.parentNode.parentNode.remove()
+                button.parentNode.parentNode.remove()
             };
         });
         ajaxRequest.open("POST", "/removeMedicamento");
         ajaxRequest.setRequestHeader("Content-Type", "application/json");
-        ajaxRequest.send(JSON.stringify({medicamento}));
+        ajaxRequest.send(JSON.stringify({ medicamento }));
     }
-
 </script>

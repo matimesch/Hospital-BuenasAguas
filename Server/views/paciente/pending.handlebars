@@ -1,34 +1,36 @@
 <div id="content" class="container">
     <div class="card-panel">
         <h4>Admin : {{user.name}} {{user.surname}}</h3>
-        <table class="responsive-table highlight">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Especialidad</th>
-                    <th>Email</th>
-                    <th>Aprobar</th>
-                </tr>
-            </thead>
+            <table class="responsive-table highlight">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Especialidad</th>
+                        <th>Email</th>
+                        <th>Aprobar</th>
+                    </tr>
+                </thead>
 
-            <tbody>
-                {{#each medicosList}}                
-                {{#if this.approval}}
-                {{else}}
-                <form class="card-panel" action="/aprobarMedico" method="POST">
-                <tr id="tableRow">
-                    <td><input type="text" name="name" hidden value="{{this.name}}">{{this.name}} {{this.surname}}</td>
-                    <td><input type="text" name="especialidad" hidden value="{{this.especialidad}}">{{this.especialidad}}</td>
-                    <td><input type="text" name="email" hidden value="{{this.email}}">{{this.email}}</td>
-                    <td><input type="text" name="fecha" hidden value="{{this.approval}}">{{this.approval}}</td>
-                    <td><button type="submit" class="btn-floating btn waves-effect waves-light green">
-                                <i class="material-icons">add</i>Agregar</button> </td>
-                    
-                </tr>
-                </form>
-                {{/if}}    
-                {{/each}}
-            </tbody>
-        </table>
+                <tbody>
+                    {{#each medicosList}}
+                    {{#if this.approval}}
+                    {{else}}
+                    <form class="card-panel" action="/aprobarMedico" method="POST">
+                        <tr id="tableRow">
+                            <td><input type="text" name="name" hidden value="{{this.name}}">{{this.name}}
+                                {{this.surname}}</td>
+                            <td><input type="text" name="especialidad" hidden
+                                    value="{{this.especialidad}}">{{this.especialidad}}</td>
+                            <td><input type="text" name="email" hidden value="{{this.email}}">{{this.email}}</td>
+                            <td><input type="text" name="fecha" hidden value="{{this.approval}}">{{this.approval}}</td>
+                            <td><button type="submit" class="btn-floating btn waves-effect waves-light green">
+                                    <i class="material-icons">add</i>Agregar</button> </td>
+
+                        </tr>
+                    </form>
+                    {{/if}}
+                    {{/each}}
+                </tbody>
+            </table>
     </div>
 </div>

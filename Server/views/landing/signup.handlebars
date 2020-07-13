@@ -25,9 +25,9 @@
           <label for="confirmPassword">Confirm Password </label>
         </div>
         <div class="input-field col s12"> <input class="btn" type="submit" value="Registrar"></div>
-        {{#if message}}<div class="input-field col s12">
-          <p class="message-{{message.class}}">{{message.text}}</p>
-          </div>{{/if}}
+        {{#if registerMsg}}<div class="input-field col s12">
+          <p class="message-{{registerMsg.class}}">{{registerMsg.text}}</p>
+        </div>{{/if}}
       </div>
 
   </div>

@@ -13,27 +13,27 @@
 
 <script>
 
-    $(document).ready(function () {
-        //Autocomplete
-        $(function () {
-            $.ajax({
-                type: 'GET',
-                url: '/medicamentoAutocomplete?fields=medicamento',
-                success: function (response) {
-                    var nameArray = response;
-                    var data = {};
-                    for (var i = 0; i < nameArray.length; i++) {
-                        //console.log(nameArray[i].name);
-                        data[nameArray[i].medicamento] = nameArray[i].flag; //nameArray[i].flag or null
-                    }
-                    $('input.autocomplete').autocomplete({
-                        data: data,
-                        limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
-                    });
-                }
-            });
-        });
+  $(document).ready(function () {
+    //Autocomplete
+    $(function () {
+      $.ajax({
+        type: 'GET',
+        url: '/medicamentoAutocomplete?fields=medicamento',
+        success: function (response) {
+          var nameArray = response;
+          var data = {};
+          for (var i = 0; i < nameArray.length; i++) {
+            //console.log(nameArray[i].name);
+            data[nameArray[i].medicamento] = nameArray[i].flag; //nameArray[i].flag or null
+          }
+          $('input.autocomplete').autocomplete({
+            data: data,
+            limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
+          });
+        }
+      });
     });
+  });
 </script>
 
 
